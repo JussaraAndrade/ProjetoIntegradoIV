@@ -71,14 +71,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButtonSair" pref="33" max="32767" attributes="0"/>
-                      <Component id="jButtonEntrar" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButtonEntrar" pref="41" max="32767" attributes="0"/>
+                              <Component id="jButtonSair" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jLabelPNGCadeado" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
-              <Component id="jLabelPNGCadeado" min="-2" pref="150" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
