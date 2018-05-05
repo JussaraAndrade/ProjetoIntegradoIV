@@ -36,6 +36,8 @@ public class AdmGerente extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -77,6 +79,15 @@ public class AdmGerente extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
+        jMenu4.setText("Pesquisa");
+
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
+        jMenuItem7.setText("Cliente");
+        jMenu4.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu4);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
         jMenu3.setText("Opções");
@@ -163,6 +174,7 @@ public class AdmGerente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -170,5 +182,6 @@ public class AdmGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }

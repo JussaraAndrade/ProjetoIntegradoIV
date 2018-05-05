@@ -35,8 +35,12 @@ public class Vendedor extends javax.swing.JFrame {
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemCliente = new javax.swing.JMenuItem();
         jMenuVenda = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuSair = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,27 +63,51 @@ public class Vendedor extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastro);
 
-        jMenuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Caixa.png"))); // NOI18N
+        jMenuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Carrinho Mercado.png"))); // NOI18N
         jMenuVenda.setText("Venda");
         jMenuVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuVendaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenuVenda);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Manual.png"))); // NOI18N
-        jMenu4.setText("Manual");
-        jMenuBar1.add(jMenu4);
-
-        jMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Desligar 1.png"))); // NOI18N
-        jMenuSair.setText("Sair");
-        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Caixa.png"))); // NOI18N
+        jMenuItem1.setText("Cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuSairActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenuSair);
+        jMenuVenda.add(jMenuItem1);
+
+        jMenuBar1.add(jMenuVenda);
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
+        jMenu1.setText("Pesquisa");
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
+        jMenuItem4.setText("Cliente");
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
+        jMenu4.setText("Opções");
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Ajuda.png"))); // NOI18N
+        jMenuItem2.setText("Ajuda");
+        jMenu4.add(jMenuItem2);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Botão Desligar 4.png"))); // NOI18N
+        jMenuItem3.setText("Sair");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -91,7 +119,7 @@ public class Vendedor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
 
         pack();
@@ -103,19 +131,23 @@ public class Vendedor extends javax.swing.JFrame {
         chamaCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
-    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
-       //Botão Sair
-       System.exit(0);
-    }//GEN-LAST:event_jMenuSairActionPerformed
-
     private void jMenuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroActionPerformed
          
     }//GEN-LAST:event_jMenuCadastroActionPerformed
 
     private void jMenuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendaActionPerformed
-       Vendas chamaVenda = new Vendas();
+        Vendas chamaVenda = new Vendas();
         chamaVenda.setVisible(true);
     }//GEN-LAST:event_jMenuVendaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Vendas chamaVenda = new Vendas();
+        chamaVenda.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,11 +192,15 @@ public class Vendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemCliente;
-    private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenu jMenuVenda;
     // End of variables declaration//GEN-END:variables
 }
