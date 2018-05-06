@@ -6,8 +6,8 @@
 package Login;
 
 
-import CadastroClienteVendedor.Vendedor;
-import Gerente.AdmGerente;
+import UsuarioVendedor.Vendedor;
+import AdmGerente.Gerente;
 import javax.swing.JOptionPane;
 
 
@@ -167,7 +167,7 @@ public class TelaLogin extends javax.swing.JFrame {
         } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("12345")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Gerente");    
            
-            AdmGerente Gerentecliente = new AdmGerente();
+            Gerente Gerentecliente = new Gerente();
             Gerentecliente.setVisible(true);
             
         }else{

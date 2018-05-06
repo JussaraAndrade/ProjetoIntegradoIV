@@ -57,7 +57,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Icones/32x32 Tamanho Lupa.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pesquisa"/>
+            <Property name="text" type="java.lang.String" value="Consulta"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">

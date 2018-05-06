@@ -1,4 +1,4 @@
-package CadastroClienteVendedor;
+package UsuarioVendedor;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -83,7 +83,7 @@ public class Vendedor extends javax.swing.JFrame {
         jMenuBar1.add(jMenuVenda);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
-        jMenu1.setText("Pesquisa");
+        jMenu1.setText("Consulta");
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
         jMenuItem4.setText("Cliente");

@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gerente;
+package AdmGerente;
 
 /**
  *
  * @author Jussara Andrade
  */
-public class AdmGerente extends javax.swing.JFrame {
+public class Gerente extends javax.swing.JFrame {
 
     /**
      * Creates new form AdmGerente
      */
-    public AdmGerente() {
+    public Gerente() {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
+         
     }
 
     /**
@@ -81,7 +82,7 @@ public class AdmGerente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
-        jMenu4.setText("Pesquisa");
+        jMenu4.setText("Consulta");
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
         jMenuItem7.setText("Cliente");
@@ -152,20 +153,21 @@ public class AdmGerente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdmGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdmGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdmGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdmGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdmGerente().setVisible(true);
+                new Gerente().setVisible(true);
             }
         });
     }
