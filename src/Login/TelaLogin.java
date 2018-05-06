@@ -6,8 +6,8 @@
 package Login;
 
 
-import UsuarioVendedor.Vendedor;
-import AdmGerente.Gerente;
+import TelaUsuarioVendedor.Vendedor;
+import TelaAdmGerente.Gerente;
 import javax.swing.JOptionPane;
 
 
