@@ -30,85 +30,95 @@ public class PrincipalGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuBarMenus = new javax.swing.JMenuBar();
+        jMenuCadastro = new javax.swing.JMenu();
+        jMenuItemProdutos = new javax.swing.JMenuItem();
+        jMenuRelatorios = new javax.swing.JMenu();
+        jMenuItemVendas = new javax.swing.JMenuItem();
+        jMenuItemEstoque = new javax.swing.JMenuItem();
+        jMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuConsulta = new javax.swing.JMenu();
+        jMenuItemConsultaCliente = new javax.swing.JMenuItem();
+        jMenuOpções = new javax.swing.JMenu();
+        jMenuItemAjuda = new javax.swing.JMenuItem();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro.png"))); // NOI18N
-        jMenu1.setText("Cadastro");
+        jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro.png"))); // NOI18N
+        jMenuCadastro.setText("Cadastro");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Carrinho Adicionar.png"))); // NOI18N
-        jMenuItem1.setText("Produto");
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Relátorio 3.png"))); // NOI18N
-        jMenu2.setText("Relatório");
-
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Venda.png"))); // NOI18N
-        jMenuItem2.setText("Venda");
-        jMenu2.add(jMenuItem2);
-
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Estoque 1.png"))); // NOI18N
-        jMenuItem3.setText("Estoque");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Carrinho Adicionar.png"))); // NOI18N
+        jMenuItemProdutos.setText("Produto");
+        jMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemProdutosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenuCadastro.add(jMenuItemProdutos);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Arquivo Cliente.png"))); // NOI18N
-        jMenuItem4.setText("Cliente");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBarMenus.add(jMenuCadastro);
+
+        jMenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Relátorio 3.png"))); // NOI18N
+        jMenuRelatorios.setText("Relatório");
+
+        jMenuItemVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Venda.png"))); // NOI18N
+        jMenuItemVendas.setText("Venda");
+        jMenuRelatorios.add(jMenuItemVendas);
+
+        jMenuItemEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Estoque 1.png"))); // NOI18N
+        jMenuItemEstoque.setText("Estoque");
+        jMenuItemEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemEstoqueActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenuRelatorios.add(jMenuItemEstoque);
 
-        jMenuBar1.add(jMenu2);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
-        jMenu4.setText("Consulta");
-
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
-        jMenuItem7.setText("Cliente");
-        jMenu4.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
-        jMenu3.setText("Opções");
-
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Ajuda.png"))); // NOI18N
-        jMenuItem5.setText("Ajuda");
-        jMenu3.add(jMenuItem5);
-
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Botão Desligar 4.png"))); // NOI18N
-        jMenuItem6.setText("Sair");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Arquivo Cliente.png"))); // NOI18N
+        jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuItemClienteActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        jMenuRelatorios.add(jMenuItemCliente);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBarMenus.add(jMenuRelatorios);
 
-        setJMenuBar(jMenuBar1);
+        jMenuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
+        jMenuConsulta.setText("Consulta");
+
+        jMenuItemConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
+        jMenuItemConsultaCliente.setText("Cliente");
+        jMenuItemConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenuConsulta.add(jMenuItemConsultaCliente);
+
+        jMenuBarMenus.add(jMenuConsulta);
+
+        jMenuOpções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
+        jMenuOpções.setText("Opções");
+
+        jMenuItemAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Ajuda.png"))); // NOI18N
+        jMenuItemAjuda.setText("Ajuda");
+        jMenuOpções.add(jMenuItemAjuda);
+
+        jMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Botão Desligar 4.png"))); // NOI18N
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuOpções.add(jMenuItemSair);
+
+        jMenuBarMenus.add(jMenuOpções);
+
+        setJMenuBar(jMenuBarMenus);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,17 +134,27 @@ public class PrincipalGerente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
 
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
+       ConsultaCliente consulta1 = new ConsultaCliente();
+        consulta1.setVisible(true);
+    }//GEN-LAST:event_jMenuItemConsultaClienteActionPerformed
+
+    private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
+        Produtos produtos = new Produtos();
+        produtos.setVisible(true);
+    }//GEN-LAST:event_jMenuItemProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,17 +195,17 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuBar jMenuBarMenus;
+    private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenu jMenuConsulta;
+    private javax.swing.JMenuItem jMenuItemAjuda;
+    private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemConsultaCliente;
+    private javax.swing.JMenuItem jMenuItemEstoque;
+    private javax.swing.JMenuItem jMenuItemProdutos;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemVendas;
+    private javax.swing.JMenu jMenuOpções;
+    private javax.swing.JMenu jMenuRelatorios;
     // End of variables declaration//GEN-END:variables
 }

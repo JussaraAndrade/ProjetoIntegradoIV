@@ -158,13 +158,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
    
-        if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("1234")){
+        if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Vendedor");
             PrincipalVendedor vendedor = new PrincipalVendedor();
             vendedor.setVisible(true);
             dispose();
             
-        } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("12345")){
+        } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("adm")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Gerente");    
            
             PrincipalGerente Gerentecliente = new PrincipalGerente();

@@ -25,7 +25,7 @@
     </Container>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -331,7 +331,7 @@
             <Component class="javax.swing.JTable" name="jTable2">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="7">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="true" title="ID " type="java.lang.Object"/>
                     <Column editable="true" title="Nome" type="java.lang.Object"/>
                     <Column editable="true" title="Valor" type="java.lang.Object"/>
@@ -410,6 +410,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Icones/32x32 Tamanho Bot&#xe3;o Salvar.png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
     </Component>
   </SubComponents>

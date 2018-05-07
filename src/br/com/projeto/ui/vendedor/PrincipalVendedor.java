@@ -36,8 +36,8 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         jMenuItemCliente = new javax.swing.JMenuItem();
         jMenuVenda = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuConsulta = new javax.swing.JMenu();
+        jMenuItemConsulta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -82,14 +82,19 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuVenda);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
-        jMenu1.setText("Consulta");
+        jMenuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
+        jMenuConsulta.setText("Consulta");
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
-        jMenuItem4.setText("Cliente");
-        jMenu1.add(jMenuItem4);
+        jMenuItemConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
+        jMenuItemConsulta.setText("Cliente");
+        jMenuItemConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultaActionPerformed(evt);
+            }
+        });
+        jMenuConsulta.add(jMenuItemConsulta);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuConsulta);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
         jMenu4.setText("Opções");
@@ -149,6 +154,11 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
+        Consulta consulta = new Consulta();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItemConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,15 +210,15 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenu jMenuConsulta;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemConsulta;
     private javax.swing.JMenu jMenuVenda;
     // End of variables declaration//GEN-END:variables
 }
