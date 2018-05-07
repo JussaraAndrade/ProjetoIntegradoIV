@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db.Utils;
+package br.com.projeto.db.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

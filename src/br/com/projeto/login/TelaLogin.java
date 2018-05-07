@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;
+package br.com.projeto.login;
 
 
-import TelaUsuarioVendedor.Vendedor;
-import TelaAdmGerente.Gerente;
+import br.com.projeto.ui.vendedor.PrincipalVendedor;
+import br.com.projeto.ui.gerente.PrincipalGerente;
 import javax.swing.JOptionPane;
 
 
@@ -160,14 +160,14 @@ public class TelaLogin extends javax.swing.JFrame {
    
         if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("1234")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Vendedor");
-            Vendedor vendedor = new Vendedor();
+            PrincipalVendedor vendedor = new PrincipalVendedor();
             vendedor.setVisible(true);
             dispose();
             
         } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("12345")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Gerente");    
            
-            Gerente Gerentecliente = new Gerente();
+            PrincipalGerente Gerentecliente = new PrincipalGerente();
             Gerentecliente.setVisible(true);
             
         }else{

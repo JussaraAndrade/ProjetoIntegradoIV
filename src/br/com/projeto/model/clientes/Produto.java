@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package br.com.projeto.model.clientes;
 //Atenção: Verificar importação correta caso ocorra algum erro  
 //No campo dataVenda
 import java.sql.Date;

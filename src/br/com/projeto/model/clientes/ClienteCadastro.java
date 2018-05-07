@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package br.com.projeto.model.clientes;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Jussara Andrade
  */
-public class Cliente {
+public class ClienteCadastro {
     private Integer idCliente;
     private String nomeCliente;
     private String sexoCliente;
