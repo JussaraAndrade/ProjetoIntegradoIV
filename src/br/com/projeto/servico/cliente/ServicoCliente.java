@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.model.validador;
+package br.com.projeto.servico.cliente;
 
 /**
  *
  * @author Jussara Andrade
  */
-public class ValidadorUsuario {
+public class ServicoCliente {
     
 }

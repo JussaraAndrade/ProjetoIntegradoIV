@@ -46,8 +46,6 @@ public class Cliente extends javax.swing.JFrame {
         txtDataNasc = new javax.swing.JTextField();
         lblSexo = new javax.swing.JLabel();
         jComboBoxSexo = new javax.swing.JComboBox<>();
-        lblEstadoCivil = new javax.swing.JLabel();
-        jComboBoxEstadoCivil = new javax.swing.JComboBox<>();
         jPanelDocumentos = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
@@ -94,10 +92,6 @@ public class Cliente extends javax.swing.JFrame {
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Genêro" }));
 
-        lblEstadoCivil.setText("Estado Civil:");
-
-        jComboBoxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Solteiro(a)", "Casado(a)" }));
-
         javax.swing.GroupLayout jPanelIdentificaçãoLayout = new javax.swing.GroupLayout(jPanelIdentificação);
         jPanelIdentificação.setLayout(jPanelIdentificaçãoLayout);
         jPanelIdentificaçãoLayout.setHorizontalGroup(
@@ -117,15 +111,10 @@ public class Cliente extends javax.swing.JFrame {
                         .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblId)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelIdentificaçãoLayout.createSequentialGroup()
-                                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSexo))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEstadoCivil))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblSexo)))
+                        .addGap(0, 301, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelIdentificaçãoLayout.setVerticalGroup(
@@ -143,13 +132,9 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSexo)
-                    .addComponent(lblEstadoCivil))
+                .addComponent(lblSexo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
@@ -400,40 +385,39 @@ public class Cliente extends javax.swing.JFrame {
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
         
-            ClienteCadastro cliente = new ClienteCadastro();
+          ClienteCadastro cliente = new ClienteCadastro();
             
             cliente.setNomeCliente(txtNome.getText());
        
-        Date data = null;
+       Date data = null;
        try {
-          // data =  (Date)txtDataNasc.getValue();
+         // data =  (Date)txtDataNasc.getValue();
         } catch (Exception e) {
             
-        }
+       }
         cliente.setDataNascimentoCliente(data);
         cliente.setSexoCliente((String) jComboBoxSexo.getSelectedItem());
 
         try {
-            //Chama o serviço para cadastro do cliente
-         //  ServicoClienteCad.getInstance().cadastrarCliente(cliente);
+           //Chama o serviço para cadastro do cliente
+        //  ServicoClienteCad.getInstance().cadastrarCliente(cliente);
         } catch (Exception e) {
             //Exibe mensagens de erro para o usuário
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+           JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                    "Erro", JOptionPane.ERROR_MESSAGE);
             return;
        }
 
-        //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
+       //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
         //Então exibe uma mensagem de sucesso para o usuário
-        JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
+       JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
                 "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
 
         //Limpa os campos da tela após realizar a inserção
         txtId.setText("");
         txtNome.setText("");
         //txtDataNasc.setValue(null);
-        jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxEstadoCivil.setSelectedIndex(0);
+        jComboBoxSexo.setSelectedIndex(0); 
         txtCpf.setText("");
         txtRg.setText("");
         txtEndereço.setText("");
@@ -488,7 +472,6 @@ public class Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSalvar;
-    private javax.swing.JComboBox<String> jComboBoxEstadoCivil;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JComboBox<String> jComboBoxUf;
     private javax.swing.JPanel jPanelContato;
@@ -508,7 +491,6 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataNasc;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEndereço;
-    private javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNome;

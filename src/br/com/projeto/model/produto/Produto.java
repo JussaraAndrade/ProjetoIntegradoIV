@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.model.clientes;
-//Atenção: Verificar importação correta caso ocorra algum erro  
-//No campo dataVenda
+package br.com.projeto.model.produto;
+
 import java.sql.Date;
 
 /**
@@ -13,7 +12,7 @@ import java.sql.Date;
  * @author Jussara Andrade
  */
 public class Produto {
-    private Integer idProduto;
+     private Integer idProduto;
     private String nomeProduto;
     private String generoProduto;
     private String corProduto;
@@ -97,3 +96,5 @@ public class Produto {
     
     
 }
+
+

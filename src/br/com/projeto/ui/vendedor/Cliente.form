@@ -103,19 +103,12 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblId" min="-2" max="-2" attributes="0"/>
                               <Component id="txtId" min="-2" pref="77" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBoxSexo" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBoxEstadoCivil" min="-2" pref="113" max="-2" attributes="0"/>
-                                      <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jComboBoxSexo" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="301" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -139,15 +132,9 @@
                       <Component id="txtDataNasc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBoxSexo" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jComboBoxEstadoCivil" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBoxSexo" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -188,25 +175,6 @@
                 <StringItem index="1" value="Feminino"/>
                 <StringItem index="2" value="Masculino"/>
                 <StringItem index="3" value="Gen&#xea;ro"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEstadoCivil">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Estado Civil:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxEstadoCivil">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Selecione..."/>
-                <StringItem index="1" value="Solteiro(a)"/>
-                <StringItem index="2" value="Casado(a)"/>
               </StringArray>
             </Property>
           </Properties>
