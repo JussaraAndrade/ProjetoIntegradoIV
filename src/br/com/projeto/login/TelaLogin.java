@@ -57,6 +57,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabelSenha.setText("Senha:");
 
+        jTextFieldLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jPasswordField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

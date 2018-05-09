@@ -5,10 +5,9 @@
  */
 package br.com.projeto.ui.vendedor;
 
-import br.com.projeto.model.clientes.ClienteCadastro;
-
-import java.util.Date;
 import javax.swing.JOptionPane;
+
+
 
 
 
@@ -26,6 +25,36 @@ public class Cliente extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);
+    }
+
+    public void validadorCliente(){
+        
+        if (txtId.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "ID está com campo Nome vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+       } else if (txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo Nome está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+      
+        }else if (txtDataNasc.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo data de Nascimento está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (jComboBoxSexo.getSelectedItem().toString().equals("Selecione...")) {
+             JOptionPane.showMessageDialog(null, "Por favor, selecione o seu genêro!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }else if(txtDataCadastro.getText().equals("")){
+           JOptionPane.showMessageDialog(null, "O campo Data de Cadastro está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);      
+        }else if (txtCpf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo Cpf está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+         }else if (txtRg.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo Rg está vazio!", "Erro", JOptionPane.ERROR_MESSAGE); 
+         
+        }else if (txtCelular.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo Celular está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);    
+                                  
+        }else if (txtTelefoneFixo.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo Telefone fixo está vazio!", "Erro", JOptionPane.ERROR_MESSAGE);    
+                     
+         }else if (txtEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo E-mail está vazio!", "Erro", JOptionPane.ERROR_MESSAGE); 
+        
+        }
     }
 
     /**
@@ -53,6 +82,7 @@ public class Cliente extends javax.swing.JFrame {
         lblRg = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         txtRg = new javax.swing.JTextField();
+        txtDataCadastro = new javax.swing.JTextField();
         jPanelLogradouro = new javax.swing.JPanel();
         lblEndereço = new javax.swing.JLabel();
         txtEndereço = new javax.swing.JTextField();
@@ -111,9 +141,8 @@ public class Cliente extends javax.swing.JFrame {
                         .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblId)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblSexo)))
+                            .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSexo))
                         .addGap(0, 301, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -162,7 +191,9 @@ public class Cliente extends javax.swing.JFrame {
                         .addComponent(txtRg))
                     .addGroup(jPanelDocumentosLayout.createSequentialGroup()
                         .addComponent(lblData)
-                        .addGap(99, 99, 99)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(lblHora)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -172,7 +203,8 @@ public class Cliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDocumentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHora))
+                    .addComponent(lblHora)
+                    .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblCpf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -384,52 +416,70 @@ public class Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
+        validadorCliente();
+//    ClienteCadastro cliente = new ClienteCadastro();
+//    
+//            
+//        cliente.setNomeCliente(txtNome.getText());
+//        cliente.setEmailCliente(txtEmail.getText());
+//        cliente.setTelefoneCliente(txtTelefoneFixo.getText());
+//        cliente.setCelularCliente(txtCelular.getText());
+//        
+//       Date data = null;
+//       Integer rg = null;
+//       Integer cpf = null;
+//       Date dataCadastro = null;
+//       
+//       try {
+////          data =  (Date)txtDataNasc.getValue();
+////          rg = (Integer)txtRg.getValue();
+////          cpf = (Integer)txtCpf.getValue();
+////          dataCadastro = (Date)txtDataCadastro.getValue();
+//        
+//        } catch (Exception e) {
+//            
+//       }
+//        cliente.setDataNascimentoCliente(data);
+//        cliente.setRgCliente(rg);
+//        cliente.setCpfCliente(cpf);
+//        cliente.setDataCadastroCliente(dataCadastro);
+//        
+//        cliente.setSexoCliente((String) jComboBoxSexo.getSelectedItem());
+//
+//        try {
+//           //Chama o serviço para cadastro do cliente
+////          ServicoCliente.getInstance().cadastrarCliente(cliente);
+//        } catch (Exception e) {
+//            //Exibe mensagens de erro para o usuário
+//           JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+//                   "Erro", JOptionPane.ERROR_MESSAGE);
+//            return;
+//       }
+//
+//       //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
+//        //Então exibe uma mensagem de sucesso para o usuário
+//       JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
+//                "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
+//
+//        //Limpa os campos da tela após realizar a inserção
+//        txtId.setText("");
+//        txtNome.setText("");
+////        txtDataNasc.setValue(null);
+//        jComboBoxSexo.setSelectedIndex(0); 
+//        txtCpf.setText("");
+//        txtRg.setText("");
+//        txtEndereço.setText("");
+//        txtBairro.setText("");
+//        txtComplemento.setText("");
+//        jComboBoxUf.setSelectedIndex(0);
+//        txtCidade.setText("");
+//        txtCep.setText("");
+//        txtTelefoneFixo.setText("");
+//        txtCelular.setText("");
+//        txtEmail.setText("");
+
+ 
         
-          ClienteCadastro cliente = new ClienteCadastro();
-            
-            cliente.setNomeCliente(txtNome.getText());
-       
-       Date data = null;
-       try {
-         // data =  (Date)txtDataNasc.getValue();
-        } catch (Exception e) {
-            
-       }
-        cliente.setDataNascimentoCliente(data);
-        cliente.setSexoCliente((String) jComboBoxSexo.getSelectedItem());
-
-        try {
-           //Chama o serviço para cadastro do cliente
-        //  ServicoClienteCad.getInstance().cadastrarCliente(cliente);
-        } catch (Exception e) {
-            //Exibe mensagens de erro para o usuário
-           JOptionPane.showMessageDialog(rootPane, e.getMessage(),
-                   "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-       }
-
-       //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
-        //Então exibe uma mensagem de sucesso para o usuário
-       JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
-                "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
-
-        //Limpa os campos da tela após realizar a inserção
-        txtId.setText("");
-        txtNome.setText("");
-        //txtDataNasc.setValue(null);
-        jComboBoxSexo.setSelectedIndex(0); 
-        txtCpf.setText("");
-        txtRg.setText("");
-        txtEndereço.setText("");
-        txtBairro.setText("");
-        txtComplemento.setText("");
-        jComboBoxUf.setSelectedIndex(0);
-        txtCidade.setText("");
-        txtCep.setText("");
-        txtTelefoneFixo.setText("");
-        txtCelular.setText("");
-        txtEmail.setText("");
-
     
         
         
@@ -504,6 +554,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtDataCadastro;
     private javax.swing.JTextField txtDataNasc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereço;

@@ -1,5 +1,7 @@
 package br.com.projeto.ui.vendedor;
 
+import br.com.projeto.ui.gerente.ConsultaCliente;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +13,8 @@ package br.com.projeto.ui.vendedor;
  * @author Jussara Andrade
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
-
+    private Cliente cadastrarCliente = null;
+    private ConsultaCliente consultarClientes = null;
     /**
      * Creates new form CadastroCliente
      */
@@ -21,6 +24,21 @@ public class PrincipalVendedor extends javax.swing.JFrame {
          setLocationRelativeTo(null);
          this.setExtendedState(MAXIMIZED_BOTH);
     }
+     public Cliente getCadastrarCliente() {
+        return cadastrarCliente;
+    }
+
+    public void setCadastrarCliente(Cliente cadastrarCliente) {
+        this.cadastrarCliente = cadastrarCliente;
+    }
+
+    public ConsultaCliente getConsultarClientes() {
+        return consultarClientes;
+    }
+
+    public void setConsultarClientes(ConsultaCliente consultarClientes) {
+        this.consultarClientes = consultarClientes;
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +51,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
-        jMenuItemCliente = new javax.swing.JMenuItem();
+        menuCadastrarCliente = new javax.swing.JMenuItem();
         jMenuVenda = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuConsulta = new javax.swing.JMenu();
@@ -52,14 +70,14 @@ public class PrincipalVendedor extends javax.swing.JFrame {
             }
         });
 
-        jMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro Cliente.png"))); // NOI18N
-        jMenuItemCliente.setText("Cliente");
-        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+        menuCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro Cliente.png"))); // NOI18N
+        menuCadastrarCliente.setText("Cliente");
+        menuCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteActionPerformed(evt);
+                menuCadastrarClienteActionPerformed(evt);
             }
         });
-        jMenuCadastro.add(jMenuItemCliente);
+        jMenuCadastro.add(menuCadastrarCliente);
 
         jMenuBar1.add(jMenuCadastro);
 
@@ -130,11 +148,12 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+    private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
        //Chama a janela Cliente 
         Cliente chamaCliente = new Cliente();
         chamaCliente.setVisible(true);
-    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+        
+    }//GEN-LAST:event_menuCadastrarClienteActionPerformed
 
     private void jMenuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroActionPerformed
          
@@ -217,8 +236,8 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemConsulta;
     private javax.swing.JMenu jMenuVenda;
+    private javax.swing.JMenuItem menuCadastrarCliente;
     // End of variables declaration//GEN-END:variables
 }

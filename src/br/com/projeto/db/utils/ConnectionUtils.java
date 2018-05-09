@@ -22,11 +22,11 @@ public class ConnectionUtils {
         try {
                       
            
-            String dbURL = "jdbc:mysql://localhost:3306/db_loja_roupas";
+            String dbURL = "jdbc:mysql://localhost:3306/bd_loja_roupas";
            
             Properties properties = new Properties();
             properties.put("user", "root");
-            properties.put("password", "adminadmin");
+            properties.put("password", "root");
            
             connection = DriverManager.getConnection(dbURL, properties);
 
