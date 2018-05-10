@@ -23,9 +23,11 @@ public class DaoCliente {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO cliente ( id_cliente, nome_cliente, "
-                + "sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente "
-                + "email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+        String sql = "START TRANSACTION;"
+                + "INSERT INTO `mydb`.`cliente` (`nome_cliente`, `sexo_cliente`, `rg_cliente`, `cpf_cliente`, `data_nasc_cliente`, `email_cliente`, `celular_cliente`, `telefone_cliente`, `data_cadastro_cliente`, `enable`)"
+                + "VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?');"
+                + "INSERT INTO `mydb`.`end_cliente`(`rua_cliente`,`numero_cliente`, `bairro_cliente`,`cidade_cliente`,`uf_cliente`,`cep_cliente`,`complemento_cliente`,`cliente_id_cliente`)"
+                + "VALUES('?', '?', '?', '?', '?', '?', '?',(SELECT LAST_INSERT_ID()));";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
