@@ -22,7 +22,7 @@ public class ConnectionUtils {
         try {
                       
            
-            String dbURL = "jdbc:mysql://localhost:3306/mydb";
+            String dbURL = "jdbc:mysql://localhost:3306/bd_loja_roupas";
            
             Properties properties = new Properties();
             properties.put("user", "root");

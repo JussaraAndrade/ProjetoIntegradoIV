@@ -10,29 +10,29 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `bd_loja_roupas` ;
 
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `bd_loja_roupas` DEFAULT CHARACTER SET utf8 ;
+USE `bd_loja_roupas` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`cliente`
+-- Table `bd_loja_roupas`.`cliente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`cliente` ;
+DROP TABLE IF EXISTS `bd_loja_roupas`.`cliente` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`cliente` (
+CREATE TABLE IF NOT EXISTS `bd_loja_roupas`.`cliente` (
   `id_cliente` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome_cliente` VARCHAR(45) NOT NULL,
-  `sexo_cliente` VARCHAR(2) NOT NULL,
-  `rg_cliente` INT NOT NULL,
-  `cpf_cliente` INT NOT NULL,
+  `sexo_cliente` VARCHAR(1) NOT NULL,
+  `rg_cliente` VARCHAR(12) NOT NULL,
+  `cpf_cliente` VARCHAR(12) NOT NULL,
   `data_nasc_cliente` DATE NOT NULL,
   `email_cliente` VARCHAR(100) NULL,
-  `celular_cliente` VARCHAR(14) NOT NULL,
-  `telefone_cliente` VARCHAR(14) NOT NULL,
+  `celular_cliente` VARCHAR(11) NOT NULL,
+  `telefone_cliente` VARCHAR(11) NOT NULL,
   `data_cadastro_cliente` DATE NOT NULL,
   `enable` TINYINT NULL,
   PRIMARY KEY (`id_cliente`),
@@ -43,11 +43,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`end_cliente`
+-- Table `bd_loja_roupas`.`end_cliente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`end_cliente` ;
+DROP TABLE IF EXISTS `bd_loja_roupas`.`end_cliente` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`end_cliente` (
+CREATE TABLE IF NOT EXISTS `bd_loja_roupas`.`end_cliente` (
   `rua_cliente` VARCHAR(150) NOT NULL,
   `numero_cliente` VARCHAR(5) NOT NULL,
   `bairro_cliente` VARCHAR(50) NOT NULL,
@@ -55,19 +55,19 @@ CREATE TABLE IF NOT EXISTS `mydb`.`end_cliente` (
   `uf_cliente` VARCHAR(2) NOT NULL,
   `cep_cliente` INT NOT NULL,
   `complemento_cliente` VARCHAR(45) NULL,
-  `cliente_id_cliente` INT UNSIGNED NOT NULL)
+  `end_cliente_id_cliente` INT UNSIGNED NOT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`produto`
+-- Table `bd_loja_roupas`.`produto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`produto` ;
+DROP TABLE IF EXISTS `bd_loja_roupas`.`produto` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`produto` (
+CREATE TABLE IF NOT EXISTS `bd_loja_roupas`.`produto` (
   `id_produto` INT NOT NULL AUTO_INCREMENT,
   `nome_produto` VARCHAR(45) NOT NULL,
-  `genero_produto` VARCHAR(15) NOT NULL,
+  `departamento_produto` VARCHAR(15) NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
   `tamanho_produto` VARCHAR(1) NOT NULL,
   `descricao_produto` VARCHAR(100) NULL,
@@ -81,11 +81,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`venda`
+-- Table `bd_loja_roupas`.`venda`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`venda` ;
+DROP TABLE IF EXISTS `bd_loja_roupas`.`venda` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`venda` (
+CREATE TABLE IF NOT EXISTS `bd_loja_roupas`.`venda` (
   `id_cliente` INT UNSIGNED NOT NULL,
   `data_venda` DATE NOT NULL,
   `enable` TINYINT NULL,
@@ -94,11 +94,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`itemVenda`
+-- Table `bd_loja_roupas`.`itemVenda`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`itemVenda` ;
+DROP TABLE IF EXISTS `bd_loja_roupas`.`itemVenda` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`itemVenda` (
+CREATE TABLE IF NOT EXISTS `bd_loja_roupas`.`itemVenda` (
   `venda_id_cliente` INT UNSIGNED NOT NULL,
   `venda_id_produto` INT NOT NULL,
   `quantidade_produto` VARCHAR(45) NOT NULL,
