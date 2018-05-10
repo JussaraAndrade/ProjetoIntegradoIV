@@ -10,7 +10,9 @@ package br.com.projeto.ui.gerente;
  * @author Jussara Andrade
  */
 public class PrincipalGerente extends javax.swing.JFrame {
-
+    
+    private ConsultaCliente consulta;
+    private Produtos produtos;
     /**
      * Creates new form AdmGerente
      */
@@ -147,13 +149,20 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
-       ConsultaCliente consulta1 = new ConsultaCliente();
-        consulta1.setVisible(true);
+      if (consulta == null && !consulta.isDisplayable()) {
+            consulta = new ConsultaCliente();
+            consulta.setVisible(true);
+        }
+        consulta.toFront();
     }//GEN-LAST:event_jMenuItemConsultaClienteActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
-        Produtos produtos = new Produtos();
-        produtos.setVisible(true);
+         if (produtos == null && !produtos.isDisplayable()) {
+            produtos = new Produtos();
+            produtos.setVisible(true);
+        }
+        produtos.toFront();
+        
     }//GEN-LAST:event_jMenuItemProdutosActionPerformed
 
     /**

@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author Jussara Andrade
  */
 public class Produto {
-     private Integer idProduto;
+    
     private String nomeProduto;
     private String generoProduto;
     private String corProduto;
@@ -22,13 +22,7 @@ public class Produto {
     private Integer qtdEstoqueProduto;
     private Date dataCadastroProduto;
 
-    public Integer getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
-    }
+   
 
     public String getNomeProduto() {
         return nomeProduto;

@@ -1,6 +1,6 @@
 package br.com.projeto.ui.vendedor;
 
-import br.com.projeto.ui.gerente.ConsultaCliente;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,7 +14,8 @@ import br.com.projeto.ui.gerente.ConsultaCliente;
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
     private Cliente cadastrarCliente = null;
-    private ConsultaCliente consultarClientes = null;
+    private Consulta consultarClientes = null;
+    private Vendas vendas = null;
     /**
      * Creates new form CadastroCliente
      */
@@ -23,21 +24,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
          //Center   
          setLocationRelativeTo(null);
          this.setExtendedState(MAXIMIZED_BOTH);
-    }
-     public Cliente getCadastrarCliente() {
-        return cadastrarCliente;
-    }
-
-    public void setCadastrarCliente(Cliente cadastrarCliente) {
-        this.cadastrarCliente = cadastrarCliente;
-    }
-
-    public ConsultaCliente getConsultarClientes() {
-        return consultarClientes;
-    }
-
-    public void setConsultarClientes(ConsultaCliente consultarClientes) {
-        this.consultarClientes = consultarClientes;
+   
     }    
 
     /**
@@ -149,9 +136,12 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
-       //Chama a janela Cliente 
-        Cliente chamaCliente = new Cliente();
-        chamaCliente.setVisible(true);
+     //Chama a janela Cliente 
+        if (cadastrarCliente == null || !cadastrarCliente.isDisplayable()) {
+            cadastrarCliente = new Cliente();
+            cadastrarCliente.setVisible(true);
+        }
+        cadastrarCliente.toFront();
         
     }//GEN-LAST:event_menuCadastrarClienteActionPerformed
 
@@ -160,13 +150,15 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuCadastroActionPerformed
 
     private void jMenuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendaActionPerformed
-        Vendas chamaVenda = new Vendas();
-        chamaVenda.setVisible(true);
+        
     }//GEN-LAST:event_jMenuVendaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Vendas chamaVenda = new Vendas();
-        chamaVenda.setVisible(true);
+       if (vendas == null || !vendas.isDisplayable()) {
+                 vendas = new Vendas();
+                 vendas.setVisible(true);
+        }
+        vendas.toFront();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -174,8 +166,13 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
-        Consulta consulta = new Consulta();
-        consulta.setVisible(true);
+         if(consultarClientes == null || !consultarClientes.isDisplayable()){
+        
+        consultarClientes = new Consulta();
+        consultarClientes.setVisible(true);
+        
+       }
+       consultarClientes.toFront();
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed
 
     /**
