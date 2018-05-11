@@ -47,10 +47,8 @@ public class ValidadorEndereço {
             throw new ClienteException("É necessário informar "
                     + "o complemento");
         }
-         if (endereço.getComplementoCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o complemento");
-        }
+         
+        
        
          
     }
