@@ -15,13 +15,22 @@ public class ClienteCadastro {
     private Integer idCliente;
     private String nomeCliente;
     private String sexoCliente;
-    private Integer rgCliente;
-    private Integer cpfCliente;
+    private String rgCliente;
+    private String cpfCliente;
     private Date dataNascimentoCliente;
     private String emailCliente;
     private String telefoneCliente;
     private String celularCliente;
     private Date dataCadastroCliente;
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+    private boolean enable;
 
     public Integer getIdCliente() {
         return idCliente;
@@ -47,19 +56,19 @@ public class ClienteCadastro {
         this.sexoCliente = sexoCliente;
     }
 
-    public Integer getRgCliente() {
+    public String getRgCliente() {
         return rgCliente;
     }
 
-    public void setRgCliente(Integer rgCliente) {
+    public void setRgCliente(String rgCliente) {
         this.rgCliente = rgCliente;
     }
 
-    public Integer getCpfCliente() {
+    public String getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(Integer cpfCliente) {
+    public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 

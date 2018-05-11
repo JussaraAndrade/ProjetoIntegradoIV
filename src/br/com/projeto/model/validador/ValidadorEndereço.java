@@ -13,45 +13,45 @@ import br.com.projeto.model.clientes.ClienteEndereço;
  * @author Jussara Andrade
  */
 public class ValidadorEndereço {
-      public static  void validar(ClienteEndereço endereço) throws ClienteException {
-        //Realização de validações de negócio
-        if (endereço == null) {
-            throw new ClienteException("Não foi informado o endereço do cliente");
-        }
-        if (endereço.getRuaCliente()== null || "".equals(endereço.getRuaCliente())) {
-            throw new ClienteException("É necessário informar "
-                    + "o endereço");
-        }
-        if (endereço.getNumeroCliente()== null
-                || "".equals(endereço.getNumeroCliente())) {
-            throw new ClienteException("É necessário informar "
-                    + "o número residencial");
-        }
-        if (endereço.getBairroCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o bairro");
-        }
-        if (endereço.getCidadeCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "a cidade");
-        }
-        if (endereço.getUfCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o estado");
-        }
-        if (endereço.getCepCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o cep");
-        }
-        if (endereço.getComplementoCliente()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o complemento");
-        }
+//      public static  void validar(ClienteEndereço endereço) throws ClienteException {
+//        //Realização de validações de negócio
+//        if (endereço == null) {
+//            throw new ClienteException("Não foi informado o endereço do cliente");
+//        }
+//        if (endereço.getRuaCliente()== null || "".equals(endereço.getRuaCliente())) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o endereço");
+//        }
+//        if (endereço.getNumeroCliente()== null
+//                || "".equals(endereço.getNumeroCliente())) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o número residencial");
+//        }
+//        if (endereço.getBairroCliente()== null) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o bairro");
+//        }
+//        if (endereço.getCidadeCliente()== null) {
+//            throw new ClienteException("É necessário informar "
+//                    + "a cidade");
+//        }
+//        if (endereço.getUfCliente()== null) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o estado");
+//        }
+//        if (endereço.getCepCliente()== null) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o cep");
+//        }
+//        if (endereço.getComplementoCliente()== null) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o complemento");
+//        }
+//         
+//        
+//       
          
-        
-       
-         
-    }
+    
 }
     
 

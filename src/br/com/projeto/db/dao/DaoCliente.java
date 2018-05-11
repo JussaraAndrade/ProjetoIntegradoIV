@@ -23,11 +23,15 @@ public class DaoCliente {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "START TRANSACTION;"
-                + "INSERT INTO `mydb`.`cliente` (`nome_cliente`, `sexo_cliente`, `rg_cliente`, `cpf_cliente`, `data_nasc_cliente`, `email_cliente`, `celular_cliente`, `telefone_cliente`, `data_cadastro_cliente`, `enable`)"
-                + "VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?');"
-                + "INSERT INTO `mydb`.`end_cliente`(`rua_cliente`,`numero_cliente`, `bairro_cliente`,`cidade_cliente`,`uf_cliente`,`cep_cliente`,`complemento_cliente`,`cliente_id_cliente`)"
-                + "VALUES('?', '?', '?', '?', '?', '?', '?',(SELECT LAST_INSERT_ID()));";
+//        String sql = "START TRANSACTION;"
+//                + "INSERT INTO `mydb`.`cliente` (`nome_cliente`, `sexo_cliente`, `rg_cliente`, `cpf_cliente`, `data_nasc_cliente`, `email_cliente`, `celular_cliente`, `telefone_cliente`, `data_cadastro_cliente`, `enable`)"
+//                + "VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')"
+//                + "INSERT INTO `mydb`.`end_cliente`(`rua_cliente`,`numero_cliente`, `bairro_cliente`,`cidade_cliente`,`uf_cliente`,`cep_cliente`,`complemento_cliente`,`cliente_id_cliente`)"
+//                + "VALUES('?', '?', '?', '?', '?', '?', '?',(SELECT LAST_INSERT_ID()))";
+
+
+        String sql = "INSERT INTO cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+       
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -44,12 +48,14 @@ public class DaoCliente {
             Timestamp t = new Timestamp(cliente.getDataNascimentoCliente().getTime());
             preparedStatement.setTimestamp(3, t);
             preparedStatement.setString(4, cliente.getSexoCliente());
-            preparedStatement.setInt(5, cliente.getRgCliente());
-            preparedStatement.setInt(6, cliente.getCpfCliente());
+            preparedStatement.setString(5, cliente.getRgCliente());
+            preparedStatement.setString(6, cliente.getCpfCliente());
             preparedStatement.setString(7, cliente.getEmailCliente());
             preparedStatement.setString(8, cliente.getTelefoneCliente());
             preparedStatement.setString(9, cliente.getCelularCliente());
+            preparedStatement.setBoolean(10, true);
             Timestamp te = new Timestamp(cliente.getDataCadastroCliente().getTime()); 
+            preparedStatement.setTimestamp(11, te);
       
 
            preparedStatement.execute();
