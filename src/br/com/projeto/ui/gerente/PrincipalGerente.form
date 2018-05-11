@@ -7,7 +7,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuCadastro">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Icones/48x48 Tamanho Cadastro.png"/>
+              <Image iconType="3" name="/Icones/48x48 Tamanho Cadastrar Cliente.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>

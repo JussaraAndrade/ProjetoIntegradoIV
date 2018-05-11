@@ -47,7 +47,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro.png"))); // NOI18N
+        jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastrar Cliente.png"))); // NOI18N
         jMenuCadastro.setText("Cadastro");
 
         jMenuItemProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Carrinho Adicionar.png"))); // NOI18N

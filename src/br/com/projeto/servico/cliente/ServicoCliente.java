@@ -5,6 +5,13 @@
  */
 package br.com.projeto.servico.cliente;
 
+
+
+/**
+ *
+ * @author Jussara Andrade
+ */
+
 import br.com.projeto.db.dao.DaoCliente;
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.exceptions.DataSourceException;
@@ -17,16 +24,15 @@ import br.com.projeto.model.validador.ValidadorCliente;
  */
 public class ServicoCliente {
       private static final ServicoCliente INSTANCE = new ServicoCliente();
-
-    public static Object getInstance() {
-        return INSTANCE;
-    }
-
-    private ServicoCliente() {
+    
+      private ServicoCliente() {
         
     }
 
-    
+    public static ServicoCliente getInstance() {
+        return INSTANCE;
+    }
+
     //Insere um cliente na fonte de dados
     public void cadastrarCliente(ClienteCadastro clienteCadastro)
             throws ClienteException, DataSourceException {
@@ -46,3 +52,4 @@ public class ServicoCliente {
     }
     
 }
+

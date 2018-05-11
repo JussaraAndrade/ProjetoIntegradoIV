@@ -6,6 +6,8 @@
 package br.com.projeto.ui.vendedor;
 
 import br.com.projeto.model.clientes.ClienteCadastro;
+import br.com.projeto.servico.cliente.ServicoCliente;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -43,7 +45,7 @@ public class Cliente extends javax.swing.JFrame {
         lblDataNasc = new javax.swing.JLabel();
         lblSexo = new javax.swing.JLabel();
         jComboBoxSexo = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtDataNasc = new javax.swing.JFormattedTextField();
         jPanelDocumentos = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
@@ -90,7 +92,7 @@ public class Cliente extends javax.swing.JFrame {
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Genêro" }));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -107,7 +109,7 @@ public class Cliente extends javax.swing.JFrame {
                             .addGroup(jPanelIdentificaçãoLayout.createSequentialGroup()
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblSexo)
                             .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 49, Short.MAX_VALUE))
@@ -121,19 +123,18 @@ public class Cliente extends javax.swing.JFrame {
             jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIdentificaçãoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelIdentificaçãoLayout.createSequentialGroup()
-                        .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNome)
-                            .addComponent(lblDataNasc))
-                        .addGap(13, 13, 13)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNome)
+                    .addComponent(lblDataNasc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelIdentificaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSexo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanelDocumentos.setBorder(javax.swing.BorderFactory.createTitledBorder("Documentos"));
@@ -190,16 +191,16 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanelDocumentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHora)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblCpf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelLogradouro.setBorder(javax.swing.BorderFactory.createTitledBorder("Logradouro"));
@@ -260,23 +261,26 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(jPanelLogradouroLayout.createSequentialGroup()
                 .addComponent(lblEndereço)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblComplemento)
                     .addComponent(lblBairro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLogradouroLayout.createSequentialGroup()
+                        .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(66, 66, 66))
+                    .addGroup(jPanelLogradouroLayout.createSequentialGroup()
+                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)))
                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUf)
                     .addComponent(lblCidade)
                     .addComponent(lblCep))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(txtCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(jComboBoxUf)
                     .addComponent(txtcep))
                 .addContainerGap())
@@ -311,15 +315,15 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail)
                     .addGroup(jPanelContatoLayout.createSequentialGroup()
-                        .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelefoneFixo)
-                            .addComponent(lblCelular))
+                        .addComponent(lblTelefoneFixo)
                         .addContainerGap(270, Short.MAX_VALUE))
                     .addGroup(jPanelContatoLayout.createSequentialGroup()
-                        .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblEmail)
-                            .addComponent(txtTelefone)
-                            .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                        .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblEmail)
+                                .addComponent(txtTelefone)
+                                .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                            .addComponent(lblCelular))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelContatoLayout.setVerticalGroup(
@@ -327,27 +331,22 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(jPanelContatoLayout.createSequentialGroup()
                 .addComponent(lblTelefoneFixo)
                 .addGap(4, 4, 4)
-                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCelular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanelTabelaClientes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela Clientes"));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "CPF", "Endereço", "Telefone Fixo", "E-mail"
@@ -405,16 +404,16 @@ public class Cliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelIdentificação, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanelLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelDocumentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelTabelaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -438,70 +437,63 @@ public class Cliente extends javax.swing.JFrame {
        
        System.out.println("CPF texto: " + textoCpf);
        System.out.println("CPF: " + cpf);
+   
+            
+        cliente.setNomeCliente(txtNome.getText());
+        cliente.setEmailCliente(txtEmail.getText());
+        cliente.setTelefoneCliente(txtTelefone.getText());
+        cliente.setCelularCliente(txtCelular.getText());
         
+       Date data = null;
+     
+       
+       Date dataCadastro = null;
+       
+       try {
+          data =  (Date)txtDataNasc.getValue();
+         
+          dataCadastro = (Date)txtData.getValue();
         
+        } catch (Exception e) {
+            
+       }
+        cliente.setDataNascimentoCliente(data);
         
+        cliente.setDataCadastroCliente(dataCadastro);
         
-//    ClienteCadastro cliente = new ClienteCadastro();
-//    
-//            
-//        cliente.setNomeCliente(txtNome.getText());
-//        cliente.setEmailCliente(txtEmail.getText());
-//        cliente.setTelefoneCliente(txtTelefoneFixo.getText());
-//        cliente.setCelularCliente(txtCelular.getText());
-//        
-//       Date data = null;
-//       Integer rg = null;
-//       Integer cpf = null;
-//       Date dataCadastro = null;
-//       
-//       try {
-////          data =  (Date)txtDataNasc.getValue();
-////          rg = (Integer)txtRg.getValue();
-////          cpf = (Integer)txtCpf.getValue();
-////          dataCadastro = (Date)txtDataCadastro.getValue();
-//        
-//        } catch (Exception e) {
-//            
-//       }
-//        cliente.setDataNascimentoCliente(data);
-//        cliente.setRgCliente(rg);
-//        cliente.setCpfCliente(cpf);
-//        cliente.setDataCadastroCliente(dataCadastro);
-//        
-//        cliente.setSexoCliente((String) jComboBoxSexo.getSelectedItem());
-//
-//        try {
-//           //Chama o serviço para cadastro do cliente
-////          ServicoCliente.getInstance().cadastrarCliente(cliente);
-//        } catch (Exception e) {
-//            //Exibe mensagens de erro para o usuário
-//           JOptionPane.showMessageDialog(rootPane, e.getMessage(),
-//                   "Erro", JOptionPane.ERROR_MESSAGE);
-//            return;
-//       }
-//
-//       //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
-//        //Então exibe uma mensagem de sucesso para o usuário
-//       JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
-//                "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
-//
-//        //Limpa os campos da tela após realizar a inserção
-//        txtId.setText("");
-//        txtNome.setText("");
-////        txtDataNasc.setValue(null);
-//        jComboBoxSexo.setSelectedIndex(0); 
-//        txtCpf.setText("");
-//        txtRg.setText("");
-//        txtEndereço.setText("");
-//        txtBairro.setText("");
-//        txtComplemento.setText("");
-//        jComboBoxUf.setSelectedIndex(0);
-//        txtCidade.setText("");
-//        txtCep.setText("");
-//        txtTelefoneFixo.setText("");
-//        txtCelular.setText("");
-//        txtEmail.setText("");
+        cliente.setSexoCliente((String) jComboBoxSexo.getSelectedItem());
+
+        try {
+           //Chama o serviço para cadastro do cliente
+          ServicoCliente.getInstance().cadastrarCliente(cliente);
+        } catch (Exception e) {
+            //Exibe mensagens de erro para o usuário
+           JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                   "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+       }
+
+       //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
+        //Então exibe uma mensagem de sucesso para o usuário
+       JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
+                "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
+
+        //Limpa os campos da tela após realizar a inserção
+       
+        txtNome.setText("");
+        txtDataNasc.setValue(null);
+        jComboBoxSexo.setSelectedIndex(0); 
+        txtcpf.setText("");
+        txtRg.setText("");
+        txtEndereço.setText("");
+        txtBairro.setText("");
+        txtComplemento.setText("");
+        jComboBoxUf.setSelectedIndex(0);
+        txtCidade.setText("");
+        txtcep.setText("");
+        txtTelefone.setText("");
+        txtCelular.setText("");
+        txtEmail.setText("");
 
  
         
@@ -549,7 +541,6 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JComboBox<String> jComboBoxUf;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanelContato;
     private javax.swing.JPanel jPanelDocumentos;
     private javax.swing.JPanel jPanelIdentificação;
@@ -578,6 +569,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtData;
+    private javax.swing.JFormattedTextField txtDataNasc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereço;
     private javax.swing.JTextField txtNome;

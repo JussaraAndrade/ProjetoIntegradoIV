@@ -49,7 +49,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastro.png"))); // NOI18N
+        jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastrar Cliente.png"))); // NOI18N
         jMenuCadastro.setText("Cadastro");
         jMenuCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastro);
 
-        jMenuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Carrinho Mercado.png"))); // NOI18N
+        jMenuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Venda.png"))); // NOI18N
         jMenuVenda.setText("Venda");
         jMenuVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         });
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Caixa.png"))); // NOI18N
-        jMenuItem1.setText("Cliente");
+        jMenuItem1.setText("Caixa");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -87,10 +87,10 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuVenda);
 
-        jMenuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa.png"))); // NOI18N
+        jMenuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Lupa_1.png"))); // NOI18N
         jMenuConsulta.setText("Consulta");
 
-        jMenuItemConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Procura Cliente.png"))); // NOI18N
+        jMenuItemConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Arquivo Cliente.png"))); // NOI18N
         jMenuItemConsulta.setText("Cliente");
         jMenuItemConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGap(0, 223, Short.MAX_VALUE)
         );
 
         pack();
