@@ -24,8 +24,7 @@ public class ValidadorCliente {
             throw new ClienteException("É necessário informar "
                     + "o nome do cliente");
         }
-        if (cliente.getRgCliente()== null
-                || "".equals(cliente.getRgCliente())) {
+        if (cliente.getRgCliente()== null) {
             throw new ClienteException("É necessário informar "
                     + "o rg do cliente");
         }
