@@ -11,7 +11,7 @@ package br.com.projeto.model.clientes;
  *
  * @author Jussara Andrade
  */
-public class ClienteEndereço {
+public class Endereco {
     
     private Integer idClienteEndereço;
     private String ruaCliente;

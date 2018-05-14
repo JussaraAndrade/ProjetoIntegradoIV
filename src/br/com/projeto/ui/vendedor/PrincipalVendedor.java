@@ -13,9 +13,9 @@ package br.com.projeto.ui.vendedor;
  * @author Jussara Andrade
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
-    private Cliente cadastrarCliente = null;
-    private Consulta consultarClientes = null;
-    private Vendas vendas = null;
+    private TelaClienteCadastro cadastrarCliente = null;
+    private TelaClienteConsulta consultarClientes = null;
+    private TelaClienteVendas vendas = null;
     /**
      * Creates new form CadastroCliente
      */
@@ -136,9 +136,9 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
-     //Chama a janela Cliente 
+     //Chama a janela TelaClienteCadastro 
         if (cadastrarCliente == null || !cadastrarCliente.isDisplayable()) {
-            cadastrarCliente = new Cliente();
+            cadastrarCliente = new TelaClienteCadastro();
             cadastrarCliente.setVisible(true);
         }
         cadastrarCliente.toFront();
@@ -155,7 +155,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        if (vendas == null || !vendas.isDisplayable()) {
-                 vendas = new Vendas();
+                 vendas = new TelaClienteVendas();
                  vendas.setVisible(true);
         }
         vendas.toFront();
@@ -168,7 +168,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
          if(consultarClientes == null || !consultarClientes.isDisplayable()){
         
-        consultarClientes = new Consulta();
+        consultarClientes = new TelaClienteConsulta();
         consultarClientes.setVisible(true);
         
        }

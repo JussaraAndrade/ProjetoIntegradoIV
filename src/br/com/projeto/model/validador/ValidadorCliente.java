@@ -5,29 +5,33 @@
  */
 package br.com.projeto.model.validador;
 
+//import br.com.projeto.exceptions.ClienteException;
+
 import br.com.projeto.exceptions.ClienteException;
-import br.com.projeto.model.clientes.ClienteCadastro;
+import br.com.projeto.model.clientes.Cliente;
+
+//import br.com.projeto.model.clientes.Cliente;
 
 /**
  *
  * @author Jussara Andrade
  */
 public class ValidadorCliente {
-//     public static  void validar(ClienteCadastro cliente) throws ClienteException {
-//        //Realização de validações de negócio
+     public static  void validar(Cliente cliente) throws ClienteException {
+        //Realização de validações de negócio
 //        
 //       
-//        if (cliente == null) {
+//       if (cliente == null) {
 //            throw new ClienteException("Não foi informado um cliente");
 //        }
 //        if (cliente.getNomeCliente()== null || "".equals(cliente.getNomeCliente())) {
 //            throw new ClienteException("É necessário informar "
-//                    + "o nome do cliente");
+//                   + "o nome do cliente");
 //        }
 //        if (cliente.getRgCliente()== null) {
 //            throw new ClienteException("É necessário informar "
 //                    + "o rg do cliente");
-//        }
+        }
 //        if (cliente.getCpfCliente()== null) {
 //            throw new ClienteException("É necessário informar "
 //                    + "o cpf do cliente");
@@ -61,4 +65,5 @@ public class ValidadorCliente {
 //        }
 //         }
     
-}
+    }
+

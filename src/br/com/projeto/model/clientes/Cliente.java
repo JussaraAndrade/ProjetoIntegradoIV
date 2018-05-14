@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Jussara Andrade
  */
-public class ClienteCadastro {
+public class Cliente {
     private Integer idCliente;
     private String nomeCliente;
     private String sexoCliente;
@@ -23,14 +23,7 @@ public class ClienteCadastro {
     private String celularCliente;
     private Date dataCadastroCliente;
 
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
-    private boolean enable;
+  
 
     public Integer getIdCliente() {
         return idCliente;

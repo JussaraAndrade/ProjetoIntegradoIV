@@ -15,21 +15,22 @@ import java.util.Properties;
  * @author Jussara Andrade
  */
 public class ConnectionUtils {
-        
-    public static Connection getConnection() {
-        
+    
+      public static Connection getConnection() {
+        //Conexão para abertura e fechamento
         Connection connection = null;
         try {
-                      
-           
-            String dbURL = "jdbc:mysql://localhost:3306/"
-                +"mydb";
-           
+            //Só tenta abrir uma conexão se não existir ou estiver fechada            
+            //Endereço de conexão com o banco de dados
+           String dbURL = "jdbc:mysql://localhost:3306/jdbc_teste01?useSSL=false";
+           //String dbURL = "jdbc:mysql://localhost:3306/jdbc_teste01";
+            //Propriedades para armazenamento de usuário e senha
             Properties properties = new Properties();
             properties.put("user", "root");
             properties.put("password", "root");
-           
+            //Realiza a conexão com o banco
             connection = DriverManager.getConnection(dbURL, properties);
+           
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -38,6 +39,4 @@ public class ConnectionUtils {
         //Retorna a conexão
         return connection;
     }
-
-    
 }
