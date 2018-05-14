@@ -397,7 +397,7 @@ private TelaClienteEditar editarCliente = null;
           try {
             //Chama o serviço para cadastro do cliente
             
-            ServicoCliente.getInstance().cadastrarCliente(cli);
+//            ServicoCliente.getInstance().cadastrarCliente(cli);
             
         } catch (Exception e) {
             //Exibe mensagens de erro para o usuário

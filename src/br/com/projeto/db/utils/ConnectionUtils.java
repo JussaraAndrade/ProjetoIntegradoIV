@@ -22,7 +22,7 @@ public class ConnectionUtils {
         try {
             //Só tenta abrir uma conexão se não existir ou estiver fechada            
             //Endereço de conexão com o banco de dados
-           String dbURL = "jdbc:mysql://localhost:3306/jdbc_teste01?useSSL=false";
+           String dbURL = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
            //String dbURL = "jdbc:mysql://localhost:3306/jdbc_teste01";
             //Propriedades para armazenamento de usuário e senha
             Properties properties = new Properties();
