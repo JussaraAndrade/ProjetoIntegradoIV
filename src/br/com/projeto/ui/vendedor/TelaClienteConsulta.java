@@ -6,9 +6,8 @@
 
 package br.com.projeto.ui.vendedor;
 
-import br.com.projeto.exceptions.ClienteException;
+
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.servico.cliente.ServicoCliente;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;

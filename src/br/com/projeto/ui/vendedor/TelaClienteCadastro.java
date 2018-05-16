@@ -6,7 +6,6 @@
 package br.com.projeto.ui.vendedor;
 
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.servico.cliente.ServicoCliente;
 import java.util.Date;
 import javax.swing.JOptionPane;
 

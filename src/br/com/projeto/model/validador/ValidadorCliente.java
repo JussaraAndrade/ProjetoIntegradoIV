@@ -5,9 +5,7 @@
  */
 package br.com.projeto.model.validador;
 
-//import br.com.projeto.exceptions.ClienteException;
 
-import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.model.clientes.Cliente;
 
 //import br.com.projeto.model.clientes.Cliente;
@@ -17,7 +15,7 @@ import br.com.projeto.model.clientes.Cliente;
  * @author Jussara Andrade
  */
 public class ValidadorCliente {
-     public static  void validar(Cliente cliente) throws ClienteException {
+     public static  void validar(Cliente cliente) {
         //Realização de validações de negócio
 //        
 //       

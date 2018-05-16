@@ -7,7 +7,7 @@ package br.com.projeto.model.validador;
 
 //import br.com.projeto.exceptions.ClienteException;
 
-import br.com.projeto.exceptions.ClienteException;
+
 import br.com.projeto.model.clientes.Endereco;
 
 //import br.com.projeto.model.clientes.Endereco;
@@ -17,7 +17,7 @@ import br.com.projeto.model.clientes.Endereco;
  * @author Jussara Andrade
  */
 public class ValidadorEndereço {
-     public static  void validar(Endereco endereço) throws ClienteException {
+     public static  void validar(Endereco endereco) {
 //        //Realização de validações de negócio
 //        if (endereço == null) {
 //            throw new ClienteException("Não foi informado o endereço do cliente");

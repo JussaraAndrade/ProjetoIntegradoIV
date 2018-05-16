@@ -8,7 +8,7 @@ package br.com.projeto.db.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
+
 
 /**
  *
@@ -16,27 +16,27 @@ import java.util.Properties;
  */
 public class ConnectionUtils {
     
-      public static Connection getConnection() {
-        //Conexão para abertura e fechamento
-        Connection connection = null;
+     Connection con;
+    
+    public Connection conectar(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=true");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?user=root&password=root");
+        } catch(ClassNotFoundException ex){
+            ex.printStackTrace();
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return con;
+    }
+    
+    public void desconectar(){
         try {
-            //Só tenta abrir uma conexão se não existir ou estiver fechada            
-            //Endereço de conexão com o banco de dados
-           String dbURL = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
-           //String dbURL = "jdbc:mysql://localhost:3306/jdbc_teste01";
-            //Propriedades para armazenamento de usuário e senha
-            Properties properties = new Properties();
-            properties.put("user", "root");
-            properties.put("password", "root");
-            //Realiza a conexão com o banco
-            connection = DriverManager.getConnection(dbURL, properties);
-           
-
+            con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-        //Retorna a conexão
-        return connection;
     }
+    
 }
