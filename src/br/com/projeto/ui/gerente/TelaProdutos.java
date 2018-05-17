@@ -9,12 +9,12 @@ package br.com.projeto.ui.gerente;
  *
  * @author Jussara Andrade
  */
-public class TelaClienteProdutos extends javax.swing.JFrame {
+public class TelaProdutos extends javax.swing.JFrame {
 
     /**
      * Creates new form Produtos
      */
-    public TelaClienteProdutos() {
+    public TelaProdutos() {
         initComponents();
          setLocationRelativeTo(null);
           setResizable(false);

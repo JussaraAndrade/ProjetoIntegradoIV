@@ -9,12 +9,12 @@ package br.com.projeto.ui.gerente;
  *
  * @author Jussara Andrade
  */
-public class TelaClienteConsulta extends javax.swing.JFrame {
+public class TelaConsulta extends javax.swing.JFrame {
 
     /**
      * Creates new form Pesquisa
      */
-    public TelaClienteConsulta() {
+    public TelaConsulta() {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);

@@ -16,7 +16,7 @@ import br.com.projeto.model.clientes.Endereco;
  *
  * @author Jussara Andrade
  */
-public class ValidadorEndereço {
+public class ValidadorEndereco {
      public static  void validar(Endereco endereco) {
 //        //Realização de validações de negócio
 //        if (endereço == null) {

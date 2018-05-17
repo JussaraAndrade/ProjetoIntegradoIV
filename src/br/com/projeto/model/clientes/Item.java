@@ -9,10 +9,10 @@ package br.com.projeto.model.clientes;
  *
  * @author Jussara Andrade
  */
-public class itemVenda {
+public class Item {
     private Integer id;
-    private Integer itemVenda;
-    private String qtdProduto;
+    private Integer item;
+    private String quantidade;
 
     public Integer getId() {
         return id;
@@ -22,20 +22,20 @@ public class itemVenda {
         this.id = id;
     }
 
-    public Integer getItemVenda() {
-        return itemVenda;
+    public Integer getItem() {
+        return item;
     }
 
-    public void setItemVenda(Integer itemVenda) {
-        this.itemVenda = itemVenda;
+    public void setItem(Integer item) {
+        this.item = item;
     }
 
-    public String getQtdProduto() {
-        return qtdProduto;
+    public String getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtdProduto(String qtdProduto) {
-        this.qtdProduto = qtdProduto;
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
     }
 
     
