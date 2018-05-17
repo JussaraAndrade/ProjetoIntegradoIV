@@ -1,4 +1,8 @@
-package br.com.projeto.ui.vendedor;
+package br.com.projeto.ui.principal;
+
+import br.com.projeto.ui.clientes.TelaCadastrarCliente;
+import br.com.projeto.ui.clientes.TelaConsultaCliente;
+import br.com.projeto.ui.venda.TelaClienteVenda;
 
 
 
@@ -13,9 +17,9 @@ package br.com.projeto.ui.vendedor;
  * @author Jussara Andrade
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
-    private TelaClienteCadastro cadastrarCliente = null;
-    private TelaClienteConsulta consultarClientes = null;
-    private TelaClienteVendas vendas = null;
+    private TelaCadastrarCliente cadastrarCliente = null;
+    private TelaConsultaCliente consultarClientes = null;
+    private TelaClienteVenda vendas = null;
     /**
      * Creates new form CadastroCliente
      */
@@ -136,9 +140,9 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
-     //Chama a janela TelaClienteCadastro 
+     //Chama a janela TelaCadastrarCliente 
         if (cadastrarCliente == null || !cadastrarCliente.isDisplayable()) {
-            cadastrarCliente = new TelaClienteCadastro();
+            cadastrarCliente = new TelaCadastrarCliente();
             cadastrarCliente.setVisible(true);
         }
         cadastrarCliente.toFront();
@@ -155,7 +159,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        if (vendas == null || !vendas.isDisplayable()) {
-                 vendas = new TelaClienteVendas();
+                 vendas = new TelaClienteVenda();
                  vendas.setVisible(true);
         }
         vendas.toFront();
@@ -168,7 +172,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
          if(consultarClientes == null || !consultarClientes.isDisplayable()){
         
-        consultarClientes = new TelaClienteConsulta();
+        consultarClientes = new TelaConsultaCliente();
         consultarClientes.setVisible(true);
         
        }

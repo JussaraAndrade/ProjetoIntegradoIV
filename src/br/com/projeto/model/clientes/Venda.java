@@ -13,25 +13,23 @@ import java.util.Date;
  * @author Jussara Andrade
  */
 public class Venda {
-    private Integer idClienteVenda;
-    private Date dataVenda;
-    
-    public Integer getIdClienteVenda() {
-        return idClienteVenda;
+    private Integer id;
+    private Date data;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdClienteVenda(Integer idClienteVenda) {
-        this.idClienteVenda = idClienteVenda;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Date getDataVenda() {
-        return dataVenda;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
+    public void setData(Date data) {
+        this.data = data;
     }
-    
-    
-    
 }
+   

@@ -8,35 +8,35 @@ package br.com.projeto.db.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
-
-/**
- *
- * @author Jussara Andrade
- */
+//Obtém um objeto de conexão do banco de dados.
+//Pode ser utilizado para abertura e fechamento de conexões com o banco
 public class ConnectionUtils {
-    
-     Connection con;
-    
-    public Connection conectar(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=true");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?user=root&password=root");
-        } catch(ClassNotFoundException ex){
-            ex.printStackTrace();
-        } catch(SQLException ex){
-            ex.printStackTrace();
-        }
-        return con;
-    }
-    
-    public void desconectar(){
+
+    //Obtém uma conexão do banco de dados
+    public static Connection getConnection() {
+        //Conexão para abertura e fechamento
+        Connection connection = null;
         try {
-            con.close();
+            //Só tenta abrir uma conexão se não existir ou estiver fechada            
+            //Endereço de conexão com o banco de dados
+            String dbURL = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
+            
+            //Propriedades para armazenamento de usuário e senha
+            Properties properties = new Properties();
+            properties.put("user", "root");
+            properties.put("password", "root");
+            //Realiza a conexão com o banco
+            connection = DriverManager.getConnection(dbURL, properties);
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+        //Retorna a conexão
+        return connection;
     }
+
     
 }

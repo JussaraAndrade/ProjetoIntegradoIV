@@ -12,100 +12,98 @@ import java.util.Date;
  * @author Jussara Andrade
  */
 public class Cliente {
-    private Integer idCliente;
-    private String nomeCliente;
-    private String sexoCliente;
-    private String rgCliente;
-    private String cpfCliente;
-    private Date dataNascimentoCliente;
-    private String emailCliente;
-    private String telefoneCliente;
-    private String celularCliente;
-    private Date dataCadastroCliente;
+    private Integer id;
+    private String nome;
+    private String sexo;
+    private String rg;
+    private String cpf;
+    private Date dataNasc;
+    private String email;
+    private String telefone;
+    private String celular;
+    private Date dataCadastro;
 
-  
-
-    public Integer getIdCliente() {
-        return idCliente;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getSexoCliente() {
-        return sexoCliente;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setSexoCliente(String sexoCliente) {
-        this.sexoCliente = sexoCliente;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
-    public String getRgCliente() {
-        return rgCliente;
+    public String getRg() {
+        return rg;
     }
 
-    public void setRgCliente(String rgCliente) {
-        this.rgCliente = rgCliente;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public Date getDataNascimentoCliente() {
-        return dataNascimentoCliente;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setDataNascimentoCliente(Date dataNascimentoCliente) {
-        this.dataNascimentoCliente = dataNascimentoCliente;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getTelefoneCliente() {
-        return telefoneCliente;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCliente = telefoneCliente;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getCelularCliente() {
-        return celularCliente;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setCelularCliente(String celularCliente) {
-        this.celularCliente = celularCliente;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
-    public Date getDataCadastroCliente() {
-        return dataCadastroCliente;
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
 
-    public void setDataCadastroCliente(Date dataCadastroCliente) {
-        this.dataCadastroCliente = dataCadastroCliente;
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
-    
-    
-    
     
 }
+  
+
+   

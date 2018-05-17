@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.com.projeto.ui.vendedor;
+package br.com.projeto.ui.clientes;
 
 
 import br.com.projeto.model.clientes.Cliente;
@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jussara Andrade
  */
-public class TelaClienteConsulta extends javax.swing.JFrame {
+public class TelaConsultaCliente extends javax.swing.JFrame {
  
-    public TelaClienteConsulta() {
+    public TelaConsultaCliente() {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);

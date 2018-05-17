@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.ui.gerente;
+package br.com.projeto.ui.principal;
+
+import br.com.projeto.ui.gerente.TelaClienteConsulta;
+import br.com.projeto.ui.gerente.TelaClienteProdutos;
 
 /**
  *

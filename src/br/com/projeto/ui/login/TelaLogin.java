@@ -6,8 +6,8 @@
 package br.com.projeto.ui.login;
 
 
-import br.com.projeto.ui.vendedor.PrincipalVendedor;
-import br.com.projeto.ui.gerente.PrincipalGerente;
+import br.com.projeto.ui.principal.PrincipalVendedor;
+import br.com.projeto.ui.principal.PrincipalGerente;
 import javax.swing.JOptionPane;
 
 

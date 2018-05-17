@@ -13,80 +13,77 @@ package br.com.projeto.model.clientes;
  */
 public class Endereco {
     
-    private Integer idClienteEndereço;
-    private String ruaCliente;
-    private String numeroCliente;
-    private String bairroCliente;
-    private String cidadeCliente;
-    private String ufCliente;
-    private Integer cepCliente;
-    private String complementoCliente;
+    private Integer id;
+    private String rua;
+    private String numero;
+    private String bairro;
+    private String cidade;
+    private String uf;
+    private String cep;
+    private String complemento;
 
-    public Integer getIdClienteEndereço() {
-        return idClienteEndereço;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdClienteEndereço(Integer idClienteEndereço) {
-        this.idClienteEndereço = idClienteEndereço;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getRuaCliente() {
-        return ruaCliente;
+    public String getRua() {
+        return rua;
     }
 
-    public void setRuaCliente(String ruaCliente) {
-        this.ruaCliente = ruaCliente;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
-    public String getNumeroCliente() {
-        return numeroCliente;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumeroCliente(String numeroCliente) {
-        this.numeroCliente = numeroCliente;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public String getBairroCliente() {
-        return bairroCliente;
+    public String getBairro() {
+        return bairro;
     }
 
-    public void setBairroCliente(String bairroCliente) {
-        this.bairroCliente = bairroCliente;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
-    public String getCidadeCliente() {
-        return cidadeCliente;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCidadeCliente(String cidadeCliente) {
-        this.cidadeCliente = cidadeCliente;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
-    public String getUfCliente() {
-        return ufCliente;
+    public String getUf() {
+        return uf;
     }
 
-    public void setUfCliente(String ufCliente) {
-        this.ufCliente = ufCliente;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
-    public Integer getCepCliente() {
-        return cepCliente;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCepCliente(Integer cepCliente) {
-        this.cepCliente = cepCliente;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public String getComplementoCliente() {
-        return complementoCliente;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setComplementoCliente(String complementoCliente) {
-        this.complementoCliente = complementoCliente;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
-    
-    
-    
-    
+
 }

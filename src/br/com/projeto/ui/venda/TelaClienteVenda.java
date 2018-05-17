@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.ui.vendedor;
+package br.com.projeto.ui.venda;
 
 /**
  *
  * @author Jussara Andrade
  */
-public class TelaClienteVendas extends javax.swing.JFrame {
+public class TelaClienteVenda extends javax.swing.JFrame {
 
     /**
      * Creates new form Vendas
      */
-    public TelaClienteVendas() {
+    public TelaClienteVenda() {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);

@@ -10,34 +10,34 @@ package br.com.projeto.model.clientes;
  * @author Jussara Andrade
  */
 public class itemVenda {
-    private Integer idItemVendaCliente;
-    private Integer itemVendaProduto;
-    private String quantidadeProduto;
+    private Integer id;
+    private Integer itemVenda;
+    private String qtdProduto;
 
-    public Integer getIdItemVendaCliente() {
-        return idItemVendaCliente;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdItemVendaCliente(Integer idItemVendaCliente) {
-        this.idItemVendaCliente = idItemVendaCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getItemVendaProduto() {
-        return itemVendaProduto;
+    public Integer getItemVenda() {
+        return itemVenda;
     }
 
-    public void setItemVendaProduto(Integer itemVendaProduto) {
-        this.itemVendaProduto = itemVendaProduto;
+    public void setItemVenda(Integer itemVenda) {
+        this.itemVenda = itemVenda;
     }
 
-    public String getQuantidadeProduto() {
-        return quantidadeProduto;
+    public String getQtdProduto() {
+        return qtdProduto;
     }
 
-    public void setQuantidadeProduto(String quantidadeProduto) {
-        this.quantidadeProduto = quantidadeProduto;
+    public void setQtdProduto(String qtdProduto) {
+        this.qtdProduto = qtdProduto;
     }
-    
+
     
     
 }
