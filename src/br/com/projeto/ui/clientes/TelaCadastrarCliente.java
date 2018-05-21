@@ -233,6 +233,13 @@ private TelaConsultaCliente pesquisar = null;
 
         jLabel1.setText("Número:");
 
+        ButtonSalvar.setText("Salvar");
+        ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelLogradouroLayout = new javax.swing.GroupLayout(jPanelLogradouro);
         jPanelLogradouro.setLayout(jPanelLogradouroLayout);
         jPanelLogradouroLayout.setHorizontalGroup(
@@ -277,7 +284,10 @@ private TelaConsultaCliente pesquisar = null;
                                 .addGap(47, 47, 47)
                                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCep))
+                                    .addComponent(lblCep)
+                                    .addGroup(jPanelLogradouroLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(304, Short.MAX_VALUE))))))
         );
         jPanelLogradouroLayout.setVerticalGroup(
@@ -311,15 +321,10 @@ private TelaConsultaCliente pesquisar = null;
                     .addComponent(txtCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addComponent(jComboBoxUf)
                     .addComponent(txtcep))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        ButtonSalvar.setText("Salvar");
-        ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSalvarActionPerformed(evt);
-            }
-        });
 
         ButtonAlterar.setText("Alterar");
         ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -352,9 +357,7 @@ private TelaConsultaCliente pesquisar = null;
                 .addComponent(ButtonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                .addGap(270, 270, 270))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,9 +368,8 @@ private TelaConsultaCliente pesquisar = null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -384,6 +386,24 @@ private TelaConsultaCliente pesquisar = null;
         cli.setCelular(txtCelular.getText());
         cli.setTelefone(txtTelefone.getText());
         
+        String cpf = txtcpf.getText();
+        cpf = cpf.replace(".","");
+        cpf = cpf.replace("-",""); 
+        
+        String celular = txtCelular.getText();
+        celular = celular.replace("(","");
+        celular = celular.replace(")","");
+        celular = celular.replace("-","");
+        
+        String telefone = txtTelefone.getText();
+        telefone = telefone.replace("(","");
+        telefone = telefone.replace(")","");
+        telefone = telefone.replace("-","");
+        
+        System.out.println(txtCelular);
+        
+        
+       
         
         Date data = null;
      

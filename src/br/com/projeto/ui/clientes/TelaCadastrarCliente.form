@@ -39,9 +39,7 @@
               <Component id="ButtonPesquisar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="ButtonAlterar" min="-2" pref="80" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="ButtonSalvar" min="-2" pref="72" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,10 +52,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ButtonAlterar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="ButtonSalvar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="ButtonPesquisar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -341,6 +338,10 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtcep" min="-2" pref="144" max="-2" attributes="0"/>
                                       <Component id="lblCep" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="ButtonSalvar" min="-2" pref="72" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace pref="304" max="32767" attributes="0"/>
                               </Group>
@@ -388,7 +389,9 @@
                       <Component id="jComboBoxUf" max="32767" attributes="0"/>
                       <Component id="txtcep" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="ButtonSalvar" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -487,16 +490,16 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
         </Component>
+        <Component class="javax.swing.JButton" name="ButtonSalvar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salvar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSalvarActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="ButtonSalvar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Salvar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSalvarActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="ButtonAlterar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>

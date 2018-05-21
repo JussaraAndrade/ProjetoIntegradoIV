@@ -6,7 +6,7 @@
 package br.com.projeto.model.validador;
 
 import br.com.projeto.exceptions.ClienteException;
-import br.com.projeto.model.clientes.Produto;
+import br.com.projeto.model.produto.Produto;
 
 
 
@@ -15,7 +15,7 @@ import br.com.projeto.model.clientes.Produto;
  * @author Jussara Andrade
  */
 public class ValidadorProduto {
-       public static  void validar(Produto produto) throws ClienteException {
+       public static  void produto(Produto produto) throws ClienteException {
         //Realização de validações de negócio
        
        if (produto == null) {

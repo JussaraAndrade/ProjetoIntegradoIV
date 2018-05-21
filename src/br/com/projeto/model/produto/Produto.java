@@ -12,83 +12,104 @@ import java.sql.Date;
  * @author Jussara Andrade
  */
 public class Produto {
-    
-    private String nomeProduto;
-    private String generoProduto;
-    private String corProduto;
-    private String tamanhoProduto;
-    private String descricaoProduto;
-    private String precoProduto;
-    private Integer qtdEstoqueProduto;
-    private Date dataCadastroProduto;
+     private int  codigo;
+    private String nome;
+    private String cor;
+    private String tamanho;
+    private String genero;
+    private String descricao;
+    private int quantidade;
+    private Date data;
+    private double preco;
+    private int Codbarra;
+    private boolean enable;
 
-   
-
-    public String getNomeProduto() {
-        return nomeProduto;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public String getGeneroProduto() {
-        return generoProduto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setGeneroProduto(String generoProduto) {
-        this.generoProduto = generoProduto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCorProduto() {
-        return corProduto;
+    public String getCor() {
+        return cor;
     }
 
-    public void setCorProduto(String corProduto) {
-        this.corProduto = corProduto;
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
-    public String getTamanhoProduto() {
-        return tamanhoProduto;
+    public String getTamanho() {
+        return tamanho;
     }
 
-    public void setTamanhoProduto(String tamanhoProduto) {
-        this.tamanhoProduto = tamanhoProduto;
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
     }
 
-    public String getDescricaoProduto() {
-        return descricaoProduto;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public String getPrecoProduto() {
-        return precoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setPrecoProduto(String precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public Integer getQtdEstoqueProduto() {
-        return qtdEstoqueProduto;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtdEstoqueProduto(Integer qtdEstoqueProduto) {
-        this.qtdEstoqueProduto = qtdEstoqueProduto;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public Date getDataCadastroProduto() {
-        return dataCadastroProduto;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataCadastroProduto(Date dataCadastroProduto) {
-        this.dataCadastroProduto = dataCadastroProduto;
+    public void setData(Date data) {
+        this.data = data;
     }
-    
-    
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getCodbarra() {
+        return Codbarra;
+    }
+
+    public void setCodbarra(int Codbarra) {
+        this.Codbarra = Codbarra;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
 }
-
-
