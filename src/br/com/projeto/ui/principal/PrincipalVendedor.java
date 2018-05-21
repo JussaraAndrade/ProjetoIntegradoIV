@@ -3,6 +3,8 @@ package br.com.projeto.ui.principal;
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.venda.TelaClienteVenda;
+import java.awt.Dimension;
+import javax.swing.JInternalFrame;
 
 
 
@@ -17,18 +19,20 @@ import br.com.projeto.ui.venda.TelaClienteVenda;
  * @author Jussara Andrade
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
-    private TelaCadastrarCliente cadastrarCliente = null;
-    private TelaConsultaCliente consultarClientes = null;
+    private TelaCadastrarCliente cadastrar = null;
+    private TelaConsultaCliente consultar = null;
     private TelaClienteVenda vendas = null;
     /**
      * Creates new form CadastroCliente
      */
     public PrincipalVendedor() {
         initComponents();
-         //Center   
-         setLocationRelativeTo(null);
-         this.setExtendedState(MAXIMIZED_BOTH);
-   
+         
+       setLocationRelativeTo(null); 
+       this.setExtendedState(MAXIMIZED_BOTH);
+      
+       
+         
     }    
 
     /**
@@ -129,11 +133,11 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
+            .addGap(0, 335, Short.MAX_VALUE)
         );
 
         pack();
@@ -141,11 +145,11 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
     private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
      //Chama a janela TelaCadastrarCliente 
-        if (cadastrarCliente == null || !cadastrarCliente.isDisplayable()) {
-            cadastrarCliente = new TelaCadastrarCliente();
-            cadastrarCliente.setVisible(true);
+        if (cadastrar == null || !cadastrar.isDisplayable()) {
+            cadastrar = new TelaCadastrarCliente();
+            cadastrar.setVisible(true);
         }
-        cadastrarCliente.toFront();
+        cadastrar.toFront();
         
     }//GEN-LAST:event_menuCadastrarClienteActionPerformed
 
@@ -170,13 +174,14 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
-         if(consultarClientes == null || !consultarClientes.isDisplayable()){
+         if(consultar == null || !consultar.isDisplayable()){
         
-        consultarClientes = new TelaConsultaCliente();
-        consultarClientes.setVisible(true);
+        consultar = new TelaConsultaCliente();
+        consultar.setVisible(true);
         
        }
-       consultarClientes.toFront();
+         consultar.toFront();
+    
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed
 
     /**

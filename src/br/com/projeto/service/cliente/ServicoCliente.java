@@ -9,6 +9,7 @@ import br.com.projeto.db.dao.DaoCliente;
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.exceptions.DataSourceException;
 import br.com.projeto.model.clientes.Cliente;
+import br.com.projeto.model.validador.ValidadorCliente;
 
 
 /**
@@ -31,7 +32,7 @@ public class ServicoCliente {
             throws ClienteException, DataSourceException {
 
         //Chama o validador para verificar o cliente
-        //ValidadorCliente.validar(cliente);
+        ValidadorCliente.validar(cliente);
 
         try {
             //Realiza a chamada de inserção na fonte de dados

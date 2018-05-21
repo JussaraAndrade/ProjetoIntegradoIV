@@ -6,62 +6,58 @@
 package br.com.projeto.model.validador;
 
 
+import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.model.clientes.Cliente;
 
-//import br.com.projeto.model.clientes.Cliente;
 
 /**
  *
  * @author Jussara Andrade
  */
 public class ValidadorCliente {
-     public static  void validar(Cliente cliente) {
+     public static  void validar(Cliente cliente) throws ClienteException {
         //Realização de validações de negócio
-//        
-//       
-//       if (cliente == null) {
-//            throw new ClienteException("Não foi informado um cliente");
-//        }
-//        if (cliente.getNomeCliente()== null || "".equals(cliente.getNomeCliente())) {
-//            throw new ClienteException("É necessário informar "
-//                   + "o nome do cliente");
-//        }
-//        if (cliente.getRgCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o rg do cliente");
+       
+       if (cliente == null) {
+            throw new ClienteException("Não foi informado um cliente");
         }
-//        if (cliente.getCpfCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o cpf do cliente");
-//        }
-//        if (cliente.getDataNascimentoCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "a data de nascimento do cliente");
-//        }
-//        if (cliente.getEmailCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "um e-mail do cliente");
-//        }
-//        if (cliente.getTelefoneCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "um número de telefone do cliente");
-//        }
-//        if (cliente.getCelularCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "um número de celular do cliente");
-//        }
-//        if (cliente.getDataCadastroCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "a data do cadastro");
-//        }
-//        if (cliente.getSexoCliente()== null || "".equals(cliente.getSexoCliente())
-//                || (!cliente.getSexoCliente().equals("Masculino"))
-//                && !cliente.getSexoCliente().equals("Feminino")){
-//                    
-//            throw new ClienteException("É necessário informar o "
-//                    + "gênero do cliente");
-//        }
-//         }
+        if (cliente.getNome()== null || "".equals(cliente.getNome())) {
+            throw new ClienteException("É necessário informar "
+                   + "o nome do cliente");
+        }
+           if (cliente.getSexo()== null || "".equals(cliente.getSexo())
+                || (!cliente.getSexo().equals("Masculino"))
+                && !cliente.getSexo().equals("Feminino")) {
+            throw new ClienteException("É necessário informar o "
+                    + "gênero do cliente");
+           }
+        if (cliente.getRg()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o rg do cliente");
+        }
+        if (cliente.getCpf()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o cpf do cliente");
+        }
+        if (cliente.getDataNasc()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "a data de nascimento do cliente");
+        }
+        if (cliente.getEmail()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "um e-mail do cliente");
+        }
+        if (cliente.getTelefone()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "um número de telefone do cliente");
+       }
+       if (cliente.getCelular()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "um número de telefone do cliente");
+       }
+    
+        
+     }
     
     }
 

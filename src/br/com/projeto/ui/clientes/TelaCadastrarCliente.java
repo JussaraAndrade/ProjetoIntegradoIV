@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
  * @author Jussara Andrade
  */
 public class TelaCadastrarCliente extends javax.swing.JFrame {
-private TelaEditarCliente editarCliente = null;
+private TelaEditarCliente editar = null;
+private TelaConsultaCliente pesquisar = null;
     /**
      * Creates new form Cliente
      */
@@ -71,6 +72,7 @@ private TelaEditarCliente editarCliente = null;
         jTextField2 = new javax.swing.JTextField();
         ButtonSalvar = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
+        ButtonPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -326,6 +328,13 @@ private TelaEditarCliente editarCliente = null;
             }
         });
 
+        ButtonPesquisar.setText("Pesquisar");
+        ButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPesquisarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -340,10 +349,12 @@ private TelaEditarCliente editarCliente = null;
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonAlterar)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonSalvar)
-                .addGap(54, 54, 54))
+                .addComponent(ButtonPesquisar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +365,8 @@ private TelaEditarCliente editarCliente = null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -424,18 +436,27 @@ private TelaEditarCliente editarCliente = null;
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-         if (editarCliente == null || !editarCliente.isDisplayable()) {
-            editarCliente = new TelaEditarCliente();
-            editarCliente.setVisible(true);
+         if (editar == null || !editar.isDisplayable()) {
+            editar = new TelaEditarCliente();
+            editar.setVisible(true);
         }
-        editarCliente.toFront();
+        editar.toFront();
     }//GEN-LAST:event_ButtonAlterarActionPerformed
+
+    private void ButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesquisarActionPerformed
+        if (pesquisar == null || !pesquisar.isDisplayable()) {
+            pesquisar = new TelaConsultaCliente();
+            pesquisar.setVisible(true);
+        }
+        pesquisar.toFront();
+    }//GEN-LAST:event_ButtonPesquisarActionPerformed
 
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
+    private javax.swing.JButton ButtonPesquisar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JComboBox<String> jComboBoxUf;
