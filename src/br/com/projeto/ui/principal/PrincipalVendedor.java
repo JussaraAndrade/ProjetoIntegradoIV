@@ -3,16 +3,9 @@ package br.com.projeto.ui.principal;
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.venda.TelaClienteVenda;
-import java.awt.Dimension;
-import javax.swing.JInternalFrame;
 
 
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *

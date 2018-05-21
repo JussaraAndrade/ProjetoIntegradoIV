@@ -11,8 +11,8 @@ import java.sql.Date;
  *
  * @author Jussara Andrade
  */
-public class Item {
-    private int   codigo;
+public class Produto {
+    private int  codigo;
     private String nome;
     private String cor;
     private String tamanho;
@@ -21,6 +21,7 @@ public class Item {
     private int quantidade;
     private Date data;
     private double preco;
+    private int Codbarra;
     private boolean enable;
 
     public int getCodigo() {
@@ -95,6 +96,14 @@ public class Item {
         this.preco = preco;
     }
 
+    public int getCodbarra() {
+        return Codbarra;
+    }
+
+    public void setCodbarra(int Codbarra) {
+        this.Codbarra = Codbarra;
+    }
+
     public boolean isEnable() {
         return enable;
     }
@@ -102,8 +111,5 @@ public class Item {
     public void setEnable(boolean enable) {
         this.enable = enable;
     }
-   
-    
 
-    
 }

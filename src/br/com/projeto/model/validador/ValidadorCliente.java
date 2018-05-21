@@ -25,37 +25,40 @@ public class ValidadorCliente {
             throw new ClienteException("É necessário informar "
                    + "o nome do cliente");
         }
-           if (cliente.getSexo()== null || "".equals(cliente.getSexo())
-                || (!cliente.getSexo().equals("Masculino"))
-                && !cliente.getSexo().equals("Feminino")) {
-            throw new ClienteException("É necessário informar o "
-                    + "gênero do cliente");
-           }
-        if (cliente.getRg()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o rg do cliente");
-        }
-        if (cliente.getCpf()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o cpf do cliente");
-        }
         if (cliente.getDataNasc()== null) {
             throw new ClienteException("É necessário informar "
                     + "a data de nascimento do cliente");
         }
+         if (cliente.getTelefone()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "um número de telefone do cliente");
+       }
+          if (cliente.getCpf().trim().length() < 16) {
+            throw new ClienteException("É necessário informar "
+                    + "o cpf do cliente");
+        }
+           if (cliente.getRg()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o rg do cliente");
+        }
+            if (cliente.getCelular()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "um número de telefone do cliente");
+       }
+           if (cliente.getSexo()== null || "".equals(cliente.getSexo())
+                || (!cliente.getSexo().equals("Selecione..."))
+                || (!cliente.getSexo().equals("Feminino"))
+                && !cliente.getSexo().equals("Masculino")) {
+            throw new ClienteException("É necessário informar o "
+                    + "gênero do cliente");
+           }
+       
         if (cliente.getEmail()== null) {
             throw new ClienteException("É necessário informar "
                     + "um e-mail do cliente");
         }
-        if (cliente.getTelefone()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "um número de telefone do cliente");
-       }
-       if (cliente.getCelular()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "um número de telefone do cliente");
-       }
-    
+       
+      
         
      }
     
