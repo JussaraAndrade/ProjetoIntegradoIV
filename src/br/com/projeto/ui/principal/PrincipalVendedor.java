@@ -23,11 +23,25 @@ public class PrincipalVendedor extends javax.swing.JFrame {
          
        setLocationRelativeTo(null); 
        this.setExtendedState(MAXIMIZED_BOTH);
-      
-       
-         
+             
     }    
+    //Métodos de acesso para os formulários abertos pela tela principal
+    public TelaCadastrarCliente getCadastrarCliente() {
+        return cadastrar;
+    }
 
+    public void setCadastrarCliente(TelaCadastrarCliente cadastrar) {
+        this.cadastrar = cadastrar;
+    }
+
+    public TelaConsultaCliente getConsultarClientes() {
+        return consultar;
+    }
+
+    public void setConsultarClientes(TelaConsultaCliente consultarClientes) {
+        this.consultar = consultarClientes;
+        
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

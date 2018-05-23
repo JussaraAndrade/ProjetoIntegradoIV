@@ -6,8 +6,8 @@
 package br.com.projeto.ui.principal;
 
 
-import br.com.projeto.ui.gerente.TelaConsulta;
-import br.com.projeto.ui.gerente.TelaProduto;
+import br.com.projeto.ui.gerente.TelaConsultaGerente;
+import br.com.projeto.ui.gerente.TelaProdutoGerente;
 
 /**
  *
@@ -15,8 +15,8 @@ import br.com.projeto.ui.gerente.TelaProduto;
  */
 public class PrincipalGerente extends javax.swing.JFrame {
     
-    private TelaConsulta consulta = null;
-    private TelaProduto produtos = null;
+    private TelaConsultaGerente consulta = null;
+    private TelaProdutoGerente produtos = null;
     /**
      * Creates new form AdmGerente
      */
@@ -154,7 +154,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
 
     private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
       if (consulta == null || !consulta.isDisplayable()) {
-            consulta = new TelaConsulta();
+            consulta = new TelaConsultaGerente();
             consulta.setVisible(true);
         }
         consulta.toFront();
@@ -162,7 +162,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
          if (produtos == null || !produtos.isDisplayable()) {
-            produtos = new TelaProduto();
+            produtos = new TelaProdutoGerente();
             produtos.setVisible(true);
         }
         produtos.toFront();
