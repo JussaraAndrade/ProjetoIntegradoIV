@@ -34,7 +34,7 @@ public class ServicoCliente {
     //Insere um cliente na fonte de dados
     public void cadastrarCliente(Cliente cliente, Endereco endereco)
             throws ClienteException, DataSourceException {
-         Produto produto = null;
+         //Produto produto = null;
 
         //Chama o validador para verificar o cliente
        // ValidadorCliente.validar(cliente);
@@ -43,7 +43,7 @@ public class ServicoCliente {
         try {
             //Realiza a chamada de inserção na fonte de dados
             
-            DaoCliente.inserir(cliente, endereco);
+            DaoCliente.inserir(cliente);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão

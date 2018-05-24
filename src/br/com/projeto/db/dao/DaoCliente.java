@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +28,14 @@ public class DaoCliente {
     
      
 
-    public static void inserir(Cliente cliente, Endereco endereco)
+    public static void inserir(Cliente cliente)
             throws SQLException, Exception  {
        
         
-        String sql =  "START TRANSACTION; "
-                + "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "
-                + "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?,(SELECT LAST_INSERT_ID()));";
+        String sql =  "INSERT INTO cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+//                + "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente) "
+//                + "VALUES(?, ?, ?, ?, ?, ?, ?,(SELECT LAST_INSERT_ID()));";
         
         Connection connection = null;
        
@@ -50,21 +50,23 @@ public class DaoCliente {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setDate(5, new java.sql.Date(cliente.getDataNasc().getTime()));
+            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+            preparedStatement.setTimestamp(5, t);
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setDate(9, new java.sql.Date(cliente.getDataCadastro().getTime())); 
+            Timestamp te = new Timestamp(cliente.getDataCadastro().getTime());
+            preparedStatement.setTimestamp(9, te);
             preparedStatement.setBoolean(10, true);
             
           
-            preparedStatement.setString(1, endereco.getRua());
-            preparedStatement.setString(2, endereco.getNumero());
-            preparedStatement.setString(3, endereco.getComplemento());
-            preparedStatement.setString(4, endereco.getBairro());
-            preparedStatement.setString(5, endereco.getUf());
-            preparedStatement.setString(6, endereco.getCidade());
-            preparedStatement.setString(7, endereco.getCep());
+//            preparedStatement.setString(1, endereco.getRua());
+//            preparedStatement.setString(2, endereco.getNumero());
+//            preparedStatement.setString(3, endereco.getComplemento());
+//            preparedStatement.setString(4, endereco.getBairro());
+//            preparedStatement.setString(5, endereco.getUf());
+//            preparedStatement.setString(6, endereco.getCidade());
+//            preparedStatement.setString(7, endereco.getCep());
           
             preparedStatement.execute();
         } finally {

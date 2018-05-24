@@ -9,8 +9,6 @@ package br.com.projeto.ui.clientes;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -98,11 +96,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
 
-        try {
-            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         lblCpf.setText("CPF:");
 
@@ -416,8 +410,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addComponent(jPanelLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -427,16 +421,13 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
        
         Cliente cli = new Cliente();
-        cli.setNome(txtNome.getText());
-        DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-        cli.setSexo((String) jComboBoxSexo.getSelectedItem());  
+        cli.setNome(txtNome.getText());  
         cli.setRg(txtRg.getText());
         cli.setCpf(txtcpf.getText());
         cli.setEmail(txtEmail.getText());
         cli.setCelular(txtCelular.getText());
         cli.setTelefone(txtTelefone.getText());
-        Date data = new Date(System.currentTimeMillis());  
-        cli.setDataCadastro(data);
+        
         
         Endereco endereco = new Endereco();
         endereco.setRua(txtEndereço.getText());
@@ -464,16 +455,17 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         
        
         
-        Date date = null;
+        Date data = null;
      
         try {
-           date = dt.parse(txtDataNasc.getText());
+            data =  (Date)txtDataNasc.getValue();
            
             
         } catch (Exception e) {
             
         }
-        cli.setDataNasc(date);
+        cli.setDataNasc(data);
+        
        
 
         try {
