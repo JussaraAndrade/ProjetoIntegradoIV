@@ -10,7 +10,6 @@ import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.exceptions.DataSourceException;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
-import br.com.projeto.model.produto.Produto;
 import java.util.List;
 
 
@@ -43,7 +42,7 @@ public class ServicoCliente {
         try {
             //Realiza a chamada de inserção na fonte de dados
             
-            DaoCliente.inserir(cliente);
+            DaoCliente.inserir(cliente, endereco);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão

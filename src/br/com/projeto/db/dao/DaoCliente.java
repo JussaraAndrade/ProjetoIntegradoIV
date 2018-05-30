@@ -24,28 +24,29 @@ import java.util.List;
  * @author Jussara Andrade
  */
 public class DaoCliente {
-    
-    
-     
 
-    public static void inserir(Cliente cliente)
+    public static void inserir(Cliente cliente, Endereco endereco)
             throws SQLException, Exception  {
        
         
-        String sql =  "INSERT INTO cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
-//                + "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente) "
-//                + "VALUES(?, ?, ?, ?, ?, ?, ?,(SELECT LAST_INSERT_ID()));";
+        String sql = "START TRANSACTION; "
+                + "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "
+                + "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?,(SELECT LAST_INSERT_ID()));";
+ 
         
         Connection connection = null;
        
         PreparedStatement preparedStatement = null;
+        
+        
         try {
           
             connection = ConnectionUtils.getConnection();
            
-            preparedStatement = connection.prepareStatement(sql);
-            
+            //preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
@@ -60,15 +61,19 @@ public class DaoCliente {
             preparedStatement.setBoolean(10, true);
             
           
-//            preparedStatement.setString(1, endereco.getRua());
-//            preparedStatement.setString(2, endereco.getNumero());
-//            preparedStatement.setString(3, endereco.getComplemento());
-//            preparedStatement.setString(4, endereco.getBairro());
-//            preparedStatement.setString(5, endereco.getUf());
-//            preparedStatement.setString(6, endereco.getCidade());
-//            preparedStatement.setString(7, endereco.getCep());
-          
+            preparedStatement.setString(1, endereco.getRua());
+            preparedStatement.setString(2, endereco.getNumero());
+            preparedStatement.setString(3, endereco.getComplemento());
+            preparedStatement.setString(4, endereco.getBairro());
+            preparedStatement.setString(5, endereco.getUf());
+            preparedStatement.setString(6, endereco.getCidade());
+            preparedStatement.setString(7, endereco.getCep());
+            
             preparedStatement.execute();
+            preparedStatement.getGeneratedKeys().next();
+            preparedStatement.getGeneratedKeys().getInt(1);
+            
+            
         } finally {
             
             if (preparedStatement != null && !preparedStatement.isClosed()) {
