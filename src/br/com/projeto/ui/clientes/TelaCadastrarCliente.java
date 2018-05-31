@@ -423,10 +423,16 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         Cliente cli = new Cliente();
         cli.setNome(txtNome.getText());  
         cli.setRg(txtRg.getText());
-        cli.setCpf(txtcpf.getText());
+        
         cli.setEmail(txtEmail.getText());
         cli.setCelular(txtCelular.getText());
         cli.setTelefone(txtTelefone.getText());
+        if(jComboBoxSexo.getSelectedItem().equals("Masculino")){
+            cli.setSexo("M");
+        }
+        else if(jComboBoxSexo.getSelectedItem().equals("Feminino")){
+            cli.setSexo("F");
+        }
         
         
         Endereco endereco = new Endereco();
@@ -442,6 +448,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         String cpf = txtcpf.getText();
         cpf = cpf.replace(".","");
         cpf = cpf.replace("-",""); 
+        cli.setCpf(cpf);
         
         String celular = txtCelular.getText();
         celular = celular.replace("(","");

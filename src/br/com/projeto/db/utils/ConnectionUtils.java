@@ -26,7 +26,7 @@ public class ConnectionUtils {
             //Propriedades para armazenamento de usuário e senha
             Properties properties = new Properties();
             properties.put("user", "root");
-            properties.put("password", "root");
+            properties.put("password", "adminadmin");
             //Realiza a conexão com o banco
             connection = DriverManager.getConnection(dbURL, properties);
 

@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,11 +30,11 @@ public class DaoCliente {
             throws SQLException, Exception  {
        
         
-        String sql = "START TRANSACTION; "
-                + "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "
-                + "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?,(SELECT LAST_INSERT_ID()));";
+        String sql =  "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, enable, data_cadastro_cliente) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        
+        String sql2 = "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente)"
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
  
         
         Connection connection = null;
@@ -44,6 +45,7 @@ public class DaoCliente {
         try {
           
             connection = ConnectionUtils.getConnection();
+            connection.setAutoCommit(false);
            
             //preparedStatement = connection.prepareStatement(sql);
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -56,25 +58,38 @@ public class DaoCliente {
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            Timestamp te = new Timestamp(cliente.getDataCadastro().getTime());
-            preparedStatement.setTimestamp(9, te);
-            preparedStatement.setBoolean(10, true);
-            
-          
-            preparedStatement.setString(1, endereco.getRua());
-            preparedStatement.setString(2, endereco.getNumero());
-            preparedStatement.setString(3, endereco.getComplemento());
-            preparedStatement.setString(4, endereco.getBairro());
-            preparedStatement.setString(5, endereco.getUf());
-            preparedStatement.setString(6, endereco.getCidade());
-            preparedStatement.setString(7, endereco.getCep());
+//            Timestamp te = new Timestamp(cliente.getDataCadastro().getTime());
+//            preparedStatement.setTimestamp(9, te);
+            preparedStatement.setBoolean(9, true);
+            t = new Timestamp((new Date()).getTime());
+            preparedStatement.setTimestamp(10, t);
             
             preparedStatement.execute();
-            preparedStatement.getGeneratedKeys().next();
-            preparedStatement.getGeneratedKeys().getInt(1);
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int idCliente = rs.getInt(1);
             
             
-        } finally {
+            preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, endereco.getRua());
+            preparedStatement.setString(2, endereco.getNumero());
+            preparedStatement.setString(3, endereco.getBairro());
+            preparedStatement.setString(4, endereco.getCidade());
+            preparedStatement.setString(5, endereco.getUf());
+            preparedStatement.setLong(6, Long.parseLong(endereco.getCep().replaceAll("-", "")));
+            preparedStatement.setString(7, endereco.getComplemento());
+            preparedStatement.setInt(8, idCliente);
+            
+             preparedStatement.execute();
+             connection.commit();
+            
+            
+        }
+        catch(Exception e) {
+            connection.rollback();
+            throw e;
+        }
+        finally {
             
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
