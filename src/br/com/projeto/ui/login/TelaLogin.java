@@ -42,7 +42,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jTextFieldLogin = new javax.swing.JTextField();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabelPNGCadeado = new javax.swing.JLabel();
         jButtonEntrar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
@@ -77,8 +76,6 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Vendedor" }));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -93,9 +90,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -109,9 +104,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSenha))
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabelPNGCadeado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/128x128 Tamanho Cadeado.png"))); // NOI18N
@@ -161,14 +154,17 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelPNGCadeado)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11))
+                .addGap(31, 31, 31)
+                .addComponent(jLabelPNGCadeado)
+                .addGap(47, 47, 47))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         jLabelBannerBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Plain-Black-Wallpaper.png"))); // NOI18N
@@ -224,13 +220,13 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
            if(evt.getKeyCode() == evt.VK_ENTER){
         
-             if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")&& jComboBox1.getSelectedItem().toString().equals("Vendedor")){
+             if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Vendedor");
             PrincipalVendedor vendedor = new PrincipalVendedor();
             vendedor.setVisible(true);
             dispose();
             
-        } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("adm")&& jComboBox1.getSelectedItem().toString().equals("Gerente")){
+        } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("adm")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Gerente");    
            
             PrincipalGerente Gerentecliente = new PrincipalGerente();
@@ -288,7 +284,6 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabelBannerBlack;
     private javax.swing.JLabel jLabelPNGCadeado;
     private javax.swing.JLabel jLabelSenha;

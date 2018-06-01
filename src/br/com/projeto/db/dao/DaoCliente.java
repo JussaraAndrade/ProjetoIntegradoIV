@@ -18,8 +18,6 @@ import java.util.Date;
 import java.util.List;
 
 
-
-
 /**
  *
  * @author Jussara Andrade
@@ -47,7 +45,7 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
             connection.setAutoCommit(false);
            
-            //preparedStatement = connection.prepareStatement(sql);
+            
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
@@ -58,8 +56,6 @@ public class DaoCliente {
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-//            Timestamp te = new Timestamp(cliente.getDataCadastro().getTime());
-//            preparedStatement.setTimestamp(9, te);
             preparedStatement.setBoolean(9, true);
             t = new Timestamp((new Date()).getTime());
             preparedStatement.setTimestamp(10, t);

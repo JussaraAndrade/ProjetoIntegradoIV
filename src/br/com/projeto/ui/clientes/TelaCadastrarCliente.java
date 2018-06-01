@@ -9,7 +9,12 @@ package br.com.projeto.ui.clientes;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -449,45 +454,29 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cpf = cpf.replace(".","");
         cpf = cpf.replace("-",""); 
         cli.setCpf(cpf);
-        
-        String celular = txtCelular.getText();
-        celular = celular.replace("(","");
-        celular = celular.replace(")","");
-        celular = celular.replace("-","");
-        
-        String telefone = txtTelefone.getText();
-        telefone = telefone.replace("(","");
-        telefone = telefone.replace(")","");
-        telefone = telefone.replace("-","");
-        
        
-        
-        Date data = null;
+       Date data = null;
      
         try {
             data =  (Date)txtDataNasc.getValue();
            
             
         } catch (Exception e) {
-            
-        }
+         }
         cli.setDataNasc(data);
         
        
 
         try {
-            //Chama o serviço para cadastro do cliente
             
             ServicoCliente.getInstance().cadastrarCliente(cli, endereco);
         } catch (Exception e) {
-            //Exibe mensagens de erro para o usuário
+          
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
-        //Então exibe uma mensagem de sucesso para o usuário
         JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
                 "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
     
