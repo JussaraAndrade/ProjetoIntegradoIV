@@ -100,7 +100,7 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         ButtonSalvar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Atualizar dados"));
+        jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Atualizar Dados"));
 
         lblNome.setText("Nome:");
 
@@ -426,27 +426,29 @@ public class TelaEditarCliente extends javax.swing.JFrame {
                 .addComponent(jPanelIdentificação, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        cliente.setNome(txtNome.getText());
-        DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-        cliente.setSexo((String) jComboBoxSexo.getSelectedItem());  
-        cliente.setRg(txtRg.getText());
-        cliente.setCpf(txtCpf.getText());
+        
+        cliente.setNome(txtNome.getText());  
+        cliente.setRg(txtRg.getText());     
         cliente.setEmail(txtEmail.getText());
         cliente.setCelular(txtCelular.getText());
         cliente.setTelefone(txtTelefone.getText());
-        Date data = new Date(System.currentTimeMillis());  
-        cliente.setDataCadastro(data);
+        if(jComboBoxSexo.getSelectedItem().equals("Masculino")){
+            cliente.setSexo("M");
+        }
+        else if(jComboBoxSexo.getSelectedItem().equals("Feminino")){
+            cliente.setSexo("F");
+        }
+        
         
         
         endereco.setRua(txtEndereco.getText());
@@ -457,37 +459,27 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         endereco.setCidade(txtCidade.getText());
         endereco.setCep(txtCep.getText());
                 
-                   
+     
         String cpf = txtCpf.getText();
         cpf = cpf.replace(".","");
         cpf = cpf.replace("-",""); 
-        
-        String celular = txtCelular.getText();
-        celular = celular.replace("(","");
-        celular = celular.replace(")","");
-        celular = celular.replace("-","");
-        
-        String telefone = txtTelefone.getText();
-        telefone = telefone.replace("(","");
-        telefone = telefone.replace(")","");
-        telefone = telefone.replace("-","");
-        
+        cliente.setCpf(cpf);
        
-        
-        Date date = null;
+       Date data = null;
      
         try {
-           date = dt.parse(txtDataNasc.getText());
+            data =  (Date)txtDataNasc.getValue();
            
             
         } catch (Exception e) {
-            
-        }
-        cliente.setDataNasc(date);
+         }
+        cliente.setDataNasc(data);
+        
+       
         
         try {
             
-            ServicoCliente.getInstance().atualizarCliente(cliente);
+            ServicoCliente.getInstance().atualizarCliente(cliente, endereco);
         }
         catch(Exception e) {
             

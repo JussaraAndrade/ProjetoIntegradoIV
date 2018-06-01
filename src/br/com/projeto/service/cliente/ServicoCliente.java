@@ -6,10 +6,14 @@
 package br.com.projeto.service.cliente;
 
 import br.com.projeto.db.dao.DaoCliente;
+import br.com.projeto.db.dao.DaoProduto;
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.exceptions.DataSourceException;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
+import br.com.projeto.model.produto.Produto;
+import br.com.projeto.model.validador.ValidadorCliente;
+import br.com.projeto.model.validador.ValidadorEndereco;
 import java.util.List;
 
 
@@ -33,16 +37,32 @@ public class ServicoCliente {
     //Insere um cliente na fonte de dados
     public void cadastrarCliente(Cliente cliente, Endereco endereco)
             throws ClienteException, DataSourceException {
-         //Produto produto = null;
+        
 
-        //Chama o validador para verificar o cliente
-       // ValidadorCliente.validar(cliente);
-      // ValidadorProduto.produto(produto);
+        ValidadorCliente.validar(cliente);
+        ValidadorEndereco.validar(endereco);
+      
 
         try {
             //Realiza a chamada de inserção na fonte de dados
             
             DaoCliente.inserir(cliente, endereco);
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    public void cadastrarProduto(Produto produto)
+            throws ClienteException, DataSourceException {
+        
+//        ValidadorProduto.validar(produto);
+
+        try {
+           
+            DaoProduto.inserir(produto);
+            
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão
@@ -50,8 +70,10 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    
     //Atualiza um cliente na fonte de dados
-    public void atualizarCliente(Cliente cliente)
+    public void atualizarCliente(Cliente cliente, Endereco endereco)
             throws ClienteException, DataSourceException {
         
         //Chama o validador para verificar o cliente
@@ -59,7 +81,7 @@ public class ServicoCliente {
 
         try {
             //Realiza a chamada de atualização na fonte de dados
-            DaoCliente.atualizar(cliente);
+            DaoCliente.atualizar(cliente, endereco);
             return;
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve

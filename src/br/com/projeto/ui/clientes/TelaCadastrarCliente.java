@@ -9,12 +9,7 @@ package br.com.projeto.ui.clientes;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -23,7 +18,8 @@ import javax.swing.JOptionPane;
  * @author Jussara Andrade
  */
 public class TelaCadastrarCliente extends javax.swing.JFrame {
-
+        Cliente cli = new Cliente();
+        Endereco endereco = new Endereco();
 
     /**
      * Creates new form Cliente
@@ -67,8 +63,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanelLogradouro = new javax.swing.JPanel();
-        lblEndereço = new javax.swing.JLabel();
-        txtEndereço = new javax.swing.JTextField();
+        lblEndereco = new javax.swing.JLabel();
+        txtEndereco = new javax.swing.JTextField();
         lblBairro = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
         lblComplemento = new javax.swing.JLabel();
@@ -244,7 +240,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
         jPanelLogradouro.setBorder(javax.swing.BorderFactory.createTitledBorder("Logradouro"));
 
-        lblEndereço.setText("Endereço:");
+        lblEndereco.setText("Endereço:");
 
         lblBairro.setText("Bairro:");
 
@@ -279,10 +275,10 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                             .addGroup(jPanelLogradouroLayout.createSequentialGroup()
                                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelLogradouroLayout.createSequentialGroup()
-                                        .addComponent(txtEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel1))
-                                    .addComponent(lblEndereço))
+                                    .addComponent(lblEndereco))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +329,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblEndereço)
+                        .addComponent(lblEndereco)
                         .addComponent(lblNumero)
                         .addComponent(lblComplemento))
                     .addComponent(lblBairro, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -343,7 +339,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                             .addGroup(jPanelLogradouroLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanelLogradouroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1)
@@ -425,10 +421,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
        
-        Cliente cli = new Cliente();
-        cli.setNome(txtNome.getText());  
-        cli.setRg(txtRg.getText());
         
+        cli.setNome(txtNome.getText());  
+        cli.setRg(txtRg.getText());     
         cli.setEmail(txtEmail.getText());
         cli.setCelular(txtCelular.getText());
         cli.setTelefone(txtTelefone.getText());
@@ -440,8 +435,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         }
         
         
-        Endereco endereco = new Endereco();
-        endereco.setRua(txtEndereço.getText());
+        
+        endereco.setRua(txtEndereco.getText());
         endereco.setNumero(txtNumero.getText());
         endereco.setComplemento(txtComplemento.getText());
         endereco.setBairro(txtBairro.getText());
@@ -454,6 +449,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cpf = cpf.replace(".","");
         cpf = cpf.replace("-",""); 
         cli.setCpf(cpf);
+        
+       
        
        Date data = null;
      
@@ -486,7 +483,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         txtDataNasc.setText("");          
         txtcpf.setText("");
         txtRg.setText("");
-        txtEndereço.setText("");
+        txtEndereco.setText("");
         txtNumero.setText("");
         txtBairro.setText("");
         txtComplemento.setText("");
@@ -531,7 +528,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataNasc;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblEndereço;
+    private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRg;
@@ -545,7 +542,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtDataNasc;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEndereço;
+    private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JFormattedTextField txtRg;

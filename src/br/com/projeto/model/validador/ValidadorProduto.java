@@ -5,8 +5,8 @@
  */
 package br.com.projeto.model.validador;
 
-
-
+//import br.com.projeto.exceptions.ClienteException;
+//import br.com.projeto.model.produto.Produto;
         
 
 
@@ -15,20 +15,18 @@ package br.com.projeto.model.validador;
  * @author Jussara Andrade
  */
 public class ValidadorProduto {
- //      public static  void produto(Produto produto) throws ClienteException {
+//      public static  void validar(Produto produto) throws ClienteException {
 //        //Realização de validações de negócio
-//       
-//       if (produto == null) {
+//              if (produto == null) {
 //            throw new ClienteException("Não foi informado um produto");
 //        }
 //        if (produto.getNome()== null || "".equals(produto.getNome())) {
-//            throw new ClienteException("É necessário informar "
-//                   + "o nome do produto");
-//        }
-//         if (produto.getGenero()== null || "".equals(produto.getGenero())
-//                || (!produto.getGenero().equals("Infantil"))
-//                || (!produto.getGenero().equals("Adulto"))
-//                && !produto.getGenero().equals("Intimo")) {
+//           throw new ClienteException("É necessário informar "
+//                  + "o nome do produto");
+//       }
+//         if (produto.getDepartamento()== null || "".equals(produto.getDepartamento())
+//                || (!produto.getDepartamento().equals("Adulto"))
+//                && !produto.getDepartamento().equals("Íntimo")) {
 //            throw new ClienteException("É necessário informar o "
 //                    + "gênero do produto");
 //           }
@@ -48,22 +46,19 @@ public class ValidadorProduto {
 //            throw new ClienteException("É necessário informar a "
 //                    + "cor do produto");
 //           }
-////            if (produto.getPreco()== null) {
-////            throw new ClienteException("É necessário informar "
-////                    + "o preço do produto");
-////        }
-//          
-////        if (produto.getCodbarra()== null) {
-////            throw new ClienteException("É necessário informar "
-////                    + "o código de barra do produto");
-////        }
-//        
-//            
-//           if (produto.getDescricao()== null) {
+//           if (produto.getPreco()== null) {
+//           throw new ClienteException("É necessário informar "
+//                    + "o preço do produto");
+//        }
+//         
+//        if (produto.getCodigo()== 5) {
+//            throw new ClienteException("É necessário informar "
+//                    + "o código de barra do produto");
+//        }
+//           
+//         if (produto.getDescricao()== null) {
 //            throw new ClienteException("É necessário informar a "
 //                    + "descrição do produto");
 //        } 
-//        
-       
-   
+//      }  
 }

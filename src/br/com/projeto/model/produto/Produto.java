@@ -12,16 +12,15 @@ import java.sql.Date;
  * @author Jussara Andrade
  */
 public class Produto {
-     private int  codigo;
+    private int  codigo;
     private String nome;
+    private String departamento;
     private String cor;
     private String tamanho;
-    private String genero;
     private String descricao;
-    private int quantidade;
+    private String quantidade;
     private Date data;
-    private double preco;
-    private int Codbarra;
+    private String preco;
     private boolean enable;
 
     public int getCodigo() {
@@ -40,6 +39,14 @@ public class Produto {
         this.nome = nome;
     }
 
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
     public String getCor() {
         return cor;
     }
@@ -56,14 +63,6 @@ public class Produto {
         this.tamanho = tamanho;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -72,11 +71,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -88,20 +87,12 @@ public class Produto {
         this.data = data;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
-    }
-
-    public int getCodbarra() {
-        return Codbarra;
-    }
-
-    public void setCodbarra(int Codbarra) {
-        this.Codbarra = Codbarra;
     }
 
     public boolean isEnable() {
@@ -112,4 +103,5 @@ public class Produto {
         this.enable = enable;
     }
 
+    
 }

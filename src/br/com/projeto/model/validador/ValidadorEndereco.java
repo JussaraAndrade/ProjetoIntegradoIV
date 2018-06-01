@@ -5,6 +5,9 @@
  */
 package br.com.projeto.model.validador;
 
+import br.com.projeto.exceptions.ClienteException;
+import br.com.projeto.model.clientes.Endereco;
+
 
 //import br.com.projeto.model.clientes.Endereco;
 
@@ -13,45 +16,50 @@ package br.com.projeto.model.validador;
  * @author Jussara Andrade
  */
 public class ValidadorEndereco {
-    // public static  void validar(Endereco endereco) {
-//        //Realização de validações de negócio
-//        if (endereço == null) {
-//            throw new ClienteException("Não foi informado o endereço do cliente");
-//        }
-//        if (endereço.getRuaCliente()== null || "".equals(endereço.getRuaCliente())) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o endereço");
-//        }
-//        if (endereço.getNumeroCliente()== null
-//                || "".equals(endereço.getNumeroCliente())) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o número residencial");
-//        }
-//        if (endereço.getBairroCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o bairro");
-//        }
-//        if (endereço.getCidadeCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "a cidade");
-//        }
-//        if (endereço.getUfCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o estado");
-//        }
-//        if (endereço.getCepCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o cep");
-//        }
-//        if (endereço.getComplementoCliente()== null) {
-//            throw new ClienteException("É necessário informar "
-//                    + "o complemento");
-//        }
-//         
-//        
-//       
+     public static  void validar(Endereco endereco) throws ClienteException {
+        //Realização de validações de negócio
+        if (endereco == null) {
+            throw new ClienteException("Não foi informado o endereço do cliente");
+        }
+        if (endereco.getRua()== null || "".equals(endereco.getRua())) {
+           throw new ClienteException("É necessário informar "
+                    + "o endereço");
+        }
+        if (endereco.getNumero()== null
+                || "".equals(endereco.getNumero())) {
+            throw new ClienteException("É necessário informar "
+                    + "o número residencial");
+        
+        }
+        if (endereco.getComplemento()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o complemento");
+        }    
+        if (endereco.getBairro()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o bairro");    
+        
+        }
+        if (endereco.getUf()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o estado");
+        }    
+        if (endereco.getCidade()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "a cidade");
+        
+        }
+        if (endereco.getCep()== null) {
+            throw new ClienteException("É necessário informar "
+                    + "o cep");
+        
+        }
+         
+     }
+}
+      
        
     
-}
+
     
 

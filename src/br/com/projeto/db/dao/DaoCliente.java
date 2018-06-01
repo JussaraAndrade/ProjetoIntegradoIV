@@ -98,14 +98,16 @@ public class DaoCliente {
     }
     
     
-     public static void atualizar(Cliente cliente)
+    
+     public static void atualizar(Cliente cliente, Endereco endereco)
             throws SQLException, Exception {
         
-       
-       
-        String sql = "UPDATE cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, "
-                +"rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, "
-                +"telefone_cliente=? WHERE (cliente_id=?)";
+       String sql =  "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
+                + "WHERE(id_cliente=?)";
+        
+        String sql2 = "UPDATE mydb.end_cliente (rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
+                + "WHERE(cliente_id_cliente=?);";
+              
         
         Connection connection = null;
        
@@ -113,18 +115,43 @@ public class DaoCliente {
         try {
            
             connection = ConnectionUtils.getConnection();
+            connection.setAutoCommit(false);
+           
             
-            preparedStatement = connection.prepareStatement(sql);
-          
+            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(0, cliente.getId());
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setDate(5, new java.sql.Date(cliente.getDataNasc().getTime()));
+            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+            preparedStatement.setTimestamp(5, t);
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setInt(9, cliente.getId());
+            preparedStatement.setBoolean(9, true);
+            t = new Timestamp((new Date()).getTime());
+            preparedStatement.setTimestamp(10, t);
+            
+            
+            preparedStatement.execute();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int idCliente = rs.getInt(1);
+            
+            
+            preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, endereco.getRua());
+            preparedStatement.setString(2, endereco.getNumero());
+            preparedStatement.setString(3, endereco.getBairro());
+            preparedStatement.setString(4, endereco.getCidade());
+            preparedStatement.setString(5, endereco.getUf());
+            preparedStatement.setLong(6, Long.parseLong(endereco.getCep().replaceAll("-", "")));
+            preparedStatement.setString(7, endereco.getComplemento());
+            preparedStatement.setInt(8, idCliente);
+            
+             preparedStatement.execute();
+             connection.commit();
             
              
             preparedStatement.execute();

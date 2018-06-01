@@ -333,11 +333,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtEndereço" min="-2" pref="222" max="-2" attributes="0"/>
+                                          <Component id="txtEndereco" min="-2" pref="222" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lblEndereço" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -410,7 +410,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblEndereço" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -422,7 +422,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtEndereço" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="txtEndereco" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="txtNumero" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="txtComplemento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -469,12 +469,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblEndere&#xe7;o">
+        <Component class="javax.swing.JLabel" name="lblEndereco">
           <Properties>
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEndere&#xe7;o">
+        <Component class="javax.swing.JTextField" name="txtEndereco">
         </Component>
         <Component class="javax.swing.JLabel" name="lblBairro">
           <Properties>

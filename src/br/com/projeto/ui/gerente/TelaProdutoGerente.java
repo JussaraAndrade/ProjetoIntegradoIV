@@ -7,6 +7,8 @@ package br.com.projeto.ui.gerente;
 
 
 import br.com.projeto.model.produto.Produto;
+import br.com.projeto.service.cliente.ServicoCliente;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -15,7 +17,8 @@ import javax.swing.JOptionPane;
  * @author Jussara Andrade
  */
 public class TelaProdutoGerente extends javax.swing.JFrame {
-     private TelaEditarGerente editar = null;
+      Produto produto = new Produto();
+     
 
     /**
      * Creates new form Produtos
@@ -37,13 +40,14 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jSpinner1 = new javax.swing.JSpinner();
         Desktop = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
-        txtValor = new javax.swing.JTextField();
-        lblEstoque = new javax.swing.JLabel();
-        txtEstoque = new javax.swing.JTextField();
+        txtPreco = new javax.swing.JTextField();
+        lblQuantidade = new javax.swing.JLabel();
+        txtQuantidade = new javax.swing.JTextField();
         lblCodigoBarra = new javax.swing.JLabel();
         txtCodigoBarra = new javax.swing.JTextField();
         lblGenero = new javax.swing.JLabel();
@@ -79,13 +83,18 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
 
         lblValor.setText("Valor:");
 
-        lblEstoque.setText(" Estoque:");
+        lblQuantidade.setText(" Estoque:");
 
         lblCodigoBarra.setText("Código de Barra:");
 
-        lblGenero.setText("Genero:");
+        lblGenero.setText("Departamento:");
 
-        jComboBoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Infantil", "Adulto", "Intimo" }));
+        jComboBoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Infantil", "Adulto", "Íntimo" }));
+        jComboBoxGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxGeneroActionPerformed(evt);
+            }
+        });
 
         lblDescricao.setText("Descrição:");
 
@@ -95,11 +104,11 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
 
         lblTamanho.setText("Tamanho:");
 
-        jComboBoxTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G", "GG" }));
+        jComboBoxTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tamanho...", "P", "M", "G", "GG" }));
 
         lblCor.setText("Cor:");
 
-        jComboBoxCor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Preto", "Branco", "Azul", "Vermelho" }));
+        jComboBoxCor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cor...", "Preto", "Branco", "Azul", "Vermelho" }));
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
@@ -112,24 +121,24 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblGenero)
                             .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
+                        .addGap(10, 10, 10)
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DesktopLayout.createSequentialGroup()
-                                .addComponent(lblTamanho)
-                                .addGap(55, 55, 55)
-                                .addComponent(lblCor))
                             .addGroup(DesktopLayout.createSequentialGroup()
                                 .addComponent(jComboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(DesktopLayout.createSequentialGroup()
+                                .addComponent(lblTamanho)
+                                .addGap(45, 45, 45)
+                                .addComponent(lblCor)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValor)))
+                            .addComponent(lblValor)
+                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(DesktopLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(DesktopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,8 +155,8 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                                 .addComponent(txtCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEstoque)
-                                    .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblQuantidade))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         DesktopLayout.setVerticalGroup(
@@ -164,19 +173,20 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                     .addComponent(lblCor)
                     .addComponent(lblValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxGenero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoBarra)
-                    .addComponent(lblEstoque))
+                    .addComponent(lblQuantidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(lblDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,13 +214,14 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ButtonSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                .addComponent(ButtonSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(295, 295, 295))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,31 +239,20 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        Produto produto = new Produto();
+       
         produto.setNome(txtNome.getText());
-        produto.setGenero((String) jComboBoxGenero.getSelectedItem());
+        produto.setDepartamento((String) jComboBoxGenero.getSelectedItem());
+        produto.setCor((String) jComboBoxGenero.getSelectedItem());
         produto.setTamanho((String) jComboBoxTamanho.getSelectedItem());
-        produto.setCor((String) jComboBoxCor.getSelectedItem());
-//        produto.setPreco(txtValor.getText());
-//        produto.setCodbarra(txtCodigoBarra.getText());
-//        produto.setQuantidade(txtEstoque.getText());
+        produto.setDescricao((String) txtDescricao.getText());
+        produto.setPreco(txtPreco.getText());
+        produto.setQuantidade(txtQuantidade.getText());
         
         
-       
-     
-     
+      
         try {
             
-            
-        } catch (Exception e) {
-            
-        }
-       
-       
-
-        try {
-            
-          //  ServicoCliente.getInstance().cadastrarProduto(produto);
+           ServicoCliente.getInstance().cadastrarProduto(produto);
         } catch (Exception e) {
             //Exibe mensagens de erro para o usuário
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
@@ -269,9 +269,9 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         jComboBoxGenero.setSelectedIndex(0);    
         jComboBoxTamanho.setSelectedIndex(0);
         jComboBoxCor.setSelectedIndex(0);
-        txtValor.setText("");
+        txtPreco.setText("");
         txtCodigoBarra.setText("");
-        txtEstoque.setText("");
+        txtQuantidade.setText("");
         txtDescricao.setText("");
         
     }//GEN-LAST:event_ButtonSalvarActionPerformed
@@ -279,6 +279,10 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxGeneroActionPerformed
 
    
 
@@ -291,19 +295,20 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxTamanho;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCodigoBarra;
     private javax.swing.JLabel lblCor;
     private javax.swing.JLabel lblDescricao;
-    private javax.swing.JLabel lblEstoque;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblQuantidade;
     private javax.swing.JLabel lblTamanho;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtCodigoBarra;
     private javax.swing.JTextArea txtDescricao;
-    private javax.swing.JTextField txtEstoque;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtValor;
+    private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
