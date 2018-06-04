@@ -41,7 +41,7 @@ public class DaoProduto {
             preparedStatement.setString(4, produto.getTamanho());
             preparedStatement.setString(5, produto.getDescricao());
             preparedStatement.setString(6, produto.getPreco());
-            preparedStatement.setString(7, produto.getQuantidade());
+            preparedStatement.setInt(7, Integer.parseInt(produto.getQuantidade()));
             Timestamp t = new Timestamp(produto.getData().getTime());
             preparedStatement.setTimestamp(8, t);
             
