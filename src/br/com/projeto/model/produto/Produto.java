@@ -21,7 +21,6 @@ public class Produto {
     private String quantidade;
     private Date data;
     private String preco;
-    private boolean enable;
 
     public int getCodigo() {
         return codigo;
@@ -93,14 +92,6 @@ public class Produto {
 
     public void setPreco(String preco) {
         this.preco = preco;
-    }
-
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setEnable(boolean enable) {
-        this.enable = enable;
     }
 
     

@@ -49,10 +49,10 @@
               <Component id="jPanelIdentificação" min="-2" pref="264" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanelLogradouro" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="ButtonSalvar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -280,6 +280,9 @@
               <Format format="(##)####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefoneActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCelular">
           <Properties>

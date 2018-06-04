@@ -9,6 +9,7 @@ package br.com.projeto.ui.clientes;
 
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.model.clientes.Cliente;
+import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -23,13 +24,16 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     TelaEditarCliente formEditarCliente = new TelaEditarCliente();
     private TelaEditarCliente editarCli = null;
     String ultimaPesquisa = null;
- 
-    public TelaConsultaCliente() {
+ public TelaConsultaCliente() {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);
         
-   
+        tabelaResultado.getColumnModel().getColumn(0).setMinWidth(0);
+        tabelaResultado.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabelaResultado.getColumnModel().getColumn(0).setWidth(0);
+ 
+
     
     }
   
@@ -42,7 +46,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         txtPesquisar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaConsulta = new javax.swing.JTable();
+        tabelaResultado = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -58,15 +62,15 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         });
 
-        TabelaConsulta.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaResultado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Rg", "Cpf ", "Telefone"
+                "Id", "Nome", "Rg", "Cpf ", "Sexo", "e-mail", "Data Nascimento", "Endereço", "Número", "Bairro", "Complemento", "Cidade", "Uf", "Cep"
             }
         ));
-        jScrollPane1.setViewportView(TabelaConsulta);
+        jScrollPane1.setViewportView(tabelaResultado);
 
         jButton2.setText("Excluir");
 
@@ -96,14 +100,18 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(jButton3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,9 +125,9 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -156,7 +164,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         try {
             //Solicita a atualização da lista com o novo critério
             //de pesquisa (ultimaPesquisa)
-            resultSearch = refreshList();
+            resultSearch = refreshListCliente();
+            resultSearch = refreshListEndereco();
         } catch (Exception e) {
             //Exibe mensagens de erro na fonte de dados e para o listener
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
@@ -172,14 +181,16 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }                                               
 
     //Atualiza a lista de clientes. Pode ser chamado por outras telas
-    public boolean refreshList() throws ClienteException, Exception {
+    public boolean refreshListCliente() throws ClienteException, Exception {
         //Realiza a pesquisa de clientes com o último valor de pesquisa
         //para atualizar a lista
         List<Cliente> resultado = ServicoCliente.getInstance().
                 procurarCliente(ultimaPesquisa);
+        
+        
 
         //Obtém o elemento representante do conteúdo da tabela na tela
-        DefaultTableModel model = (DefaultTableModel) TabelaConsulta.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabelaResultado.getModel();
         //Indica que a tabela deve excluir todos seus elementos
         //Isto limpará a lista, mesmo que a pesquisa não tenha sucesso
         model.setRowCount(0);
@@ -193,25 +204,71 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         //Percorre a lista de resultados e os adiciona na tabela
         for (int i = 0; i < resultado.size(); i++) {
             Cliente cli = resultado.get(i);
+    
+        
             if (cli != null) {
-                Object[] row = new Object[5];
+                Object[] row = new Object[14];
                 row[0] = cli.getId();
                 row[1] = cli.getNome();
-                row[2] = cli.getSexo();
+                row[2] = cli.getRg();
+                row[3] = cli.getCpf();
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");          
-                row[3] = formatador.format(cli.getDataNasc());
-                row[4] = cli.getSexo();
+                row[4] = formatador.format(cli.getDataNasc());
+                row[5] = cli.getEmail();
+                row[6] = cli.getDataNasc();
+               
                 model.addRow(row);
             }
         }
-
-        //Se chegamos até aqui, a pesquisa teve sucesso, então
-        //retornamos "true" para o elemento acionante, indicando
-        //que não devem ser exibidas mensagens de erro
+        
+       
         return true;
-    
+        
+    }
+        public boolean refreshListEndereco() throws ClienteException, Exception {
+        //Realiza a pesquisa de clientes com o último valor de pesquisa
+        //para atualizar a lista
+        List<Endereco> resultado = ServicoCliente.getInstance().
+                procurarEndereco(ultimaPesquisa);
+        
+        
 
-   
+        //Obtém o elemento representante do conteúdo da tabela na tela
+        DefaultTableModel model = (DefaultTableModel) tabelaResultado.getModel();
+        //Indica que a tabela deve excluir todos seus elementos
+        //Isto limpará a lista, mesmo que a pesquisa não tenha sucesso
+        model.setRowCount(0);
+
+        //Verifica se não existiram resultados. Caso afirmativo, encerra a
+        //atualização e indica ao elemento acionador o não sucesso da pesquisa
+        if (resultado == null || resultado.size() <= 0) {
+            return false;
+        }
+
+        //Percorre a lista de resultados e os adiciona na tabela
+        for (int i = 0; i < resultado.size(); i++) {
+            Endereco endereco = resultado.get(i);
+    
+        
+            if (endereco != null) {
+                Object[] row = new Object[7];
+                row[0] = endereco.getRua();
+                row[1] = endereco.getNumero();
+                row[2] = endereco.getBairro();
+                row[3] = endereco.getComplemento();
+                row[4] = endereco.getCidade();
+                row[5] = endereco.getUf();
+                row[6] = endereco.getCep();
+                
+                
+                model.addRow(row);
+            }
+        }
+        
+       
+        return true;
+                                          
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -233,7 +290,6 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelaConsulta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -241,6 +297,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaResultado;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 

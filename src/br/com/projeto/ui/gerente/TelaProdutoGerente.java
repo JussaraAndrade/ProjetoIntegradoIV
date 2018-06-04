@@ -8,7 +8,6 @@ package br.com.projeto.ui.gerente;
 
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.service.cliente.ServicoCliente;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -123,14 +122,12 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                             .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DesktopLayout.createSequentialGroup()
-                                .addComponent(jComboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(DesktopLayout.createSequentialGroup()
-                                .addComponent(lblTamanho)
-                                .addGap(45, 45, 45)
-                                .addComponent(lblCor)))
+                            .addComponent(jComboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTamanho))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCor)
+                            .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblValor)
@@ -239,15 +236,18 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
+        
        
         produto.setNome(txtNome.getText());
         produto.setDepartamento((String) jComboBoxGenero.getSelectedItem());
-        produto.setCor((String) jComboBoxGenero.getSelectedItem());
         produto.setTamanho((String) jComboBoxTamanho.getSelectedItem());
-        produto.setDescricao((String) txtDescricao.getText());
+        produto.setCor((String) jComboBoxCor.getSelectedItem());
         produto.setPreco(txtPreco.getText());
+        produto.setDescricao((String) txtDescricao.getText());
         produto.setQuantidade(txtQuantidade.getText());
-        
+        produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
+       
+        //se ele tá string converta para int, se tá int converta para string
         
       
         try {

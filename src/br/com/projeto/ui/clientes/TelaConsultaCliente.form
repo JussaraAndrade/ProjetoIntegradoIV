@@ -55,15 +55,19 @@
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="71" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="1172" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -81,10 +85,10 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="230" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton3" alignment="0" pref="37" max="32767" attributes="0"/>
-                      <Component id="jButton4" max="32767" attributes="0"/>
-                      <Component id="jButton2" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton4" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jButton3" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jButton2" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -114,19 +118,73 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="TabelaConsulta">
+            <Component class="javax.swing.JTable" name="tabelaResultado">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
-                    <Column editable="true" title="ID" type="java.lang.Object"/>
+                  <Table columnCount="14" rowCount="0">
+                    <Column editable="true" title="Id" type="java.lang.Object"/>
                     <Column editable="true" title="Nome" type="java.lang.Object"/>
                     <Column editable="true" title="Rg" type="java.lang.Object"/>
                     <Column editable="true" title="Cpf " type="java.lang.Object"/>
-                    <Column editable="true" title="Telefone" type="java.lang.Object"/>
+                    <Column editable="true" title="Sexo" type="java.lang.Object"/>
+                    <Column editable="true" title="e-mail" type="java.lang.Object"/>
+                    <Column editable="true" title="Data Nascimento" type="java.lang.Object"/>
+                    <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
+                    <Column editable="true" title="N&#xfa;mero" type="java.lang.Object"/>
+                    <Column editable="true" title="Bairro" type="java.lang.Object"/>
+                    <Column editable="true" title="Complemento" type="java.lang.Object"/>
+                    <Column editable="true" title="Cidade" type="java.lang.Object"/>
+                    <Column editable="true" title="Uf" type="java.lang.Object"/>
+                    <Column editable="true" title="Cep" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

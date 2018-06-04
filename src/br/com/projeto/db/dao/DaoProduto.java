@@ -21,8 +21,8 @@ public class DaoProduto {
             throws SQLException, Exception  {
        
         
-        String sql =  "INSERT INTO produto (nome_produto, departamento_produto, cor, tamanho_produto, descricao_produto, preco_produto, quant_estoque_produto, data_cadastro_produto, enable) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        String sql =  "INSERT INTO produto (nome_produto, departamento_produto, cor, tamanho_produto, descricao_produto, preco_produto, quant_estoque_produto, data_cadastro_produto) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
         
         Connection connection = null;
        
@@ -30,7 +30,9 @@ public class DaoProduto {
         
         try {
             
+
             connection = ConnectionUtils.getConnection();
+           
             preparedStatement = connection.prepareStatement(sql);
             
             preparedStatement.setString(1, produto.getNome());
@@ -42,10 +44,11 @@ public class DaoProduto {
             preparedStatement.setString(7, produto.getQuantidade());
             Timestamp t = new Timestamp(produto.getData().getTime());
             preparedStatement.setTimestamp(8, t);
-            preparedStatement.setBoolean(9, true);
+            
            
-             preparedStatement.execute();
-             
+            preparedStatement.execute();
+            
+            
         } finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();

@@ -49,7 +49,7 @@ public class ValidadorEndereco {
                     + "a cidade");
         
         }
-        if (endereco.getCep()== null) {
+        if (endereco.getCep().trim().length() != 9) {
             throw new ClienteException("É necessário informar "
                     + "o cep");
         

@@ -14,9 +14,8 @@ import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.model.validador.ValidadorCliente;
 import br.com.projeto.model.validador.ValidadorEndereco;
+import br.com.projeto.model.validador.ValidadorProduto;
 import java.util.List;
-
-
 
 
 /**
@@ -34,7 +33,6 @@ public class ServicoCliente {
         return INSTANCE;
     }
     
-    //Insere um cliente na fonte de dados
     public void cadastrarCliente(Cliente cliente, Endereco endereco)
             throws ClienteException, DataSourceException {
         
@@ -44,7 +42,6 @@ public class ServicoCliente {
       
 
         try {
-            //Realiza a chamada de inserção na fonte de dados
             
             DaoCliente.inserir(cliente, endereco);
             
@@ -57,7 +54,7 @@ public class ServicoCliente {
     public void cadastrarProduto(Produto produto)
             throws ClienteException, DataSourceException {
         
-//        ValidadorProduto.validar(produto);
+        ValidadorProduto.validar(produto);
 
         try {
            
@@ -99,9 +96,9 @@ public class ServicoCliente {
             //Caso afirmativo, realiza uma listagem simples do DAO.
             //Caso contrário, realiza uma pesquisa com o parâmetro
             if (nome == null || "".equals(nome)) {
-                return DaoCliente.listar();
+                return DaoCliente.listarCliente();
             } else {
-                return DaoCliente.procurar(nome);
+                return DaoCliente.procurarCliente(nome);
             }
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
@@ -110,6 +107,24 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+     public List<Endereco> procurarEndereco(String rua) 
+              throws ClienteException, DataSourceException {
+        try {
+            
+            if (rua == null || "".equals(rua)) {
+                return DaoCliente.listarEndereco();
+            } else {
+                return DaoCliente.procurarEndereco(rua);
+            }
+        } catch (Exception e) {
+            //Imprime qualquer erro técnico no console e devolve
+            //uma exceção e uma mensagem amigável a camada de visão
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    
+     }
+
 
     //Obtem o cliente com ID informado
     public Cliente obterCliente(Integer id)
@@ -138,6 +153,5 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
-
     
 }

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  *
  * @author Jussara Andrade
@@ -28,8 +27,8 @@ public class DaoCliente {
             throws SQLException, Exception  {
        
         
-        String sql =  "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, enable, data_cadastro_cliente) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        String sql =  "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
         
         String sql2 = "INSERT INTO mydb.end_cliente (rua_cliente, numero_cliente, bairro_cliente, cidade_cliente, uf_cliente, cep_cliente, complemento_cliente, cliente_id_cliente)"
                 + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
@@ -56,9 +55,8 @@ public class DaoCliente {
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setBoolean(9, true);
             t = new Timestamp((new Date()).getTime());
-            preparedStatement.setTimestamp(10, t);
+            preparedStatement.setTimestamp(9, t);
             
             preparedStatement.execute();
             ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -76,8 +74,8 @@ public class DaoCliente {
             preparedStatement.setString(7, endereco.getComplemento());
             preparedStatement.setInt(8, idCliente);
             
-             preparedStatement.execute();
-             connection.commit();
+            preparedStatement.execute();
+            connection.commit();
             
             
         }
@@ -195,14 +193,75 @@ public class DaoCliente {
             }
         }
     }
+     public static List<Cliente> listarEndereco()
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM cliente WHERE (enabled=?)";
+       
+        List<Endereco> listaEndereco = null;
+        
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+           
+            connection = ConnectionUtils.getConnection();
+           
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setBoolean(1, true);
+
+           
+            result = preparedStatement.executeQuery();
+
+            
+            while (result.next()) {
+                
+                if (listaEndereco == null) {
+                    listaEndereco = new ArrayList<Endereco>();
+                }
+                Endereco endereco = new Endereco();
+                
+                
+                endereco.setRua(result.getString(""));
+                endereco.setNumero(result.getString(""));
+                endereco.setBairro(result.getString(""));
+                endereco.setCidade(result.getString(""));
+                endereco.setUf(result.getString(""));
+                endereco.setCep(result.getString(""));
+                endereco.setComplemento(result.getString(""));
+                endereco.setId(result.getInt(""));
+                
+                listaEndereco.add(endereco);
+            }
+        } finally {
+            
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+           
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+       
+        return listaEndereco;
+    }
+
 
    
-    public static List<Cliente> listar()
+    public static List<Cliente> listarCliente()
             throws SQLException, Exception {
         
         String sql = "SELECT * FROM cliente WHERE (enabled=?)";
         
         List<Cliente> listaClientes = null;
+        
         
         Connection connection = null;
         
@@ -259,7 +318,7 @@ public class DaoCliente {
     }
 
    
-    public static List<Cliente> procurar(String valor)
+    public static List<Cliente> procurarCliente(String valor)
             throws SQLException, Exception {
         
         String sql = "SELECT * FROM cliente WHERE ((UPPER(nome) LIKE UPPER(?) "
@@ -321,11 +380,72 @@ public class DaoCliente {
         
         return listaClientes;
     }
+     public static List<Endereco> procurarEndereco(String valor)
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM cliente WHERE ((UPPER(nome) LIKE UPPER(?) "
+                + "OR UPPER(cliente.cpf) LIKE UPPER(?)) AND enabled=?)";
+        
+        List<Endereco> listaEndereco = null;
+       
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+           
+            connection = ConnectionUtils.getConnection();
+           
+            preparedStatement = connection.prepareStatement(sql);
+            
+            preparedStatement.setString(1, "%" + valor + "%");
+            preparedStatement.setString(2, "%" + valor + "%");
+            preparedStatement.setBoolean(3, true);
 
+            result = preparedStatement.executeQuery();
+
+            
+            while (result.next()) {
+                
+                if (listaEndereco == null) {
+                    listaEndereco = new ArrayList<Endereco>();
+                }
+               
+                Endereco endereco = new Endereco();
+                cliente.setId(result.getInt("id_cliente"));
+                cliente.setNome(result.getString("nome_cliente"));
+                cliente.setSexo(result.getString("sexo_cliente"));
+                cliente.setRg(result.getString("rg_cliente"));
+                cliente.setCpf(result.getString("cpf_cliente"));
+                cliente.setDataNasc(result.getTime("data_nasc_cliente"));;
+                cliente.setEmail(result.getString("email_cliente"));
+                cliente.setCelular(result.getString("celular_cliente"));
+                cliente.setTelefone(result.getString("telefone_cliente"));
+               
+                listaEndereco.add(endereco);
+            }
+        } finally {
+            
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+           
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+           
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        
+        return  listaEndereco;
+    }
    
     public static Cliente obter(Integer id) throws SQLException{
         
-        String sql = "SELECT * FROM cliente WHERE (id_cliente=? AND enabled=?)";
+        String sql = "SELECT * FROM cliente.myb WHERE (id_cliente=?)";
 
        
         Connection connection = null;
@@ -338,7 +458,7 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
            
             preparedStatement = connection.prepareStatement(sql);
-            
+          
             preparedStatement.setInt(1, id);
             preparedStatement.setBoolean(2, true);
 
