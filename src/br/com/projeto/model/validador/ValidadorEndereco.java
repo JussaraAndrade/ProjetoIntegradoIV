@@ -31,20 +31,21 @@ public class ValidadorEndereco {
                     + "o número residencial");
         
         }
-        if (endereco.getComplemento()== null) {
+        if (endereco.getComplemento().trim().equals("")) {
             throw new ClienteException("É necessário informar "
                     + "o complemento");
         }    
-        if (endereco.getBairro()== null) {
+        if (endereco.getBairro().trim().equals("")) {
             throw new ClienteException("É necessário informar "
                     + "o bairro");    
         
         }
-        if (endereco.getUf()== null) {
-            throw new ClienteException("É necessário informar "
-                    + "o estado");
+        if (endereco.getUf()== null || "-".equals(endereco.getUf())) {
+            throw new ClienteException("É necessário informar o "
+                    + "Uf ");
+        
         }    
-        if (endereco.getCidade()== null) {
+        if (endereco.getCidade().trim().equals("")) {
             throw new ClienteException("É necessário informar "
                     + "a cidade");
         
