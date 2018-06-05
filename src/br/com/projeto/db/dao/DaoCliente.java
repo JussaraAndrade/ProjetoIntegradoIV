@@ -193,10 +193,10 @@ public class DaoCliente {
             }
         }
     }
-     public static List<Cliente> listarEndereco()
+     public static List<Endereco> listarEndereco()
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM cliente WHERE (enabled=?)";
+        String sql = "SELECT * FROM end_cliente WHERE (enabled=?)";
        
         List<Endereco> listaEndereco = null;
         
@@ -411,18 +411,25 @@ public class DaoCliente {
                 if (listaEndereco == null) {
                     listaEndereco = new ArrayList<Endereco>();
                 }
+                
+//                    private Integer id;
+//    private String rua;
+//    private String numero;
+//    private String bairro;
+//    private String cidade;
+//    private String uf;
+//    private String cep;
+//    private String complemento;
                
                 Endereco endereco = new Endereco();
-                cliente.setId(result.getInt("id_cliente"));
-                cliente.setNome(result.getString("nome_cliente"));
-                cliente.setSexo(result.getString("sexo_cliente"));
-                cliente.setRg(result.getString("rg_cliente"));
-                cliente.setCpf(result.getString("cpf_cliente"));
-                cliente.setDataNasc(result.getTime("data_nasc_cliente"));;
-                cliente.setEmail(result.getString("email_cliente"));
-                cliente.setCelular(result.getString("celular_cliente"));
-                cliente.setTelefone(result.getString("telefone_cliente"));
-               
+                endereco.setId(result.getInt("id_endereco"));
+                endereco.setRua(result.getString("rua_endereco"));
+                endereco.setNumero(result.getString("numero_endereco"));
+                endereco.setBairro(result.getString("bairro_endereco"));
+                endereco.setCidade(result.getString("cidade_endereco"));
+                endereco.setUf(result.getString("uf_endereco"));
+                endereco.setCep(result.getString("cep_endereco"));
+                endereco.setComplemento(result.getString("complemento_endereco"));
                 listaEndereco.add(endereco);
             }
         } finally {

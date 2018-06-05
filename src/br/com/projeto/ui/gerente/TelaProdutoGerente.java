@@ -5,27 +5,25 @@
  */
 package br.com.projeto.ui.gerente;
 
-
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.service.cliente.ServicoCliente;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author Jussara Andrade
  */
 public class TelaProdutoGerente extends javax.swing.JFrame {
-      Produto produto = new Produto();
-     
+
+    Produto produto = new Produto();
 
     /**
      * Creates new form Produtos
      */
     public TelaProdutoGerente() {
         initComponents();
-         setLocationRelativeTo(null);
-          setResizable(false);
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -135,7 +133,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                     .addGroup(DesktopLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(DesktopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +142,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNome)
                             .addComponent(lblDescricao))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 132, Short.MAX_VALUE))
                     .addGroup(DesktopLayout.createSequentialGroup()
                         .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCodigoBarra)
@@ -236,23 +234,21 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        
-       
+
         produto.setNome(txtNome.getText());
         produto.setDepartamento((String) jComboBoxGenero.getSelectedItem());
         produto.setTamanho((String) jComboBoxTamanho.getSelectedItem());
         produto.setCor((String) jComboBoxCor.getSelectedItem());
         produto.setPreco(txtPreco.getText());
         produto.setDescricao((String) txtDescricao.getText());
-        produto.setQuantidade(txtQuantidade.getText());
+        produto.setQuantidade((String) txtQuantidade.getText());
         produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
-       
-        //se ele tá string converta para int, se tá int converta para string
         
-      
+
+        //se ele tá string converta para int, se tá int converta para string
         try {
-            
-           ServicoCliente.getInstance().cadastrarProduto(produto);
+
+            ServicoCliente.getInstance().cadastrarProduto(produto);
         } catch (Exception e) {
             //Exibe mensagens de erro para o usuário
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
@@ -264,27 +260,26 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         //Então exibe uma mensagem de sucesso para o usuário
         JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
                 "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
-    
+
         txtNome.setText("");
-        jComboBoxGenero.setSelectedIndex(0);    
+        jComboBoxGenero.setSelectedIndex(0);
         jComboBoxTamanho.setSelectedIndex(0);
         jComboBoxCor.setSelectedIndex(0);
         txtPreco.setText("");
         txtCodigoBarra.setText("");
         txtQuantidade.setText("");
         txtDescricao.setText("");
-        
+
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGeneroActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSalvar;

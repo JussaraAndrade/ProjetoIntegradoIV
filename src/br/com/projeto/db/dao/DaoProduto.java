@@ -10,7 +10,8 @@ import br.com.projeto.model.produto.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 /**
  *
@@ -42,10 +43,8 @@ public class DaoProduto {
             preparedStatement.setString(5, produto.getDescricao());
             preparedStatement.setString(6, produto.getPreco());
             preparedStatement.setInt(7, Integer.parseInt(produto.getQuantidade()));
-            Timestamp t = new Timestamp(produto.getData().getTime());
-            preparedStatement.setTimestamp(8, t);
-            
-           
+            preparedStatement.setDate(8, new Date(System.currentTimeMillis()));
+                       
             preparedStatement.execute();
             
             
