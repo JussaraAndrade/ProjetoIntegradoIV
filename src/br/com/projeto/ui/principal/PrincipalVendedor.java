@@ -2,6 +2,7 @@ package br.com.projeto.ui.principal;
 
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
+import br.com.projeto.ui.login.TelaLogin;
 import br.com.projeto.ui.venda.TelaClienteVenda;
 
 
@@ -15,6 +16,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private TelaCadastrarCliente cadastrar = null;
     private TelaConsultaCliente consultar = null;
     private TelaClienteVenda vendas = null;
+    private TelaLogin login = null;
     /**
      * Creates new form CadastroCliente
      */
@@ -177,7 +179,13 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        System.exit(0);
+        if (login == null || !login.isDisplayable()) {
+                 login = new TelaLogin();
+                 login.setVisible(true);
+        }
+        login.toFront();
+        dispose();
+           
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed

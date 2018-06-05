@@ -8,6 +8,7 @@ package br.com.projeto.ui.principal;
 
 import br.com.projeto.ui.gerente.TelaConsultaGerente;
 import br.com.projeto.ui.gerente.TelaProdutoGerente;
+import br.com.projeto.ui.login.TelaLogin;
 
 /**
  *
@@ -17,6 +18,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
     
     private TelaConsultaGerente consulta = null;
     private TelaProdutoGerente produtos = null;
+    private TelaLogin login = null;
     /**
      * Creates new form AdmGerente
      */
@@ -149,7 +151,14 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        System.exit(0);
+         if (login == null || !login.isDisplayable()) {
+                 login = new TelaLogin();
+                 login.setVisible(true);
+        }
+        login.toFront();
+        dispose();
+           
+    
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
