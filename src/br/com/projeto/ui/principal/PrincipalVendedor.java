@@ -4,6 +4,8 @@ import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.login.TelaLogin;
 import br.com.projeto.ui.venda.TelaClienteVenda;
+import java.awt.Dimension;
+import javax.swing.JInternalFrame;
 
 
 
@@ -53,6 +55,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         menuCadastrarCliente = new javax.swing.JMenuItem();
@@ -66,6 +69,10 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/teste4.jpg"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(2560, 1600));
+        jLabel2.setMinimumSize(new java.awt.Dimension(2560, 1600));
 
         jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastrar Cliente.png"))); // NOI18N
         jMenuCadastro.setText("Cadastro");
@@ -143,11 +150,15 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,10 +205,11 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         
         consultar = new TelaConsultaCliente();
         consultar.setVisible(true);
-        
+      
        }
          consultar.toFront();
     
+
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed
 
     /**
@@ -251,6 +263,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;

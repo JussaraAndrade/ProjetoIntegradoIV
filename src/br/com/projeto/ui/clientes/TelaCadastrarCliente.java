@@ -10,6 +10,7 @@ import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
 import java.util.Date;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -425,7 +426,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-       
         
         cli.setNome(txtNome.getText());  
         cli.setRg(txtRg.getText());     
