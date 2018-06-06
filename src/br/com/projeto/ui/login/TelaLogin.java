@@ -50,6 +50,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -188,7 +189,22 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
- 
+            if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")){
+            JOptionPane.showMessageDialog(null, "Bem-Vindo Vendedor");
+            PrincipalVendedor vendedor = new PrincipalVendedor();
+            vendedor.setVisible(true);
+            dispose();
+            
+        } else if(jTextFieldLogin.getText().equals("adm") && jPasswordField2.getText().equals("adm")){
+            JOptionPane.showMessageDialog(null, "Bem-Vindo Gerente");    
+           
+            PrincipalGerente Gerentecliente = new PrincipalGerente();
+            Gerentecliente.setVisible(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Acesso negado!");
+        }
+                                             
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -218,9 +234,9 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField2KeyPressed
 
     private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
-           if(evt.getKeyCode() == evt.VK_ENTER){
+        if(evt.getKeyCode() == evt.VK_ENTER){
         
-             if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")){
+        if(jTextFieldLogin.getText().equals("usuario") && jPasswordField2.getText().equals("usuario")){
             JOptionPane.showMessageDialog(null, "Bem-Vindo Vendedor");
             PrincipalVendedor vendedor = new PrincipalVendedor();
             vendedor.setVisible(true);

@@ -100,6 +100,8 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         ButtonSalvar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setUndecorated(true);
+
         jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Atualizar Dados"));
 
         lblNome.setText("Nome:");

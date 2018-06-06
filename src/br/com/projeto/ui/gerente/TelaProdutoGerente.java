@@ -73,6 +73,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         Desktop.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Produtos"));
 

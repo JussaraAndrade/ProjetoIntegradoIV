@@ -86,6 +86,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
