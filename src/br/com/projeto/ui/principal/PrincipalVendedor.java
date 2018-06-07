@@ -70,7 +70,6 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/teste4.jpg"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(2560, 1600));
         jLabel2.setMinimumSize(new java.awt.Dimension(2560, 1600));
 
