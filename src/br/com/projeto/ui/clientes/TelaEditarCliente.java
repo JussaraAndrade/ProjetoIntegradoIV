@@ -7,7 +7,6 @@ package br.com.projeto.ui.clientes;
 
 
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,8 +23,7 @@ import javax.swing.JOptionPane;
 public class TelaEditarCliente extends javax.swing.JFrame {
 
     Cliente cliente = new Cliente();
-    Endereco endereco = new Endereco();
-
+    
     public TelaEditarCliente(){
         initComponents();
        setLocationRelativeTo(null);  
@@ -41,14 +39,7 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         this.cliente = cliente;
         
     }
-     public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-        
-    }
+    
   
 
     @SuppressWarnings("unchecked")
@@ -451,13 +442,13 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         
         
         
-        endereco.setRua(txtEndereco.getText());
-        endereco.setNumero(txtNumero.getText());
-        endereco.setComplemento(txtComplemento.getText());
-        endereco.setBairro(txtBairro.getText());
-        endereco.setUf((String) jComboBoxUf.getSelectedItem());
-        endereco.setCidade(txtCidade.getText());
-        endereco.setCep(txtCep.getText());
+        cliente.setRua(txtEndereco.getText());
+        cliente.setNumero(txtNumero.getText());
+        cliente.setComplemento(txtComplemento.getText());
+        cliente.setBairro(txtBairro.getText());
+        cliente.setUf((String) jComboBoxUf.getSelectedItem());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setCep(txtCep.getText());
                 
      
         String cpf = txtCpf.getText();
@@ -479,7 +470,7 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         
         try {
             
-            ServicoCliente.getInstance().atualizarCliente(cliente, endereco);
+            ServicoCliente.getInstance().atualizarCliente(cliente);
         }
         catch(Exception e) {
             

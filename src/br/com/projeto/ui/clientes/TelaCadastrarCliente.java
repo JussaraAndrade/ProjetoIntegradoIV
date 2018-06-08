@@ -7,7 +7,6 @@ package br.com.projeto.ui.clientes;
 
 
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.service.cliente.ServicoCliente;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastrarCliente extends javax.swing.JFrame {
         Cliente cli = new Cliente();
-        Endereco endereco = new Endereco();
+       
 
     /**
      * Creates new form Cliente
@@ -84,7 +83,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         ButtonSalvar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -383,30 +381,20 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Fechar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jPanelIdentificação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanelLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -415,11 +403,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addComponent(jPanelIdentificação, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -442,13 +428,13 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         
         
         
-        endereco.setRua(txtEndereco.getText());
-        endereco.setNumero(txtNumero.getText());
-        endereco.setComplemento(txtComplemento.getText());
-        endereco.setBairro(txtBairro.getText());
-        endereco.setUf((String) jComboBoxUf.getSelectedItem());
-        endereco.setCidade(txtCidade.getText());
-        endereco.setCep(txtCep.getText());
+        cli.setRua(txtEndereco.getText());
+        cli.setNumero(txtNumero.getText());
+        cli.setComplemento(txtComplemento.getText());
+        cli.setBairro(txtBairro.getText());
+        cli.setUf((String) jComboBoxUf.getSelectedItem());
+        cli.setCidade(txtCidade.getText());
+        cli.setCep(txtCep.getText());
                 
      
         String cpf = txtcpf.getText();
@@ -472,7 +458,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
         try {
             
-            ServicoCliente.getInstance().cadastrarCliente(cli, endereco);
+            ServicoCliente.getInstance().cadastrarCliente(cli);
         } catch (Exception e) {
           
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
@@ -502,10 +488,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
        
     }//GEN-LAST:event_txtTelefoneActionPerformed
@@ -515,7 +497,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JComboBox<String> jComboBoxUf;
     private javax.swing.JLabel jLabel1;

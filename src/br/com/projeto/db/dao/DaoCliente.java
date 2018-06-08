@@ -7,7 +7,7 @@ package br.com.projeto.db.dao;
 
 import br.com.projeto.db.utils.ConnectionUtils;
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.model.clientes.Endereco;
+import br.com.projeto.model.produto.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class DaoCliente {
 
-    public static void inserir(Cliente cliente, Endereco endereco)
+    public static void inserir(Cliente cliente)
             throws SQLException, Exception  {
        
         
@@ -65,13 +65,13 @@ public class DaoCliente {
             
             
             preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, endereco.getRua());
-            preparedStatement.setString(2, endereco.getNumero());
-            preparedStatement.setString(3, endereco.getBairro());
-            preparedStatement.setString(4, endereco.getCidade());
-            preparedStatement.setString(5, endereco.getUf());
-            preparedStatement.setLong(6, Long.parseLong(endereco.getCep().replaceAll("-", "")));
-            preparedStatement.setString(7, endereco.getComplemento());
+            preparedStatement.setString(1, cliente.getRua());
+            preparedStatement.setString(2, cliente.getNumero());
+            preparedStatement.setString(3, cliente.getBairro());
+            preparedStatement.setString(4, cliente.getCidade());
+            preparedStatement.setString(5, cliente.getUf());
+            preparedStatement.setLong(6, Long.parseLong(cliente.getCep().replaceAll("-", "")));
+            preparedStatement.setString(7, cliente.getComplemento());
             preparedStatement.setInt(8, idCliente);
             
             preparedStatement.execute();
@@ -97,13 +97,13 @@ public class DaoCliente {
     
     
     
-     public static void atualizar(Cliente cliente, Endereco endereco)
+     public static void atualizar(Cliente cliente)
             throws SQLException, Exception {
         
        String sql =  "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
                 + "WHERE(id_cliente=?)";
         
-        String sql2 = "UPDATE mydb.end_cliente (rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
+        String sql2 = "UPDATE mydb.end SET rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
                 + "WHERE(cliente_id_cliente=?);";
               
         
@@ -139,13 +139,13 @@ public class DaoCliente {
             
             
             preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, endereco.getRua());
-            preparedStatement.setString(2, endereco.getNumero());
-            preparedStatement.setString(3, endereco.getBairro());
-            preparedStatement.setString(4, endereco.getCidade());
-            preparedStatement.setString(5, endereco.getUf());
-            preparedStatement.setLong(6, Long.parseLong(endereco.getCep().replaceAll("-", "")));
-            preparedStatement.setString(7, endereco.getComplemento());
+            preparedStatement.setString(1, cliente.getRua());
+            preparedStatement.setString(2, cliente.getNumero());
+            preparedStatement.setString(3, cliente.getBairro());
+            preparedStatement.setString(4, cliente.getCidade());
+            preparedStatement.setString(5, cliente.getUf());
+            preparedStatement.setLong(6, Long.parseLong(cliente.getCep().replaceAll("-", "")));
+            preparedStatement.setString(7, cliente.getComplemento());
             preparedStatement.setInt(8, idCliente);
             
              preparedStatement.execute();
@@ -193,72 +193,12 @@ public class DaoCliente {
             }
         }
     }
-     public static List<Endereco> listarEndereco()
-            throws SQLException, Exception {
-        
-        String sql = "SELECT * FROM end_cliente WHERE (enabled=?)";
-       
-        List<Endereco> listaEndereco = null;
-        
-        Connection connection = null;
-        
-        PreparedStatement preparedStatement = null;
-        
-        ResultSet result = null;
-        try {
-           
-            connection = ConnectionUtils.getConnection();
-           
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setBoolean(1, true);
-
-           
-            result = preparedStatement.executeQuery();
-
-            
-            while (result.next()) {
-                
-                if (listaEndereco == null) {
-                    listaEndereco = new ArrayList<Endereco>();
-                }
-                Endereco endereco = new Endereco();
-                
-                
-                endereco.setRua(result.getString(""));
-                endereco.setNumero(result.getString(""));
-                endereco.setBairro(result.getString(""));
-                endereco.setCidade(result.getString(""));
-                endereco.setUf(result.getString(""));
-                endereco.setCep(result.getString(""));
-                endereco.setComplemento(result.getString(""));
-                endereco.setId(result.getInt(""));
-                
-                listaEndereco.add(endereco);
-            }
-        } finally {
-            
-            if (result != null && !result.isClosed()) {
-                result.close();
-            }
-           
-            if (preparedStatement != null && !preparedStatement.isClosed()) {
-                preparedStatement.close();
-            }
-            
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        }
-       
-        return listaEndereco;
-    }
-
-
-   
+ 
     public static List<Cliente> listarCliente()
             throws SQLException, Exception {
         
         String sql = "SELECT * FROM cliente WHERE (enabled=?)";
+        String sql2 = "SELECT * FROM end_cliente WHERE (enabled=?)";
         
         List<Cliente> listaClientes = null;
         
@@ -274,6 +214,8 @@ public class DaoCliente {
            
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setBoolean(1, true);
+            
+        
 
            
             result = preparedStatement.executeQuery();
@@ -294,7 +236,15 @@ public class DaoCliente {
                 cliente.setDataNasc(result.getTime("data_nasc_cliente"));
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
-                cliente.setTelefone(result.getString("telefone_cliente"));
+                cliente.setTelefone(result.getString("telefone_cliente"));  
+                cliente.setRua(result.getString("rua_cliente"));
+                cliente.setNumero(result.getString("numero_cliente"));
+                cliente.setBairro(result.getString("bairro_cliente"));
+                cliente.setCidade(result.getString("cidade_cliente"));
+                cliente.setUf(result.getString("uf_cliente"));
+                cliente.setCep(result.getString("cep_cliente"));
+                cliente.setComplemento(result.getString("complemento_cliente"));
+               
                
                 
                 listaClientes.add(cliente);
@@ -316,15 +266,77 @@ public class DaoCliente {
        
         return listaClientes;
     }
-
-   
-    public static List<Cliente> procurarCliente(String valor)
+        public static List<Produto> listarProduto()
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM cliente WHERE ((UPPER(nome) LIKE UPPER(?) "
-                + "OR UPPER(cliente.cpf) LIKE UPPER(?)) AND enabled=?)";
+        String sql = "SELECT * FROM produto WHERE (enabled=?)";
         
-        List<Cliente> listaClientes = null;
+        List<Produto> listaProduto = null;
+        
+        
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+           
+            connection = ConnectionUtils.getConnection();
+           
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setBoolean(1, true);
+            
+        
+
+           
+            result = preparedStatement.executeQuery();
+
+            
+            while (result.next()) {
+                
+                if (listaProduto == null) {
+                    listaProduto = new ArrayList<Produto>();
+                }
+                
+                Produto produto = new Produto();
+                
+                produto.setNome(result.getString("nome_produto"));
+                produto.setDepartamento(result.getString("departamento_produto"));
+                produto.setCor(result.getString("cor"));
+                produto.setDescricao(result.getString("descricao_produto"));
+                produto.setPreco(result.getString("preco_produto"));
+                produto.setQuantidade(result.getString("quant_estoque_produto"));
+                produto.setCodigo(result.getInt("data_cadastro_produto"));
+               
+               
+                
+                listaProduto.add(produto);
+            }
+        } finally {
+            
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+           
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+       
+        return listaProduto;
+    }
+   
+    public static List<Produto> procurarProduto(String nome)
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM mydb.produto WHERE nome_produto like ?";
+        
+        
+        List<Produto> listaProduto = null;
        
         Connection connection = null;
         
@@ -336,32 +348,91 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
            
             preparedStatement = connection.prepareStatement(sql);
-            
-            preparedStatement.setString(1, "%" + valor + "%");
-            preparedStatement.setString(2, "%" + valor + "%");
-            preparedStatement.setBoolean(3, true);
-
+           
+            preparedStatement.setString(1, "%" + nome + "%");
+        
             result = preparedStatement.executeQuery();
-
             
+           
             while (result.next()) {
                 
-                if (listaClientes == null) {
-                    listaClientes = new ArrayList<Cliente>();
+                if (listaProduto == null) {
+                    listaProduto = new ArrayList<Produto>();
                 }
-               
+                Produto produto = new Produto();
+                
+                produto.setNome(result.getString("nome_produto"));
+                produto.setDepartamento(result.getString("departamento_produto"));
+                produto.setCor(result.getString("cor"));
+                produto.setDescricao(result.getString("descricao_produto"));
+                produto.setPreco(result.getString("preco_produto"));
+                produto.setQuantidade(result.getString("quant_estoque_produto"));
+                produto.setCodigo(result.getInt("data_cadastro_produto"));
+                
+                
+                listaProduto.add(produto);
+            }
+        } finally {
+            
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+           
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+           
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        
+        return listaProduto;
+    
+    }
+    
+    public static List<Cliente> procurarCliente(String nome)
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM mydb.cliente WHERE nome_cliente like ?";
+        
+        
+        List<Cliente> listaCliente = null;
+       
+        Connection connection = null;
+        
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+           
+            connection = ConnectionUtils.getConnection();
+           
+            preparedStatement = connection.prepareStatement(sql);
+           
+            preparedStatement.setString(1, "%" + nome + "%");
+        
+            result = preparedStatement.executeQuery();
+            
+           
+            while (result.next()) {
+                
+                if (listaCliente == null) {
+                    listaCliente = new ArrayList<Cliente>();
+                }
                 Cliente cliente = new Cliente();
-                cliente.setId(result.getInt("id_cliente"));
+                
+                 cliente.setId(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
                 cliente.setCpf(result.getString("cpf_cliente"));
-                cliente.setDataNasc(result.getTime("data_nasc_cliente"));;
+                cliente.setDataNasc(result.getTime("data_nasc_cliente"));
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
                
-                listaClientes.add(cliente);
+                listaCliente.add(cliente);
             }
         } finally {
             
@@ -378,81 +449,15 @@ public class DaoCliente {
             }
         }
         
-        return listaClientes;
+        return listaCliente;
+    
     }
-     public static List<Endereco> procurarEndereco(String valor)
-            throws SQLException, Exception {
+  
+  
+    public static Cliente obterCliente(Integer id) throws SQLException{
         
-        String sql = "SELECT * FROM cliente WHERE ((UPPER(nome) LIKE UPPER(?) "
-                + "OR UPPER(cliente.cpf) LIKE UPPER(?)) AND enabled=?)";
-        
-        List<Endereco> listaEndereco = null;
-       
-        Connection connection = null;
-        
-        PreparedStatement preparedStatement = null;
-        
-        ResultSet result = null;
-        try {
-           
-            connection = ConnectionUtils.getConnection();
-           
-            preparedStatement = connection.prepareStatement(sql);
-            
-            preparedStatement.setString(1, "%" + valor + "%");
-            preparedStatement.setString(2, "%" + valor + "%");
-            preparedStatement.setBoolean(3, true);
-
-            result = preparedStatement.executeQuery();
-
-            
-            while (result.next()) {
-                
-                if (listaEndereco == null) {
-                    listaEndereco = new ArrayList<Endereco>();
-                }
-                
-//                    private Integer id;
-//    private String rua;
-//    private String numero;
-//    private String bairro;
-//    private String cidade;
-//    private String uf;
-//    private String cep;
-//    private String complemento;
-               
-                Endereco endereco = new Endereco();
-                endereco.setId(result.getInt("id_endereco"));
-                endereco.setRua(result.getString("rua_endereco"));
-                endereco.setNumero(result.getString("numero_endereco"));
-                endereco.setBairro(result.getString("bairro_endereco"));
-                endereco.setCidade(result.getString("cidade_endereco"));
-                endereco.setUf(result.getString("uf_endereco"));
-                endereco.setCep(result.getString("cep_endereco"));
-                endereco.setComplemento(result.getString("complemento_endereco"));
-                listaEndereco.add(endereco);
-            }
-        } finally {
-            
-            if (result != null && !result.isClosed()) {
-                result.close();
-            }
-           
-            if (preparedStatement != null && !preparedStatement.isClosed()) {
-                preparedStatement.close();
-            }
-           
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        }
-        
-        return  listaEndereco;
-    }
-   
-    public static Cliente obter(Integer id) throws SQLException{
-        
-        String sql = "SELECT * FROM cliente.myb WHERE (id_cliente=?)";
+        String sql = "SELECT * FROM mydb.cliente WHERE (id_cliente=?)";
+        String sql2 = "SELECT * FROM mydb.end_cliente WHERE (cliente_id_cliente=?)";
 
        
         Connection connection = null;
@@ -468,6 +473,13 @@ public class DaoCliente {
           
             preparedStatement.setInt(1, id);
             preparedStatement.setBoolean(2, true);
+            
+            preparedStatement = connection.prepareStatement(sql2);
+          
+            preparedStatement.setInt(1, id);
+            preparedStatement.setBoolean(2, true);
+            
+         
 
             
             result = preparedStatement.executeQuery();
@@ -485,6 +497,12 @@ public class DaoCliente {
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
+                cliente.setRua(result.getString("rua_cliente"));
+                cliente.setNumero(result.getString("numero_cliente"));
+                cliente.setCidade(result.getString("cidade_cliente"));
+                cliente.setUf(result.getString("uf_cliente"));
+                cliente.setCep(result.getString("cep_cliente"));
+                cliente.setComplemento(result.getString("complemento_cliente"));   
 
               
                 return cliente;
@@ -508,12 +526,68 @@ public class DaoCliente {
         return null;
     }
 
-    
 
-  
+
+  public static Produto obterProduto(Integer id) throws SQLException{
+        
+        String sql = "SELECT * FROM mydb.produto WHERE (id_produto=?)";
+
+       
+        Connection connection = null;
+      
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+           
+            connection = ConnectionUtils.getConnection();
+           
+            preparedStatement = connection.prepareStatement(sql);
+          
+            preparedStatement.setInt(1, id);
+            preparedStatement.setBoolean(2, true);
+            
+           
+            result = preparedStatement.executeQuery();
+
+           
+            if (result.next()) {
+              
+               Produto produto = new Produto();
+                produto.setNome(result.getString("nome_produto"));
+                produto.setDepartamento(result.getString("departamento_produto"));
+                produto.setCor(result.getString("cor"));
+                produto.setDescricao(result.getString("descricao_produto"));
+                produto.setPreco(result.getString("preco_produto"));
+                produto.setQuantidade(result.getString("quant_estoque_produto"));
+                produto.setCodigo(result.getInt("data_cadastro_produto"));
+
+              
+                return produto;
+            }
+        } finally {
+           
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+           
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+           
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+
+        
+        return null;
+    }
 
 
 }
+   
+
    
 
        

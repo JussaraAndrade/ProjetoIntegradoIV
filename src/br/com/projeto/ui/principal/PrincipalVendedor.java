@@ -2,6 +2,8 @@ package br.com.projeto.ui.principal;
 
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
+import br.com.projeto.ui.gerente.TelaConsultaGerente;
+import br.com.projeto.ui.gerente.TelaProdutoGerente;
 import br.com.projeto.ui.login.TelaLogin;
 import br.com.projeto.ui.venda.TelaClienteVenda;
 import java.awt.Dimension;
@@ -18,6 +20,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private TelaCadastrarCliente cadastrar = null;
     private TelaConsultaCliente consultar = null;
     private TelaClienteVenda vendas = null;
+    private TelaConsultaGerente produto = null;
     private TelaLogin login = null;
     /**
      * Creates new form CadastroCliente
@@ -63,6 +66,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuConsulta = new javax.swing.JMenu();
         jMenuItemConsulta = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -122,6 +126,15 @@ public class PrincipalVendedor extends javax.swing.JFrame {
             }
         });
         jMenuConsulta.add(jMenuItemConsulta);
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Arquivo Caixa.png"))); // NOI18N
+        jMenuItem4.setText("Produto");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenuConsulta.add(jMenuItem4);
 
         jMenuBar1.add(jMenuConsulta);
 
@@ -211,6 +224,17 @@ public class PrincipalVendedor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        //tela procurar produto 
+        if(produto == null || !produto.isDisplayable()){
+        
+        produto = new TelaConsultaGerente();
+        produto.setVisible(true);
+      
+       }
+         produto.toFront();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +294,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemConsulta;
     private javax.swing.JMenu jMenuVenda;
     private javax.swing.JMenuItem menuCadastrarCliente;

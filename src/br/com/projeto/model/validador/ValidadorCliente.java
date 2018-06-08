@@ -53,7 +53,42 @@ public class ValidadorCliente {
             throw new ClienteException("É necessário informar "
                     + "um e-mail do cliente");
         }
-    
+         if (cliente == null) {
+            throw new ClienteException("Não foi informado o endereço do cliente");
+        }
+        if (cliente.getRua()== null || "".equals(cliente.getRua())) {
+           throw new ClienteException("É necessário informar "
+                    + "o endereço");
+        }
+        if (cliente.getNumero()== null
+                || "".equals(cliente.getNumero())) {
+            throw new ClienteException("É necessário informar "
+                    + "o número residencial");
+        
+        }
+        if (cliente.getComplemento().trim().equals("")) {
+            throw new ClienteException("É necessário informar "
+                    + "o complemento");
+        }    
+        if (cliente.getBairro().trim().equals("")) {
+            throw new ClienteException("É necessário informar "
+                    + "o bairro");    
+        
+        }
+        if (cliente.getUf()== null || "-".equals(cliente.getUf())) {
+            throw new ClienteException("É necessário informar o "
+                    + "Uf ");
+        
+        }    
+        if (cliente.getCidade().trim().equals("")) {
+            throw new ClienteException("É necessário informar "
+                    + "a cidade");
+        
+        }
+        if (cliente.getCep().trim().length() != 9) {
+            throw new ClienteException("É necessário informar "
+                    + "o cep");
+        }
     }
 }
 

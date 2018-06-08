@@ -5,8 +5,15 @@
  */
 package br.com.projeto.ui.gerente;
 
+import br.com.projeto.exceptions.ClienteException;
+import br.com.projeto.model.clientes.Cliente;
+import br.com.projeto.model.produto.Produto;
+import br.com.projeto.service.cliente.ServicoCliente;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-import br.com.projeto.ui.venda.TelaClienteVenda;
 
 /**
  *
@@ -14,6 +21,7 @@ import br.com.projeto.ui.venda.TelaClienteVenda;
  */
 public class TelaConsultaGerente extends javax.swing.JFrame {
     private TelaEditarGerente editarGerente = null;
+    String ultimaPesquisa = null;
 
     /**
      * Creates new form Pesquisa
@@ -22,6 +30,10 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);  
         setResizable(false);
+        
+        tabelaProduto.getColumnModel().getColumn(0).setMinWidth(0);
+        tabelaProduto.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabelaProduto.getColumnModel().getColumn(0).setWidth(0);
     }
 
     /**
@@ -36,10 +48,10 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtPesquisa = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaProduto = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -49,16 +61,21 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
         jLabel1.setText("Pesquisar:");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Rg", "Cpf ", "Telefone"
+                "ID", "Departamento", "Tamanho", "Cor", "Preço", "Código de barra", "Estoque", "Descrição"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaProduto);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -68,13 +85,13 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +100,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,6 +181,80 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
                
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+           //Inicializa o sucesso da pesquisa com valor negativo, indicando que
+        //a pesquisa de clientes não obteve resultados (situação padrão)
+        boolean resultSearch = false;
+        
+        //Grava o campo de pesquisa como a última pesquisa válida. O valor
+        //de última pesquisa válida é utilizado na atualização da lista
+        ultimaPesquisa = txtPesquisa.getText();
+
+        try {
+            //Solicita a atualização da lista com o novo critério
+            //de pesquisa (ultimaPesquisa)
+            resultSearch = refreshListProduto();
+        } catch (Exception e) {
+            //Exibe mensagens de erro na fonte de dados e para o listener
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                    "Falha ao obter lista", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Exibe mensagem de erro caso a pesquisa não tenha resultados
+        if (!resultSearch) {
+            JOptionPane.showMessageDialog(rootPane, "A pesquisa não retornou resultados ",
+                    "Sem resultados", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                               
+
+    //Atualiza a lista de clientes. Pode ser chamado por outras telas
+    public boolean refreshListProduto() throws ClienteException, Exception {
+        //Realiza a pesquisa de clientes com o último valor de pesquisa
+        //para atualizar a lista
+        List<Produto> resultado = ServicoCliente.getInstance().procurarProduto(ultimaPesquisa);
+        
+        
+
+        //Obtém o elemento representante do conteúdo da tabela na tela
+        DefaultTableModel modelDados = (DefaultTableModel) tabelaProduto.getModel();
+        //Indica que a tabela deve excluir todos seus elementos
+        //Isto limpará a lista, mesmo que a pesquisa não tenha sucesso
+        modelDados.setRowCount(0);  
+        //Verifica se não existiram resultados. Caso afirmativo, encerra a
+        //atualização e indica ao elemento acionador o não sucesso da pesquisa
+        if (resultado == null || resultado.size() <= 0) {
+            return false;
+        }
+
+        //Percorre a lista de resultados e os adiciona na tabela
+        for (int i = 0; i < resultado.size(); i++) {
+            Produto produto = resultado.get(i);
+    
+        
+            if (produto != null) {
+                Object[] row = new Object[17];
+                row[0] = produto.getCodigo();
+                row[1] = produto.getNome();
+                row[2] = produto.getDepartamento();
+                row[4] = produto.getTamanho();
+                row[5] = produto.getCor();
+                row[6] = produto.getPreco();
+                row[7] = produto.getQuantidade();
+                row[8] = produto.getDescricao();
+               
+               
+                modelDados.addRow(row);
+            }
+        }
+        
+       
+        return true;
+                                         
+
+                                            
+    }//GEN-LAST:event_jButton1ActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -175,7 +266,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabelaProduto;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

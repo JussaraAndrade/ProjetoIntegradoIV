@@ -242,7 +242,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         produto.setPreco(txtPreco.getText());
         produto.setDescricao((String) txtDescricao.getText());
         produto.setQuantidade((String) txtQuantidade.getText());
-        produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
+//        produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
         
 
         //se ele tá string converta para int, se tá int converta para string

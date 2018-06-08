@@ -10,10 +10,8 @@ import br.com.projeto.db.dao.DaoProduto;
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.exceptions.DataSourceException;
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.model.clientes.Endereco;
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.model.validador.ValidadorCliente;
-import br.com.projeto.model.validador.ValidadorEndereco;
 import br.com.projeto.model.validador.ValidadorProduto;
 import java.util.List;
 
@@ -33,17 +31,16 @@ public class ServicoCliente {
         return INSTANCE;
     }
     
-    public void cadastrarCliente(Cliente cliente, Endereco endereco)
+    public void cadastrarCliente(Cliente cliente)
             throws ClienteException, DataSourceException {
         
 
         ValidadorCliente.validar(cliente);
-        ValidadorEndereco.validar(endereco);
       
 
         try {
             
-            DaoCliente.inserir(cliente, endereco);
+            DaoCliente.inserir(cliente);
             
         } catch (Exception e) {
             
@@ -70,7 +67,7 @@ public class ServicoCliente {
     
     
     //Atualiza um cliente na fonte de dados
-    public void atualizarCliente(Cliente cliente, Endereco endereco)
+    public void atualizarCliente(Cliente cliente)
             throws ClienteException, DataSourceException {
         
         //Chama o validador para verificar o cliente
@@ -78,7 +75,7 @@ public class ServicoCliente {
 
         try {
             //Realiza a chamada de atualização na fonte de dados
-            DaoCliente.atualizar(cliente, endereco);
+            DaoCliente.atualizar(cliente);
             return;
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
@@ -107,14 +104,17 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
-     public List<Endereco> procurarEndereco(String rua) 
-              throws ClienteException, DataSourceException {
+     //Realiza a pesquisa de um cliente por nome na fonte de dados
+    public List<Produto> procurarProduto(String produto)
+            throws ClienteException, DataSourceException {
         try {
-            
-            if (rua == null || "".equals(rua)) {
-                return DaoCliente.listarEndereco();
+            //Verifica se um parâmetro de pesquisa não foi informado.
+            //Caso afirmativo, realiza uma listagem simples do DAO.
+            //Caso contrário, realiza uma pesquisa com o parâmetro
+            if (produto == null || "".equals(produto)) {
+                return DaoCliente.listarProduto();
             } else {
-                return DaoCliente.procurarEndereco(rua);
+                return DaoCliente.procurarProduto(produto);
             }
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
@@ -122,8 +122,9 @@ public class ServicoCliente {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
         }
+    }
     
-     }
+   
 
 
     //Obtem o cliente com ID informado
@@ -131,7 +132,19 @@ public class ServicoCliente {
             throws ClienteException, DataSourceException {
         try {
             //Retorna o cliente obtido com o DAO
-            return DaoCliente.obter(id);
+            return DaoCliente.obterCliente(id);
+        } catch (Exception e) {
+            //Imprime qualquer erro técnico no console e devolve
+            //uma exceção e uma mensagem amigável a camada de visão
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+        public Produto obterProduto(Integer id)
+            throws ClienteException, DataSourceException {
+        try {
+            //Retorna o cliente obtido com o DAO
+            return DaoCliente.obterProduto(id);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão
