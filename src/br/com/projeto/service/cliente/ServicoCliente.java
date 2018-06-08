@@ -112,9 +112,9 @@ public class ServicoCliente {
             //Caso afirmativo, realiza uma listagem simples do DAO.
             //Caso contrário, realiza uma pesquisa com o parâmetro
             if (produto == null || "".equals(produto)) {
-                return DaoCliente.listarProduto();
+                return DaoProduto.procurarProduto(produto);
             } else {
-                return DaoCliente.procurarProduto(produto);
+                return DaoProduto.procurarProduto(produto);
             }
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
@@ -144,7 +144,7 @@ public class ServicoCliente {
             throws ClienteException, DataSourceException {
         try {
             //Retorna o cliente obtido com o DAO
-            return DaoCliente.obterProduto(id);
+            return DaoProduto.obterProduto(id);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão
