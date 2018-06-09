@@ -7,14 +7,12 @@ package br.com.projeto.db.dao;
 
 import br.com.projeto.db.utils.ConnectionUtils;
 import br.com.projeto.model.clientes.Cliente;
-import br.com.projeto.model.produto.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,13 +48,18 @@ public class DaoCliente {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
-            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
-            preparedStatement.setTimestamp(5, t);
-            preparedStatement.setString(6, cliente.getEmail());
+//            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+//            preparedStatement.setTimestamp(5, t);   
+            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
+           // preparedStatement.setDate(5, new java.sql.Date(cliente.getDataNasc().getTime()));
+            preparedStatement.setString(6, cliente.getEmail()); 
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            t = new Timestamp((new Date()).getTime());
-            preparedStatement.setTimestamp(9, t);
+            preparedStatement.setDate(9, new java.sql.Date(cliente.getDataCadastro().getTime()));
+            
+
+            
+          
             
             preparedStatement.execute();
             ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -128,8 +131,8 @@ public class DaoCliente {
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
             preparedStatement.setBoolean(9, true);
-            t = new Timestamp((new Date()).getTime());
-            preparedStatement.setTimestamp(10, t);
+//            t = new Timestamp((new Date()).getTime());
+//            preparedStatement.setTimestamp(10, t);
             
             
             preparedStatement.execute();
@@ -381,12 +384,12 @@ public static List<Cliente> procurarCliente(String nome)
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
-                cliente.setRua(result.getString("rua_cliente"));
-                cliente.setNumero(result.getString("numero_cliente"));
-                cliente.setCidade(result.getString("cidade_cliente"));
-                cliente.setUf(result.getString("uf_cliente"));
-                cliente.setCep(result.getString("cep_cliente"));
-                cliente.setComplemento(result.getString("complemento_cliente")); 
+//                cliente.setRua(result.getString("rua_cliente"));
+//                cliente.setNumero(result.getString("numero_cliente"));
+//                cliente.setCidade(result.getString("cidade_cliente"));
+//                cliente.setUf(result.getString("uf_cliente"));
+//                cliente.setCep(result.getString("cep_cliente"));
+//                cliente.setComplemento(result.getString("complemento_cliente")); 
                 
                 
                 listaCliente.add(cliente);

@@ -8,7 +8,11 @@ package br.com.projeto.ui.clientes;
 
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.service.cliente.ServicoCliente;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
@@ -96,7 +100,11 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
 
-        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        try {
+            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         lblCpf.setText("CPF:");
 
@@ -442,20 +450,18 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cpf = cpf.replace("-",""); 
         cli.setCpf(cpf);
         
-       
-       
-       Date data = null;
-     
+        DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
         try {
-            data =  (Date)txtDataNasc.getValue();
-           
-            
-        } catch (Exception e) {
-         }
-        cli.setDataNasc(data);
+            date = dt.parse(txtDataNasc.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        cli.setDataNasc(date);
+      
        
-
+         
         try {
             
             ServicoCliente.getInstance().cadastrarCliente(cli);
