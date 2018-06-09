@@ -95,6 +95,7 @@ public static List<Produto> procurarProduto(String nome)
                 produto.setNome(result.getString("nome_produto"));
                 produto.setDepartamento(result.getString("departamento_produto"));
                 produto.setCor(result.getString("cor"));
+                produto.setTamanho(result.getString("tamanho_produto"));
                 produto.setDescricao(result.getString("descricao_produto"));
                 produto.setPreco(result.getString("preco_produto"));
                 produto.setQuantidade(result.getString("quant_estoque_produto"));
@@ -149,9 +150,10 @@ public static List<Produto> procurarProduto(String nome)
             if (result.next()) {
               
                Produto produto = new Produto();
-                produto.setNome(result.getString("nome_produto"));
+                 produto.setNome(result.getString("nome_produto"));
                 produto.setDepartamento(result.getString("departamento_produto"));
                 produto.setCor(result.getString("cor"));
+                produto.setTamanho(result.getString("tamanho_produto"));
                 produto.setDescricao(result.getString("descricao_produto"));
                 produto.setPreco(result.getString("preco_produto"));
                 produto.setQuantidade(result.getString("quant_estoque_produto"));

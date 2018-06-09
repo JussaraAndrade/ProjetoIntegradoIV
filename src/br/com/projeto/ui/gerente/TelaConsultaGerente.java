@@ -72,7 +72,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Departamento", "Tamanho", "Cor", "Preço", "Código de barra", "Estoque", "Descrição"
+                "ID", "Produto", "Departamento", "Cor", "Tamanho", "Descrição", "Preço", "Estoque"
             }
         ));
         jScrollPane1.setViewportView(tabelaProduto);
@@ -233,15 +233,15 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
     
         
             if (produto != null) {
-                Object[] row = new Object[17];
+                Object[] row = new Object[8];
                 row[0] = produto.getCodigo();
                 row[1] = produto.getNome();
                 row[2] = produto.getDepartamento();
+                row[3] = produto.getCor();
                 row[4] = produto.getTamanho();
-                row[5] = produto.getCor();
+                row[5] = produto.getDescricao();
                 row[6] = produto.getPreco();
                 row[7] = produto.getQuantidade();
-                row[8] = produto.getDescricao();
                
                
                 modelDados.addRow(row);
