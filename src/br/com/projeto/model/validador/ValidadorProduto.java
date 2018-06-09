@@ -40,7 +40,7 @@ public class ValidadorProduto {
                     + "o preço do produto");
         }
 
-        if (produto.getCodigo() == 0) {
+        if (produto.getCodigobarras().equals("")) {
             throw new ClienteException("É necessário informar "
                     + "o código de barra do produto");
         }

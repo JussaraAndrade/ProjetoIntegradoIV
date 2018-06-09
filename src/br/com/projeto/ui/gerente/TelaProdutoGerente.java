@@ -38,6 +38,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jSpinner1 = new javax.swing.JSpinner();
+        jToggleButton1 = new javax.swing.JToggleButton();
         Desktop = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -72,6 +73,8 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        jToggleButton1.setText("jToggleButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Desktop.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Produtos"));
@@ -83,6 +86,12 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         lblQuantidade.setText(" Estoque:");
 
         lblCodigoBarra.setText("Código de Barra:");
+
+        txtCodigoBarra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoBarraActionPerformed(evt);
+            }
+        });
 
         lblGenero.setText("Departamento:");
 
@@ -240,6 +249,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         produto.setTamanho((String) jComboBoxTamanho.getSelectedItem());
         produto.setCor((String) jComboBoxCor.getSelectedItem());
         produto.setPreco(txtPreco.getText());
+        produto.setCodigobarras(txtCodigoBarra.getText());
         produto.setDescricao((String) txtDescricao.getText());
         produto.setQuantidade((String) txtQuantidade.getText());
 //        produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
@@ -280,6 +290,10 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGeneroActionPerformed
 
+    private void txtCodigoBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoBarraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoBarraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSalvar;
@@ -292,6 +306,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblCodigoBarra;
     private javax.swing.JLabel lblCor;
     private javax.swing.JLabel lblDescricao;

@@ -12,7 +12,16 @@ import java.sql.Date;
  * @author Jussara Andrade
  */
 public class Produto {
-    private int  codigo;
+
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     private String nome;
     private String departamento;
     private String cor;
@@ -21,13 +30,23 @@ public class Produto {
     private String quantidade;
     private Date data;
     private String preco;
+    private String codigobarras;
+    private Boolean enable;
 
-    public int getCodigo() {
-        return codigo;
+    public Boolean getEnable() {
+        return enable;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
+    public String getCodigobarras() {
+        return codigobarras;
+    }
+
+    public void setCodigobarras(String codigobarras) {
+        this.codigobarras = codigobarras;
     }
 
     public String getNome() {
@@ -94,5 +113,4 @@ public class Produto {
         this.preco = preco;
     }
 
-    
 }

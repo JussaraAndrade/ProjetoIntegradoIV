@@ -248,7 +248,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     
         
             if (cli != null) {
-                Object[] row = new Object[16];
+                Object[] row = new Object[17];
                 row[0] = cli.getId();
                 row[1] = cli.getNome();
                 row[2] = cli.getSexo();
@@ -258,14 +258,15 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 row[5] = formatador.format(cli.getDataNasc());
                 row[6] = cli.getEmail();
                 row[7] = cli.getCelular();
-                row[8] = cli.getTelefone();               
-                row[9] = cli.getRua();
-                row[10] = cli.getNumero();
-                row[11] = cli.getBairro();
-                row[12] = cli.getComplemento();
-                row[13] = cli.getCidade();
-                row[14] = cli.getUf();
-                row[15] = cli.getCep();
+                row[8] = cli.getTelefone();
+                row[9] = cli.getEnable();
+                row[10] = cli.getRua();
+                row[11] = cli.getNumero();
+                row[12] = cli.getBairro();
+                row[13] = cli.getComplemento();
+                row[14] = cli.getCidade();
+                row[15] = cli.getUf();
+                row[16] = cli.getCep();
                
                
                 modelDados.addRow(row);

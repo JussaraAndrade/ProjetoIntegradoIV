@@ -30,6 +30,15 @@ public class Cliente {
     private String uf;
     private String cep;
     private String complemento;
+    private Boolean enable;
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
 
     public Integer getId() {
         return id;
