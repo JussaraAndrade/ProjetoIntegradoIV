@@ -233,7 +233,9 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
     
         
             if (produto != null) {
+
                 Object[] row = new Object[8];
+
                 row[0] = produto.getCodigo();
                 row[1] = produto.getNome();
                 row[2] = produto.getDepartamento();
@@ -242,6 +244,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame {
                 row[5] = produto.getDescricao();
                 row[6] = produto.getPreco();
                 row[7] = produto.getQuantidade();
+
                
                
                 modelDados.addRow(row);
