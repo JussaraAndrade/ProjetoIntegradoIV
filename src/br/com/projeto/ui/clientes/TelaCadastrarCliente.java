@@ -450,6 +450,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cpf = cpf.replace("-",""); 
         cli.setCpf(cpf);
         
+        
         DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
         try {
@@ -459,7 +460,15 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         }
         
         cli.setDataNasc(date);
-      
+         
+//        Date data = null;
+//        try {
+//            data =  (Date)txtDataNasc.getValue();
+//        } catch (Exception e) {
+//            
+//        }
+//        cli.setDataNasc(data);
+//      
        
          
         try {

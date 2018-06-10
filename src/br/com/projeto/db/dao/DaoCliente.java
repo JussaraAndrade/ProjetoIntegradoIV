@@ -8,12 +8,12 @@ package br.com.projeto.db.dao;
 import br.com.projeto.db.utils.ConnectionUtils;
 import br.com.projeto.model.clientes.Cliente;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,14 +45,16 @@ public class DaoCliente {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
-//            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
-//            preparedStatement.setTimestamp(5, t);   
-            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
+            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+            preparedStatement.setTimestamp(5, t);   
+           // preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
             // preparedStatement.setDate(5, new java.sql.Date(cliente.getDataNasc().getTime()));
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setDate(9, new Date(System.currentTimeMillis()));
+            t = new Timestamp((new java.util.Date()).getTime());
+            preparedStatement.setTimestamp(9, t);
+         //   preparedStatement.setDate(9, new Date(System.currentTimeMillis()));
             preparedStatement.setBoolean(10, true);
 
             preparedStatement.execute();
@@ -111,12 +113,14 @@ public class DaoCliente {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
-            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
-            preparedStatement.setTimestamp(5, t);
+//            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+//            preparedStatement.setTimestamp(5, t);
+            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
             preparedStatement.setBoolean(9, true);
+            preparedStatement.setDate(10, new java.sql.Date(System.currentTimeMillis()));
 //            t = new Timestamp((new Date()).getTime());
 //            preparedStatement.setTimestamp(10, t);
 
@@ -214,7 +218,8 @@ public class DaoCliente {
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
                 cliente.setCpf(result.getString("cpf_cliente"));
-                cliente.setDataNasc(result.getTime("data_nasc_cliente"));
+                Date d = new Date(result.getTimestamp("data_nasc_cliente").getTime());
+                cliente.setDataNasc(d);
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
@@ -281,7 +286,8 @@ public class DaoCliente {
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
                 cliente.setCpf(result.getString("cpf_cliente"));
-                cliente.setDataNasc(result.getTime("data_nasc_cliente"));
+                java.util.Date d = new java.util.Date(result.getTimestamp("data_nasc_cliente").getTime());
+                cliente.setDataNasc(d);
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
@@ -347,7 +353,8 @@ public class DaoCliente {
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
                 cliente.setCpf(result.getString("cpf_cliente"));
-                cliente.setDataNasc(result.getTime("data_nasc_cliente"));
+                java.util.Date d = new java.util.Date(result.getTimestamp("data_nasc_cliente").getTime());
+                cliente.setDataNasc(d);
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
