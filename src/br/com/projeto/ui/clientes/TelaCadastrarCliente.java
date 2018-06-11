@@ -450,6 +450,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cpf = cpf.replace("-",""); 
         cli.setCpf(cpf);
         
+     
         
         DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
