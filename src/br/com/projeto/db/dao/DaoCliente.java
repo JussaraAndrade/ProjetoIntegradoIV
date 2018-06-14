@@ -187,8 +187,7 @@ public class DaoCliente {
     public static List<Cliente> listarCliente()
             throws SQLException, Exception {
 
-        String sql = "SELECT * FROM cliente WHERE enable_cliente=?";
-        //String sql2 = "SELECT * FROM end_cliente WHERE enable_cliente=?";
+        String sql = "SELECT * FROM mydb.cliente INNER JOIN mydb.end_cliente ON mydb.cliente.id_cliente = mydb.end_cliente.cliente_id_cliente WHERE nome_cliente like ?";
 
         List<Cliente> listaClientes = null;
 
@@ -203,7 +202,7 @@ public class DaoCliente {
 
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setBoolean(1, true);
-
+        
             result = preparedStatement.executeQuery();
 
             while (result.next()) {
@@ -224,13 +223,13 @@ public class DaoCliente {
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
                 cliente.setEnable(result.getBoolean("enable_cliente"));
-//                cliente.setRua(result.getString("rua_cliente"));
-//                cliente.setNumero(result.getString("numero_cliente"));
-//                cliente.setBairro(result.getString("bairro_cliente"));
-//                cliente.setCidade(result.getString("cidade_cliente"));
-//                cliente.setUf(result.getString("uf_cliente"));
-//                cliente.setCep(result.getString("cep_cliente"));
-//                cliente.setComplemento(result.getString("complemento_cliente"));
+                cliente.setRua(result.getString("rua_cliente"));
+                cliente.setNumero(result.getString("numero_cliente"));
+                cliente.setBairro(result.getString("bairro_cliente"));
+                cliente.setCidade(result.getString("cidade_cliente"));
+                cliente.setCep(result.getString("cep_cliente"));
+                cliente.setUf(result.getString("uf_cliente"));
+                cliente.setComplemento(result.getString("complemento_cliente"));
 
                 listaClientes.add(cliente);
             }
@@ -254,8 +253,8 @@ public class DaoCliente {
 
     public static Cliente obterCliente(Integer id) throws SQLException {
 
-        String sql = "SELECT * FROM mydb.cliente WHERE (id_cliente=?)";
-        String sql2 = "SELECT * FROM mydb.end_cliente WHERE (cliente_id_cliente=?)";
+        String sql = "SELECT * FROM mydb.cliente INNER JOIN mydb.end_cliente ON mydb.cliente.id_cliente = mydb.end_cliente.cliente_id_cliente WHERE nome_cliente like ?";
+        
 
         Connection connection = null;
 
@@ -271,10 +270,6 @@ public class DaoCliente {
             preparedStatement.setInt(1, id);
             preparedStatement.setBoolean(2, true);
 
-            preparedStatement = connection.prepareStatement(sql2);
-
-            preparedStatement.setInt(1, id);
-            preparedStatement.setBoolean(2, true);
 
             result = preparedStatement.executeQuery();
 
@@ -291,13 +286,14 @@ public class DaoCliente {
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
+                cliente.setEnable(result.getBoolean("enable_cliente"));
                 cliente.setRua(result.getString("rua_cliente"));
                 cliente.setNumero(result.getString("numero_cliente"));
+                cliente.setBairro(result.getString("bairro_cliente"));
                 cliente.setCidade(result.getString("cidade_cliente"));
-                cliente.setUf(result.getString("uf_cliente"));
                 cliente.setCep(result.getString("cep_cliente"));
+                cliente.setUf(result.getString("uf_cliente"));
                 cliente.setComplemento(result.getString("complemento_cliente"));
-                //cliente.setEnable(result.getBoolean("enable_cliente"));
 
                 return cliente;
             }
@@ -322,7 +318,7 @@ public class DaoCliente {
     public static List<Cliente> procurarCliente(String nome)
             throws SQLException, Exception {
 
-        String sql = "SELECT * FROM mydb.cliente WHERE nome_cliente like ?";
+        String sql = "SELECT * FROM mydb.cliente INNER JOIN mydb.end_cliente ON mydb.cliente.id_cliente = mydb.end_cliente.cliente_id_cliente WHERE nome_cliente like ?";
 
         List<Cliente> listaCliente = null;
 
@@ -359,13 +355,13 @@ public class DaoCliente {
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
                 cliente.setEnable(result.getBoolean("enable_cliente"));
-//                cliente.setRua(result.getString("rua_cliente"));
-//                cliente.setNumero(result.getString("numero_cliente"));
-//                cliente.setCidade(result.getString("cidade_cliente"));
-//                cliente.setUf(result.getString("uf_cliente"));
-//                cliente.setCep(result.getString("cep_cliente"));
-//                cliente.setComplemento(result.getString("complemento_cliente")); 
-
+                cliente.setRua(result.getString("rua_cliente"));
+                cliente.setNumero(result.getString("numero_cliente"));
+                cliente.setBairro(result.getString("bairro_cliente"));
+                cliente.setCidade(result.getString("cidade_cliente"));  
+                cliente.setCep(result.getString("cep_cliente"));
+                cliente.setUf(result.getString("uf_cliente"));
+                cliente.setComplemento(result.getString("complemento_cliente")); 
                 listaCliente.add(cliente);
             }
         } finally {

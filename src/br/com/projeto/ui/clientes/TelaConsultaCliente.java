@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.projeto.ui.clientes;
-
 
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.model.clientes.Cliente;
@@ -21,29 +19,27 @@ import javax.swing.table.DefaultTableModel;
  * @author Jussara Andrade
  */
 public class TelaConsultaCliente extends javax.swing.JFrame {
-    
+
     TelaEditarCliente formEditarCliente = new TelaEditarCliente();
     private TelaEditarCliente editarCli = null;
     String ultimaPesquisa = null;
-   
- public TelaConsultaCliente() {
+
+    public TelaConsultaCliente() {
         initComponents();
-        setLocationRelativeTo(null);  
-        setResizable(false);
-        
-        
+        setLocationRelativeTo(null);
+        //setResizable(false);
+       this.setExtendedState(MAXIMIZED_BOTH);
+
         tabelaDados.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setMaxWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tabelaEndereco.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaEndereco.getColumnModel().getColumn(0).setMaxWidth(0);
         tabelaEndereco.getColumnModel().getColumn(0).setWidth(0);
-        
-        
 
     }
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,7 +67,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Rua ", "Número", "Bairro", "Cidade", "Uf", "Cep", "Complemento"
+                "Id", "Rua ", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
             }
         ));
         jScrollPane2.setViewportView(tabelaEndereco);
@@ -206,13 +202,13 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         boolean resultSearch = false;
-      
+
         ultimaPesquisa = txtPesquisar.getText();
 
         try {
-      
+
             resultSearch = refreshListCliente();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
@@ -224,58 +220,55 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "A pesquisa não retornou resultados ",
                     "Sem resultados", JOptionPane.ERROR_MESSAGE);
         }
-    }                                               
+    }
 
     public boolean refreshListCliente() throws ClienteException, Exception {
-        
-        List<Cliente> resultado = ServicoCliente.getInstance().procurarCliente(ultimaPesquisa);
-        
-        
 
-        
+        List<Cliente> resultado = ServicoCliente.getInstance().procurarCliente(ultimaPesquisa);
+
         DefaultTableModel modelDados = (DefaultTableModel) tabelaDados.getModel();
         DefaultTableModel modelEndereco = (DefaultTableModel) tabelaEndereco.getModel();
-  
-        modelDados.setRowCount(0);  
+
+        modelDados.setRowCount(0);
         modelEndereco.setRowCount(0);
-     
+
         if (resultado == null || resultado.size() <= 0) {
             return false;
         }
 
         for (int i = 0; i < resultado.size(); i++) {
             Cliente cli = resultado.get(i);
-    
-        
+
             if (cli != null) {
-                Object[] row = new Object[17];
-                row[0] = cli.getId();
-                row[1] = cli.getNome();
-                row[2] = cli.getSexo();
-                row[3] = cli.getRg();
-                row[4] = cli.getCpf();
-                DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
-                row[5] = formatador.format(cli.getDataNasc());
-                row[6] = cli.getEmail();
-                row[7] = cli.getCelular();
-                row[8] = cli.getTelefone();
-                row[9] = cli.getEnable();
-                row[10] = cli.getRua();
-                row[11] = cli.getNumero();
-                row[12] = cli.getBairro();
-                row[13] = cli.getComplemento();
-                row[14] = cli.getCidade();
-                row[15] = cli.getUf();
-                row[16] = cli.getCep();
-               
-               
-                modelDados.addRow(row);
+                Object[] rowCli = new Object[10];
+                rowCli[0] = cli.getId();
+                rowCli[1] = cli.getNome();
+                rowCli[2] = cli.getSexo();
+                rowCli[3] = cli.getRg();
+                rowCli[4] = cli.getCpf();
+                DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                rowCli[5] = formatador.format(cli.getDataNasc());
+                rowCli[6] = cli.getEmail();
+                rowCli[7] = cli.getCelular();
+                rowCli[8] = cli.getTelefone();
+                rowCli[9] = cli.getEnable();
+                modelDados.addRow(rowCli);
+
+                Object[] rowEnd = new Object[8];
+                rowEnd[0] = cli.getId();
+                rowEnd[1] = cli.getRua();
+                rowEnd[2] = cli.getNumero();
+                rowEnd[3] = cli.getBairro();
+                rowEnd[4] = cli.getCidade();
+                rowEnd[5] = cli.getCep();  
+                rowEnd[6] = cli.getUf();
+                rowEnd[7] = cli.getComplemento();
+                modelEndereco.addRow(rowEnd);
             }
         }
-        
-       
+
         return true;
-                                         
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -284,18 +277,16 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         if (editarCli == null || !editarCli.isDisplayable()) {
+        if (editarCli == null || !editarCli.isDisplayable()) {
             editarCli = new TelaEditarCliente();
             editarCli.setVisible(true);
         }
-       editarCli.toFront();
+        editarCli.toFront();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
