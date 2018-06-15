@@ -46,15 +46,12 @@ public class DaoCliente {
             preparedStatement.setString(3, cliente.getRg());
             preparedStatement.setString(4, cliente.getCpf());
             Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
-            preparedStatement.setTimestamp(5, t);   
-           // preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
-            // preparedStatement.setDate(5, new java.sql.Date(cliente.getDataNasc().getTime()));
+            preparedStatement.setTimestamp(5, t);
             preparedStatement.setString(6, cliente.getEmail());
             preparedStatement.setString(7, cliente.getCelular());
             preparedStatement.setString(8, cliente.getTelefone());
             t = new Timestamp((new java.util.Date()).getTime());
             preparedStatement.setTimestamp(9, t);
-         //   preparedStatement.setDate(9, new Date(System.currentTimeMillis()));
             preparedStatement.setBoolean(10, true);
 
             preparedStatement.execute();
@@ -90,99 +87,7 @@ public class DaoCliente {
         }
     }
 
-    public static void atualizar(Cliente cliente)
-            throws SQLException, Exception {
-
-        String sql = "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
-                + "WHERE(id_cliente=?)";
-
-        String sql2 = "UPDATE mydb.end SET rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
-                + "WHERE(cliente_id_cliente=?);";
-
-        Connection connection = null;
-
-        PreparedStatement preparedStatement = null;
-        try {
-
-            connection = ConnectionUtils.getConnection();
-            connection.setAutoCommit(false);
-
-            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(0, cliente.getId());
-            preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getSexo());
-            preparedStatement.setString(3, cliente.getRg());
-            preparedStatement.setString(4, cliente.getCpf());
-//            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
-//            preparedStatement.setTimestamp(5, t);
-            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
-            preparedStatement.setString(6, cliente.getEmail());
-            preparedStatement.setString(7, cliente.getCelular());
-            preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setBoolean(9, true);
-            preparedStatement.setDate(10, new java.sql.Date(System.currentTimeMillis()));
-//            t = new Timestamp((new Date()).getTime());
-//            preparedStatement.setTimestamp(10, t);
-
-            preparedStatement.execute();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-            rs.next();
-            int idCliente = rs.getInt(1);
-
-            preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, cliente.getRua());
-            preparedStatement.setString(2, cliente.getNumero());
-            preparedStatement.setString(3, cliente.getBairro());
-            preparedStatement.setString(4, cliente.getCidade());
-            preparedStatement.setString(5, cliente.getUf());
-            preparedStatement.setLong(6, Long.parseLong(cliente.getCep().replaceAll("-", "")));
-            preparedStatement.setString(7, cliente.getComplemento());
-            preparedStatement.setInt(8, idCliente);
-
-            preparedStatement.execute();
-            connection.commit();
-
-            preparedStatement.execute();
-        } finally {
-
-            if (preparedStatement != null && !preparedStatement.isClosed()) {
-                preparedStatement.close();
-            }
-
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        }
-    }
-
-    public static void excluir(Integer id) throws SQLException, Exception {
-
-        String sql = "UPDATE cliente SET enable_cliente=? WHERE (cliente_id=?)";
-
-        Connection connection = null;
-
-        PreparedStatement preparedStatement = null;
-        try {
-
-            connection = ConnectionUtils.getConnection();
-
-            preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setBoolean(1, false);
-            preparedStatement.setInt(2, id);
-
-            preparedStatement.execute();
-        } finally {
-
-            if (preparedStatement != null && !preparedStatement.isClosed()) {
-                preparedStatement.close();
-            }
-
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        }
-    }
+   
 
     public static List<Cliente> listarCliente()
             throws SQLException, Exception {
@@ -381,6 +286,100 @@ public class DaoCliente {
 
         return listaCliente;
 
+    
+
+}
+ public static void atualizar(Cliente cliente)
+            throws SQLException, Exception {
+
+        String sql = "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
+                + "WHERE(id_cliente=?)";
+
+        String sql2 = "UPDATE mydb.end SET rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
+                + "WHERE(cliente_id_cliente=?);";
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        try {
+
+            connection = ConnectionUtils.getConnection();
+            connection.setAutoCommit(false);
+
+            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(0, cliente.getId());
+            preparedStatement.setString(1, cliente.getNome());
+            preparedStatement.setString(2, cliente.getSexo());
+            preparedStatement.setString(3, cliente.getRg());
+            preparedStatement.setString(4, cliente.getCpf());
+//            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+//            preparedStatement.setTimestamp(5, t);
+            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
+            preparedStatement.setString(6, cliente.getEmail());
+            preparedStatement.setString(7, cliente.getCelular());
+            preparedStatement.setString(8, cliente.getTelefone());
+            preparedStatement.setBoolean(9, true);
+            preparedStatement.setDate(10, new java.sql.Date(System.currentTimeMillis()));
+//            t = new Timestamp((new Date()).getTime());
+//            preparedStatement.setTimestamp(10, t);
+
+            preparedStatement.execute();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int idCliente = rs.getInt(1);
+
+            preparedStatement = connection.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, cliente.getRua());
+            preparedStatement.setString(2, cliente.getNumero());
+            preparedStatement.setString(3, cliente.getBairro());
+            preparedStatement.setString(4, cliente.getCidade());
+            preparedStatement.setString(5, cliente.getUf());
+            preparedStatement.setLong(6, Long.parseLong(cliente.getCep().replaceAll("-", "")));
+            preparedStatement.setString(7, cliente.getComplemento());
+            preparedStatement.setInt(8, idCliente);
+
+            preparedStatement.execute();
+            connection.commit();
+
+            preparedStatement.execute();
+        } finally {
+
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
     }
 
+    public static void excluir(Integer id) throws SQLException, Exception {
+
+        String sql = "UPDATE cliente SET enable_cliente=? WHERE (id_cliente=?)";
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        try {
+
+            connection = ConnectionUtils.getConnection();
+
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.execute();
+        } finally {
+
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
 }

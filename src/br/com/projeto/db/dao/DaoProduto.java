@@ -59,8 +59,69 @@ public class DaoProduto {
             }
         }
     }
+     public static List<Produto> listarProduto()
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM produto WHERE (enable_produto=?)";
+        
+        List<Produto> listaProdutos = null;
+       
+        Connection connection = null;
+       
+        PreparedStatement preparedStatement = null;
+        
+        ResultSet result = null;
+        try {
+            
+            connection = ConnectionUtils.getConnection();
+          
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setBoolean(1, true);
 
-    public static List<Produto> procurarProduto(String nome)
+           
+            result = preparedStatement.executeQuery();
+
+          
+            while (result.next()) {
+                
+                if (listaProdutos == null) {
+                    listaProdutos = new ArrayList<Produto>();
+                }
+               
+                Produto produto = new Produto();
+                produto.setId(result.getInt("id_produto"));
+                produto.setCodigobarras(result.getString("codigobarras"));
+                produto.setNome(result.getString("nome_produto"));
+                produto.setDepartamento(result.getString("departamento_produto"));
+                produto.setCor(result.getString("cor"));
+                produto.setTamanho(result.getString("tamanho_produto"));
+                produto.setDescricao(result.getString("descricao_produto"));
+                produto.setPreco(result.getString("preco_produto"));
+                produto.setQuantidade(result.getString("quant_estoque_produto"));
+                produto.setEnable(result.getBoolean("enable_produto"));
+               
+                listaProdutos.add(produto);
+            }
+        } finally {
+            
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        
+        return listaProdutos;
+    }
+
+
+    public static List<Produto> procurarProduto(String produto)
             throws SQLException, Exception {
 
         String sql = "SELECT * FROM mydb.produto WHERE nome_produto like ?";
@@ -78,7 +139,7 @@ public class DaoProduto {
 
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, "%" + nome + "%");
+            preparedStatement.setString(1, "%" + produto+ "%");
 
             result = preparedStatement.executeQuery();
 
@@ -87,19 +148,19 @@ public class DaoProduto {
                 if (listaProduto == null) {
                     listaProduto = new ArrayList<Produto>();
                 }
-                Produto produto = new Produto();
+                Produto pro= new Produto();
 
-                produto.setCodigobarras(result.getString("codigobarras"));
-                produto.setNome(result.getString("nome_produto"));
-                produto.setDepartamento(result.getString("departamento_produto"));
-                produto.setCor(result.getString("cor"));
-                produto.setTamanho(result.getString("tamanho_produto"));
-                produto.setDescricao(result.getString("descricao_produto"));
-                produto.setPreco(result.getString("preco_produto"));
-                produto.setQuantidade(result.getString("quant_estoque_produto"));
-                produto.setEnable(result.getBoolean("enable_produto"));
+                pro.setCodigobarras(result.getString("codigobarras"));
+                pro.setNome(result.getString("nome_produto"));
+                pro.setDepartamento(result.getString("departamento_produto"));
+                pro.setCor(result.getString("cor"));
+                pro.setTamanho(result.getString("tamanho_produto"));
+                pro.setDescricao(result.getString("descricao_produto"));
+                pro.setPreco(result.getString("preco_produto"));
+                pro.setQuantidade(result.getString("quant_estoque_produto"));
+                pro.setEnable(result.getBoolean("enable_produto"));
 
-                listaProduto.add(produto);
+                listaProduto.add(pro);
             }
         } finally {
 
@@ -171,6 +232,76 @@ public class DaoProduto {
         }
 
         return null;
+    }
+    public static void atualizarProduto(Produto produto)
+            throws SQLException, Exception {
+
+        String sql = "UPDATE mydb.produto SET codigobarras=?, nome_produto=?, cor=?, tamanho_produto=?, descricao_produto=?, preco_produto=?, quant_estoque_produto=?)"
+                + "WHERE(id_produto=?)";
+
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        try {
+
+            connection = ConnectionUtils.getConnection();
+            connection.setAutoCommit(false);
+
+            connection = ConnectionUtils.getConnection();
+             
+            preparedStatement = connection.prepareStatement(sql);
+            
+            preparedStatement.setString(1, produto.getCodigobarras());
+            preparedStatement.setString(2, produto.getNome());
+            preparedStatement.setString(3, produto.getDepartamento());
+            preparedStatement.setString(4, produto.getCor());
+            preparedStatement.setString(5, produto.getTamanho());
+            preparedStatement.setString(6, produto.getDescricao());
+            preparedStatement.setString(7, produto.getPreco());
+            preparedStatement.setString(8, produto.getQuantidade());
+          
+
+            preparedStatement.execute();
+        } finally {
+
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
+
+    public static void excluirProduto(Integer id) throws SQLException, Exception {
+
+        String sql = "UPDATE cliente SET enable_produto=? WHERE (id_produto=?)";
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        try {
+
+            connection = ConnectionUtils.getConnection();
+
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.execute();
+        } finally {
+
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
     }
 
 }

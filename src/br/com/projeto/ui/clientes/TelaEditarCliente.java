@@ -8,9 +8,13 @@ package br.com.projeto.ui.clientes;
 
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.service.cliente.ServicoCliente;
+import br.com.projeto.ui.principal.PrincipalGerente;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -456,36 +460,82 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         cpf = cpf.replace("-",""); 
         cliente.setCpf(cpf);
        
-       Date data = null;
-     
+       DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
         try {
-            data =  (Date)txtDataNasc.getValue();
-           
-            
-        } catch (Exception e) {
-         }
-        cliente.setDataNasc(data);
+            date = dt.parse(txtDataNasc.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-       
+        cliente.setDataNasc(date);
+        cliente.setSexo((String)jComboBoxSexo.getSelectedItem());
         
         try {
             
             ServicoCliente.getInstance().atualizarCliente(cliente);
         }
-        catch(Exception e) {
-            
+         catch(Exception e) {
+            //Exibe alguma mensagem de erro que pode ter vindo do serviço
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        JOptionPane.showMessageDialog(rootPane, "Cliente atualizado com sucesso",
-                "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);        
+//           try {
+//               
+////            if (this.getDesktopPane().getTopLevelAncestor()
+////                    instanceof PrincipalGerente) {
+////                PrincipalGerente principal = (PrincipalGerente) this.
+////                        getDesktopPane().getTopLevelAncestor();
+////                if (principal != null) {
+////                    principal.getConsultaCliente().refreshList();                
+//                }
+//            }
+//        }
+//        catch(Exception e) {
+//            //Exibe erros de atualização da lista no
+//            //console, mas esconde-os do usuário
+//            e.printStackTrace();
+//        }
+//        
+//        JOptionPane.showMessageDialog(rootPane, "Cliente atualizado com sucesso",
+//                "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);        
         this.dispose();
+        
+    
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-      
+        txtNome.setText(cliente.getNome());
+        txtRg.setText(cliente.getRg());
+        txtEmail.setText(cliente.getEmail());
+        txtCelular.setText(cliente.getCelular());
+        txtTelefone.setText(cliente.getTelefone());
+        txtDataNasc.setValue(cliente.getDataNasc());
+        
+        for (int i = 0; i < jComboBoxSexo.getItemCount(); i++) {
+            if (jComboBoxSexo.getItemAt(i).equals(cliente.getSexo())) {
+                jComboBoxSexo.setSelectedIndex(i);
+                break;
+            }
+        } 
+        
+        txtEndereco.setText(cliente.getRua());
+        txtNumero.setText(cliente.getNumero());
+        txtComplemento.setText(cliente.getComplemento());
+        txtBairro.setText(cliente.getBairro());
+        txtCidade.setText(cliente.getCidade());
+        txtCep.setText(cliente.getCep());
+        
+        
+         
+        for (int i = 0; i < jComboBoxUf.getItemCount(); i++) {
+            if (jComboBoxUf.getItemAt(i).equals(cliente.getUf())) {
+                jComboBoxUf.setSelectedIndex(i);
+                break;
+            }
+        } 
        
     
     }//GEN-LAST:event_formInternalFrameOpened

@@ -8,6 +8,7 @@ package br.com.projeto.ui.clientes;
 import br.com.projeto.exceptions.ClienteException;
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.service.cliente.ServicoCliente;
+import java.awt.Dimension;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -26,9 +27,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
     public TelaConsultaCliente() {
         initComponents();
-        setLocationRelativeTo(null);
-        //setResizable(false);
-       this.setExtendedState(MAXIMIZED_BOTH);
+      //  setLocationRelativeTo(null);
+        setResizable(false);
 
         tabelaDados.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -53,12 +53,10 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         tabelaDados = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ButtonExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -70,6 +68,11 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 "Id", "Rua ", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
             }
         ));
+        tabelaEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaEnderecoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaEndereco);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -97,6 +100,11 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 "Id", "Nome", "Sexo", "Rg", "Cpf", "Data Nascimento", "E-mail", "Celular", "Telefone"
             }
         ));
+        tabelaDados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaDadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaDados);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -142,7 +150,12 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Excluir");
+        ButtonExcluir.setText("Excluir");
+        ButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Pesquisar:");
 
@@ -176,7 +189,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 1126, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -194,7 +207,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ButtonExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
 
@@ -209,7 +222,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
         try {
 
-            resultSearch = refreshListCliente();
+            resultSearch = refreshList();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Falha ao obter lista", JOptionPane.ERROR_MESSAGE);
@@ -222,7 +235,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         }
     }
 
-    public boolean refreshListCliente() throws ClienteException, Exception {
+    public boolean refreshList() throws ClienteException, Exception {
 
         List<Cliente> resultado = ServicoCliente.getInstance().procurarCliente(ultimaPesquisa);
 
@@ -277,6 +290,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      
         if (editarCli == null || !editarCli.isDisplayable()) {
             editarCli = new TelaEditarCliente();
             editarCli.setVisible(true);
@@ -284,13 +298,122 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         editarCli.toFront();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
+         //Verifica se há itens selecionados para exclusão.
+        //Caso negativo, ignora o comando
+        if (tabelaDados.getSelectedRow() >= 0) {
+            
+            //Obtém a linha do item selecionado
+           final int rowCli = tabelaDados.getSelectedRow();
+//            final int rowEnd = tabelaEndereco.getSelectedRow();
+            //Obtém o nome do cliente da linha indicada para exibição
+            //de mensagem de confirmação de exclusão utilizando seu nome
+            String nome = (String) tabelaDados.getValueAt(rowCli, 1);
+            //Mostra o diálogo de confirmação de exclusão
+            int resposta = JOptionPane.showConfirmDialog(rootPane,
+                "Excluir o cliente \"" + nome + "\"?",
+                "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
+            //Se o valor de resposta for "Sim" para a exclusão
+            if (resposta == JOptionPane.YES_OPTION) {
+                try {
+                    //Obtém o ID do cliente
+                    Integer id = (Integer) tabelaDados.getValueAt(rowCli, 0);
+                    //Solicita ao serviço a inativação do cliente com o ID
+                    ServicoCliente.getInstance().excluirCliente(id);
+                    //Atualiza a lista após a "exclusão"
+                    this.refreshList();
+                } catch (Exception e) {
+                    //Se ocorrer algum erro técnico, mostra-o no console,
+                    //mas esconde-o do usuário
+                    e.printStackTrace();
+                    //Exibe uma mensagem de erro genérica ao usuário
+                    JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                            "Falha na Exclusão", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        
+   
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
+
+    private void tabelaDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDadosMouseClicked
+        
+        if (evt.getClickCount() == 2) {
+            try {                
+                //Obtém a linha selecionada da tabela de resultados
+                final int row = tabelaDados.getSelectedRow();
+                //Obtém o valor do ID da coluna "ID" da tabela de resultados
+                Integer id = (Integer) tabelaDados.getValueAt(row, 0);
+                
+                //Com o ID da coluna, chama o serviço de cliente para
+                //obter o cliente com dados atualizados do DAO
+                Cliente cliente = ServicoCliente.getInstance().obterCliente(id);
+
+                //Cria uma nova instância da tela de edição,
+                //configura o cliente selecionado como elemento a
+                //ser editado e mostra a tela de edição.
+                //Para exibir a tela, é necessário adicioná-la ao
+                //componente de desktop, o "pai" da janela corrente
+                formEditarCliente.dispose();
+                formEditarCliente = new TelaEditarCliente();
+                formEditarCliente.setCliente(cliente);
+                this.getParent().add(formEditarCliente);
+                this.openFrameInCenter(formEditarCliente);                
+                formEditarCliente.toFront();
+            } catch (Exception e) {
+                //Se ocorrer algum erro técnico, mostra-o no console,
+                //mas esconde-o do usuário
+                e.printStackTrace();
+                //Exibe uma mensagem de erro genérica ao usuário
+                JOptionPane.showMessageDialog(rootPane, "Não é possível "
+                    + "exibir os detalhes deste cliente.",
+                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tabelaDadosMouseClicked
+
+    private void tabelaEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaEnderecoMouseClicked
+         if (evt.getClickCount() == 2) {
+            try {                
+                //Obtém a linha selecionada da tabela de resultados
+                final int row = tabelaEndereco.getSelectedRow();
+                //Obtém o valor do ID da coluna "ID" da tabela de resultados
+                Integer id = (Integer) tabelaEndereco.getValueAt(row, 0);
+                
+                //Com o ID da coluna, chama o serviço de cliente para
+                //obter o cliente com dados atualizados do DAO
+                Cliente cliente = ServicoCliente.getInstance().obterCliente(id);
+
+                //Cria uma nova instância da tela de edição,
+                //configura o cliente selecionado como elemento a
+                //ser editado e mostra a tela de edição.
+                //Para exibir a tela, é necessário adicioná-la ao
+                //componente de desktop, o "pai" da janela corrente
+                formEditarCliente.dispose();
+                formEditarCliente = new TelaEditarCliente();
+                formEditarCliente.setCliente(cliente);
+                this.getParent().add(formEditarCliente);
+                this.openFrameInCenter(formEditarCliente);                
+                formEditarCliente.toFront();
+            } catch (Exception e) {
+                //Se ocorrer algum erro técnico, mostra-o no console,
+                //mas esconde-o do usuário
+                e.printStackTrace();
+                //Exibe uma mensagem de erro genérica ao usuário
+                JOptionPane.showMessageDialog(rootPane, "Não é possível "
+                    + "exibir os detalhes deste cliente.",
+                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tabelaEnderecoMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonExcluir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -303,5 +426,16 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JTable tabelaEndereco;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
+
+    private void openFrameInCenter(TelaEditarCliente formEditarCliente) {
+         
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension jInternalFrameSize = formEditarCliente.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        formEditarCliente.setLocation(width, height);
+        formEditarCliente.setVisible(true);
+    
+    }
 
 }

@@ -22,7 +22,6 @@ public class Cliente {
     private String telefone;
     private String celular;
     private Date dataCadastro;
-    private Integer idEndereco;
     private String rua;
     private String numero;
     private String bairro;
@@ -31,14 +30,6 @@ public class Cliente {
     private String cep;
     private String complemento;
     private Boolean enable;
-
-    public Boolean getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
 
     public Integer getId() {
         return id;
@@ -120,14 +111,6 @@ public class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
-    public Integer getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(Integer idEndereco) {
-        this.idEndereco = idEndereco;
-    }
-
     public String getRua() {
         return rua;
     }
@@ -183,8 +166,13 @@ public class Cliente {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
 }
-
-   
-
-   

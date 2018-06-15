@@ -14,7 +14,7 @@ import br.com.projeto.ui.gerente.TelaConsultaGerente;
  */
 public class TelaClienteVenda extends javax.swing.JFrame {
 
-        private TelaConsultaGerente pesquisarPro = null;
+        private TelaConsultaProdutos produtos = null;
     public TelaClienteVenda() {
         initComponents();
         setLocationRelativeTo(null);  
@@ -454,11 +454,11 @@ public class TelaClienteVenda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProdutoActionPerformed
-        if (pesquisarPro == null || !pesquisarPro.isDisplayable()) {
-            pesquisarPro = new TelaConsultaGerente();
-            pesquisarPro.setVisible(true);
+        if (produtos == null || !produtos.isDisplayable()) {
+            produtos = new TelaConsultaProdutos();
+            produtos.setVisible(true);
         }
-       pesquisarPro.toFront();
+       produtos.toFront();
     }//GEN-LAST:event_buttonProdutoActionPerformed
 
     

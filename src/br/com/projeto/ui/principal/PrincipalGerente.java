@@ -6,9 +6,10 @@
 package br.com.projeto.ui.principal;
 
 
-import br.com.projeto.ui.gerente.TelaConsultaGerente;
+import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.gerente.TelaProdutoGerente;
 import br.com.projeto.ui.login.TelaLogin;
+import br.com.projeto.ui.venda.TelaConsultaProdutos;
 
 /**
  *
@@ -16,8 +17,9 @@ import br.com.projeto.ui.login.TelaLogin;
  */
 public class PrincipalGerente extends javax.swing.JFrame {
     
-    private TelaConsultaGerente consulta = null;
-    private TelaProdutoGerente produtos = null;
+    private TelaConsultaCliente cli = null;
+    private TelaProdutoGerente consulta = null;
+    private TelaConsultaProdutos pro = null;
     private TelaLogin login = null;
     /**
      * Creates new form AdmGerente
@@ -28,6 +30,40 @@ public class PrincipalGerente extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
          
     }
+     
+
+    public TelaConsultaCliente getConsultaCliente() {
+        return cli;
+    }
+
+    public void setConsultaCliente(TelaConsultaCliente consultarClientes) {
+        this.cli= consultarClientes;
+    }   
+    public TelaProdutoGerente getProdutoGerente() {
+        return consulta;
+    }
+
+    public void setProdutoGerente(TelaProdutoGerente consulta) {
+        this.consulta = consulta;  
+    }    
+     public TelaConsultaProdutos getConsultaProdutos() {
+        return pro;
+    }
+
+    public void setConsultaProdutos(TelaConsultaProdutos vendas) {
+        this.pro = vendas;    
+      }    
+     public TelaLogin getLogin() {
+        return login;
+    }
+
+    public void setLogin(TelaLogin login) {
+        this.login = login;      
+    
+        
+}
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +84,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
         jMenuItemCliente = new javax.swing.JMenuItem();
         jMenuConsulta = new javax.swing.JMenu();
         jMenuItemConsultaCliente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuOpções = new javax.swing.JMenu();
         jMenuItemAjuda = new javax.swing.JMenuItem();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -108,6 +145,15 @@ public class PrincipalGerente extends javax.swing.JFrame {
         });
         jMenuConsulta.add(jMenuItemConsultaCliente);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Carrinho Mercado.png"))); // NOI18N
+        jMenuItem1.setText("Produto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuConsulta.add(jMenuItem1);
+
         jMenuBarMenus.add(jMenuConsulta);
 
         jMenuOpções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
@@ -164,21 +210,31 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
-      if (consulta == null || !consulta.isDisplayable()) {
-            consulta = new TelaConsultaGerente();
-            consulta.setVisible(true);
+     if (cli == null || !cli.isDisplayable()) {
+           cli = new TelaConsultaCliente();
+            cli.setVisible(true);
         }
-        consulta.toFront();
+        cli.toFront();
     }//GEN-LAST:event_jMenuItemConsultaClienteActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
-         if (produtos == null || !produtos.isDisplayable()) {
-            produtos = new TelaProdutoGerente();
-            produtos.setVisible(true);
+         
+        if (consulta == null || !consulta.isDisplayable()) {
+            consulta = new TelaProdutoGerente();
+            consulta.setVisible(true);
         }
-        produtos.toFront();
+        consulta.toFront();
         
     }//GEN-LAST:event_jMenuItemProdutosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         if (pro == null || !pro.isDisplayable()) {
+            pro = new TelaConsultaProdutos();
+            pro.setVisible(true);
+        }
+        pro.toFront();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +279,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBarMenus;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenu jMenuConsulta;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAjuda;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemConsultaCliente;

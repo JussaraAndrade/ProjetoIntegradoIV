@@ -3,11 +3,8 @@ package br.com.projeto.ui.principal;
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.gerente.TelaConsultaGerente;
-import br.com.projeto.ui.gerente.TelaProdutoGerente;
 import br.com.projeto.ui.login.TelaLogin;
 import br.com.projeto.ui.venda.TelaClienteVenda;
-import java.awt.Dimension;
-import javax.swing.JInternalFrame;
 
 
 
@@ -18,7 +15,7 @@ import javax.swing.JInternalFrame;
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
     private TelaCadastrarCliente cadastrar = null;
-    private TelaConsultaCliente consultar = null;
+    private TelaConsultaCliente consul = null;
     private TelaClienteVenda vendas = null;
     private TelaConsultaGerente produto = null;
     private TelaLogin login = null;
@@ -42,11 +39,33 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }
 
     public TelaConsultaCliente getConsultarClientes() {
-        return consultar;
+        return consul;
     }
 
     public void setConsultarClientes(TelaConsultaCliente consultarClientes) {
-        this.consultar = consultarClientes;
+        this.consul = consultarClientes;
+    }   
+    public TelaConsultaGerente getConsultaGerente() {
+        return produto;
+    }
+
+    public void setConsultarGerente(TelaConsultaGerente produto) {
+        this.produto = produto;  
+    }    
+     public TelaClienteVenda getClienteVenda() {
+        return vendas;
+    }
+
+    public void setClienteVenda(TelaClienteVenda vendas) {
+        this.vendas = vendas;    
+      }    
+     public TelaLogin getLogin() {
+        return login;
+    }
+
+    public void setLogin(TelaLogin login) {
+        this.login = login;      
+    
         
 }
     /**
@@ -213,13 +232,13 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaActionPerformed
-         if(consultar == null || !consultar.isDisplayable()){
+         if(consul == null || !consul.isDisplayable()){
         
-        consultar = new TelaConsultaCliente();
-        consultar.setVisible(true);
+        consul = new TelaConsultaCliente();
+        consul.setVisible(true);
       
        }
-         consultar.toFront();
+         consul.toFront();
     
 
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed

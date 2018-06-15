@@ -462,14 +462,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         
         cli.setDataNasc(date);
          
-//        Date data = null;
-//        try {
-//            data =  (Date)txtDataNasc.getValue();
-//        } catch (Exception e) {
-//            
-//        }
-//        cli.setDataNasc(data);
-//      
        
          
         try {
