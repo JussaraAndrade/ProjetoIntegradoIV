@@ -1,10 +1,12 @@
 package br.com.projeto.ui.principal;
 
+
 import br.com.projeto.ui.clientes.TelaCadastrarCliente;
 import br.com.projeto.ui.clientes.TelaConsultaCliente;
 import br.com.projeto.ui.gerente.TelaConsultaGerente;
 import br.com.projeto.ui.login.TelaLogin;
 import br.com.projeto.ui.venda.TelaClienteVenda;
+import br.com.projeto.ui.venda.TelaConsultaProdutos;
 
 
 
@@ -14,11 +16,13 @@ import br.com.projeto.ui.venda.TelaClienteVenda;
  * @author Jussara Andrade
  */
 public class PrincipalVendedor extends javax.swing.JFrame {
-    private TelaCadastrarCliente cadastrar = null;
-    private TelaConsultaCliente consul = null;
+    private TelaCadastrarCliente cadastrar = null; //Esse
+    private TelaConsultaCliente consul = null;//esse
     private TelaClienteVenda vendas = null;
     private TelaConsultaGerente produto = null;
     private TelaLogin login = null;
+    private TelaConsultaProdutos tabelaProduto= null;
+    
     /**
      * Creates new form CadastroCliente
      */
@@ -146,7 +150,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         });
         jMenuConsulta.add(jMenuItemConsulta);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Arquivo Caixa.png"))); // NOI18N
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Estoque 1.png"))); // NOI18N
         jMenuItem4.setText("Produto");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,14 +248,14 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConsultaActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        //tela procurar produto 
-        if(produto == null || !produto.isDisplayable()){
+        if(tabelaProduto== null || !tabelaProduto.isDisplayable()){
         
-        produto = new TelaConsultaGerente();
-        produto.setVisible(true);
+        tabelaProduto = new TelaConsultaProdutos();
+        tabelaProduto.setVisible(true);
       
        }
-         produto.toFront();
+         tabelaProduto.toFront();
+    
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

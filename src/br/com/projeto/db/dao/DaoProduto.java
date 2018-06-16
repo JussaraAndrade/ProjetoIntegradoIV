@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class DaoProduto {
 
-    public static void inserir(Produto produto)
+    public static void inserirProduto(Produto produto)
             throws SQLException, Exception {
 
         String sql = "INSERT INTO produto (codigobarras, nome_produto, departamento_produto, cor, tamanho_produto, descricao_produto, preco_produto, quant_estoque_produto, data_cadastro_produto, enable_produto) "
@@ -89,7 +89,7 @@ public class DaoProduto {
                 }
                
                 Produto produto = new Produto();
-                produto.setId(result.getInt("id_produto"));
+                produto.setIdProduto(result.getInt("id_produto"));
                 produto.setCodigobarras(result.getString("codigobarras"));
                 produto.setNome(result.getString("nome_produto"));
                 produto.setDepartamento(result.getString("departamento_produto"));
@@ -236,8 +236,7 @@ public class DaoProduto {
     public static void atualizarProduto(Produto produto)
             throws SQLException, Exception {
 
-        String sql = "UPDATE mydb.produto SET codigobarras=?, nome_produto=?, cor=?, tamanho_produto=?, descricao_produto=?, preco_produto=?, quant_estoque_produto=?)"
-                + "WHERE(id_produto=?)";
+        String sql = "UPDATE produto SET nome_produto = ?, departamento_produto = ?, cor = ?, tamanho_produto = ?, descricao_produto = ?, preco_produto = ?, quant_estoque_produto = ? WHERE id_produto = ?";
 
 
         Connection connection = null;
@@ -276,9 +275,11 @@ public class DaoProduto {
     }
 
     public static void excluirProduto(Integer id) throws SQLException, Exception {
+        
 
-        String sql = "UPDATE cliente SET enable_produto=? WHERE (id_produto=?)";
-
+//        String sql = "UPDATE mydb.produto SET enable_produto=0 WHERE codigobarras=?";
+       String sql = "UPDATE mydb.produto SET enable_produto=? WHERE (id_produto=?)";
+ 
         Connection connection = null;
 
         PreparedStatement preparedStatement = null;
@@ -288,8 +289,10 @@ public class DaoProduto {
 
             preparedStatement = connection.prepareStatement(sql);
 
+           
             preparedStatement.setBoolean(1, false);
             preparedStatement.setInt(2, id);
+           
 
             preparedStatement.execute();
         } finally {

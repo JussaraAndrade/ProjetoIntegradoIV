@@ -7,6 +7,8 @@ package br.com.projeto.ui.gerente;
 
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.service.cliente.ServicoCliente;
+import br.com.projeto.ui.principal.PrincipalGerente;
+import static com.sun.java.accessibility.util.SwingEventMonitor.addInternalFrameListener;
 import javax.swing.JOptionPane;
 
 
@@ -14,12 +16,17 @@ import javax.swing.JOptionPane;
  *
  * @author Jussara Andrade
  */
-public class TelaEditarGerente extends javax.swing.JFrame {
+public class TelaEditarGerente extends javax.swing.JFrame{
  Produto produto = new Produto();
+ 
+
+ 
 
     //Construtor e inicialização de componentes
     public TelaEditarGerente() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     public Produto getGerente() {
@@ -28,12 +35,9 @@ public class TelaEditarGerente extends javax.swing.JFrame {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
-    
-        initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
+       
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +69,23 @@ public class TelaEditarGerente extends javax.swing.JFrame {
         buttonSalvar = new javax.swing.JButton();
         buttonFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Atualizar Cadastro"));
 
@@ -242,8 +262,6 @@ public class TelaEditarGerente extends javax.swing.JFrame {
         produto.setDescricao((String) txtDescricao.getText());
         produto.setQuantidade((String) txtEstoque.getText());
         
-    
-        
         try {
             //Chama o serviço para realizar as alterações necessárias
             ServicoCliente.getInstance().atualizarProduto(produto);
@@ -253,40 +271,61 @@ public class TelaEditarGerente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
-        }        
-     //     VERIFICAR O ERRO NESSA PARTE E TESTAR    
-//        
-//        try {
-//            if (this.getDesktopPane().getTopLevelAncestor()
-//                    instanceof PrincipalGerente) {
-//                PrincipalGerente principal = (PrincipalGerente) this.
-//                        getDesktopPane().getTopLevelAncestor();
-//                if (principal != null) {
-//                    principal.getConsultaProdutos().refreshListProduto();                
-//                }
-//            }
-//        }
-//        catch(Exception e) {
-//            //Exibe erros de atualização da lista no
-//            //console, mas esconde-os do usuário
-//            e.printStackTrace();
-//        }
-//        
+        }
+        try {
+           
+               PrincipalGerente principal = new PrincipalGerente();
+                if (principal != null) {
+                    principal.getConsultaProdutos().refreshListProduto(); 
+                                
+                }
+            
+        }
+        catch(Exception e) {
+            //Exibe erros de atualização da lista no
+           //console, mas esconde-os do usuário
+            e.printStackTrace();
+        }
+        
         JOptionPane.showMessageDialog(rootPane, "Cliente atualizado com sucesso",
                 "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);        
         this.dispose();
+    
+    
     }//GEN-LAST:event_buttonSalvarActionPerformed
-     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {  
-     //ALTERAR PARA AS INFORMÇÕES DE PRODUTOS    
-//          fieldNome.setText(cliente.getNome());
-//        fieldSobrenome.setText(cliente.getSobrenome());
-//        fFieldDataNasc.setValue(cliente.getDataNascimento());
-//        for (int i = 0; i < comboGenero.getItemCount(); i++) {
-//            if (comboGenero.getItemAt(i).equals(cliente.getGenero())) {
-//                comboGenero.setSelectedIndex(i);
-//                break;
-           
-     }
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+         txtNome.setText(produto.getNome());
+        txtPreco.setText(produto.getPreco());
+        txtCodigoBarra.setText(produto.getCodigobarras());
+        txtDescricao.setText(produto.getDescricao());
+        txtEstoque.setText(produto.getQuantidade());
+        
+        for (int i = 0; i < jComboBoxGenero.getItemCount(); i++) {
+           if (jComboBoxGenero.getItemAt(i).equals(produto.getDepartamento())) {
+                jComboBoxGenero.setSelectedIndex(i);
+                break;
+           }        
+       for (int j = 0; j < jComboBoxTamanho.getItemCount(); j++) {
+           if (jComboBoxTamanho.getItemAt(j).equals(produto.getTamanho())) {
+                jComboBoxTamanho.setSelectedIndex(j);
+                break;
+           } 
+         for (int a = 0; a < jComboBoxCor.getItemCount(); a++) {
+           if (jComboBoxCor.getItemAt(a).equals(produto.getCor())) {
+                jComboBoxCor.setSelectedIndex(a);
+                break;
+               
+           }
+         }
+       
+       }
+}
+
+    }//GEN-LAST:event_formInternalFrameOpened
+ 
+
+  
     /**
      * @param args the command line arguments
      */

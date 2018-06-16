@@ -40,7 +40,7 @@ public class ServicoCliente {
 
         try {
             
-            DaoCliente.inserir(cliente);
+            DaoCliente.inserirClinte(cliente);
             
         } catch (Exception e) {
             
@@ -57,7 +57,7 @@ public class ServicoCliente {
 
         try {
           
-            DaoCliente.atualizar(cliente);
+            DaoCliente.atualizarCliente(cliente);
             return;
         } catch (Exception e) {
            
@@ -93,11 +93,11 @@ public class ServicoCliente {
         }
     }
       
-    public void excluirCliente(Integer id)
+    public void excluirCliente(String nome)
             throws ClienteException, DataSourceException {
         try {
            
-            DaoCliente.excluir(id);
+            DaoCliente.excluirCliente(nome);
         } catch (Exception e) {
             
             e.printStackTrace();
@@ -113,7 +113,7 @@ public class ServicoCliente {
 
         try {
            
-            DaoProduto.inserir(produto);
+            DaoProduto.inserirProduto(produto);
             
         } catch (Exception e) {
            

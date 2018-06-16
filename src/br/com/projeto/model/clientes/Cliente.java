@@ -29,14 +29,14 @@ public class Cliente {
     private String uf;
     private String cep;
     private String complemento;
-    private Boolean enable;
+    private Boolean enable; 
 
-    public Integer getId() {
+    public Integer getIdCliente() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCliente(Integer idCliente) {
+        this.id = idCliente;
     }
 
     public String getNome() {
@@ -174,5 +174,4 @@ public class Cliente {
     public void setEnable(Boolean enable) {
         this.enable = enable;
     }
-
 }

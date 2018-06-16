@@ -13,15 +13,7 @@ import java.sql.Date;
  */
 public class Produto {
 
-    private Integer id;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private int id;
     private String nome;
     private String departamento;
     private String cor;
@@ -33,20 +25,12 @@ public class Produto {
     private String codigobarras;
     private Boolean enable;
 
-    public Boolean getEnable() {
-        return enable;
+    public int getIdProduto() {
+        return id;
     }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
-
-    public String getCodigobarras() {
-        return codigobarras;
-    }
-
-    public void setCodigobarras(String codigobarras) {
-        this.codigobarras = codigobarras;
+    public void setIdProduto(int idProduto) {
+        this.id = idProduto;
     }
 
     public String getNome() {
@@ -111,6 +95,22 @@ public class Produto {
 
     public void setPreco(String preco) {
         this.preco = preco;
+    }
+
+    public String getCodigobarras() {
+        return codigobarras;
+    }
+
+    public void setCodigobarras(String codigobarras) {
+        this.codigobarras = codigobarras;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
 }

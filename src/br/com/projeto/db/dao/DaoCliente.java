@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class DaoCliente {
 
-    public static void inserir(Cliente cliente)
+    public static void inserirClinte(Cliente cliente)
             throws SQLException, Exception {
 
         String sql = "INSERT INTO mydb.cliente (nome_cliente, sexo_cliente, rg_cliente, cpf_cliente, data_nasc_cliente, email_cliente, celular_cliente, telefone_cliente, data_cadastro_cliente, enable_cliente) "
@@ -117,7 +117,7 @@ public class DaoCliente {
                 }
 
                 Cliente cliente = new Cliente();
-                cliente.setId(result.getInt("id_cliente"));
+                cliente.setIdCliente(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -181,7 +181,7 @@ public class DaoCliente {
             if (result.next()) {
 
                 Cliente cliente = new Cliente();
-                cliente.setId(result.getInt("id_cliente"));
+                cliente.setIdCliente(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -249,7 +249,7 @@ public class DaoCliente {
                 }
                 Cliente cliente = new Cliente();
 
-                cliente.setId(result.getInt("id_cliente"));
+                cliente.setIdCliente(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -289,7 +289,7 @@ public class DaoCliente {
     
 
 }
- public static void atualizar(Cliente cliente)
+ public static void atualizarCliente(Cliente cliente)
             throws SQLException, Exception {
 
         String sql = "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
@@ -307,7 +307,7 @@ public class DaoCliente {
             connection.setAutoCommit(false);
 
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(0, cliente.getId());
+            preparedStatement.setInt(0, cliente.getIdCliente());
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getRg());
@@ -354,10 +354,12 @@ public class DaoCliente {
         }
     }
 
-    public static void excluir(Integer id) throws SQLException, Exception {
+    public static void excluirCliente(String nome) throws SQLException, Exception {
 
-        String sql = "UPDATE cliente SET enable_cliente=? WHERE (id_cliente=?)";
-
+        String sql = "DELETE FROM mydb.cliente WHERE (id_cliente=?);";
+        String sq2 = "DELETE FROM mydb.cliente WHERE (id_cliente=?);";
+        
+        
         Connection connection = null;
 
         PreparedStatement preparedStatement = null;
@@ -367,8 +369,7 @@ public class DaoCliente {
 
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setBoolean(1, false);
-            preparedStatement.setInt(2, id);
+              preparedStatement.setString(1, nome);
 
             preparedStatement.execute();
         } finally {

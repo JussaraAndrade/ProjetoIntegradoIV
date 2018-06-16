@@ -162,52 +162,41 @@ public class TelaConsultaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           //Inicializa o sucesso da pesquisa com valor negativo, indicando que
-        //a pesquisa de clientes não obteve resultados (situação padrão)
+          
         boolean resultSearch = false;
-        
-        //Grava o campo de pesquisa como a última pesquisa válida. O valor
-        //de última pesquisa válida é utilizado na atualização da lista
+   
         ultimaPesquisa = txtPesquisa.getText();
 
         try {
-            //Solicita a atualização da lista com o novo critério
-            //de pesquisa (ultimaPesquisa)
+           
             resultSearch = refreshListProduto();
         } catch (Exception e) {
-            //Exibe mensagens de erro na fonte de dados e para o listener
+            
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Falha ao obter lista", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //Exibe mensagem de erro caso a pesquisa não tenha resultados
+        
         if (!resultSearch) {
             JOptionPane.showMessageDialog(rootPane, "A pesquisa não retornou resultados ",
                     "Sem resultados", JOptionPane.ERROR_MESSAGE);
         }
     }                                               
 
-    //Atualiza a lista de clientes. Pode ser chamado por outras telas
+
     public boolean refreshListProduto() throws ClienteException, Exception {
-        //Realiza a pesquisa de clientes com o último valor de pesquisa
-        //para atualizar a lista
+        
         List<Produto> resultado = ServicoCliente.getInstance().procurarProduto(ultimaPesquisa);
         
-        
-
-        //Obtém o elemento representante do conteúdo da tabela na tela
         DefaultTableModel modelDados = (DefaultTableModel) tabelaProduto.getModel();
-        //Indica que a tabela deve excluir todos seus elementos
-        //Isto limpará a lista, mesmo que a pesquisa não tenha sucesso
+       
         modelDados.setRowCount(0);  
-        //Verifica se não existiram resultados. Caso afirmativo, encerra a
-        //atualização e indica ao elemento acionador o não sucesso da pesquisa
+        
         if (resultado == null || resultado.size() <= 0) {
             return false;
         }
 
-        //Percorre a lista de resultados e os adiciona na tabela
         for (int i = 0; i < resultado.size(); i++) {
             Produto produto = resultado.get(i);
     
@@ -216,7 +205,7 @@ public class TelaConsultaProdutos extends javax.swing.JFrame {
 
                 Object[] row = new Object[10];
 
-                row[0] = produto.getId();
+                row[0] = produto.getIdProduto();
                 row[1] = produto.getCodigobarras();
                 row[2] = produto.getNome();
                 row[3] = produto.getDepartamento();
@@ -226,10 +215,7 @@ public class TelaConsultaProdutos extends javax.swing.JFrame {
                 row[7] = produto.getPreco();
                 row[8] = produto.getQuantidade();
                 row[9] = produto.getEnable();
-                
-
-               
-               
+              
                 modelDados.addRow(row);
             }
         }
