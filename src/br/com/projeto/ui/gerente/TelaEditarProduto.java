@@ -8,7 +8,6 @@ package br.com.projeto.ui.gerente;
 import br.com.projeto.model.produto.Produto;
 import br.com.projeto.service.cliente.ServicoCliente;
 import br.com.projeto.ui.principal.PrincipalGerente;
-import static com.sun.java.accessibility.util.SwingEventMonitor.addInternalFrameListener;
 import javax.swing.JOptionPane;
 
 
@@ -16,20 +15,17 @@ import javax.swing.JOptionPane;
  *
  * @author Jussara Andrade
  */
-public class TelaEditarGerente extends javax.swing.JFrame{
+public class TelaEditarProduto extends javax.swing.JInternalFrame{
  Produto produto = new Produto();
  
-
- 
-
     //Construtor e inicialização de componentes
-    public TelaEditarGerente() {
+    public TelaEditarProduto() {
         initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
+//        setLocationRelativeTo(null);
+//        setResizable(false);
     }
 
-    public Produto getGerente() {
+    public Produto getProduto() {
         return produto;
     }
 
@@ -53,7 +49,7 @@ public class TelaEditarGerente extends javax.swing.JFrame{
         lblPreco = new javax.swing.JLabel();
         txtPreco = new javax.swing.JTextField();
         lblEstoque = new javax.swing.JLabel();
-        txtEstoque = new javax.swing.JTextField();
+        txtQuantidade = new javax.swing.JTextField();
         lblCodigoBarra = new javax.swing.JLabel();
         txtCodigoBarra = new javax.swing.JTextField();
         lblGenero = new javax.swing.JLabel();
@@ -155,7 +151,7 @@ public class TelaEditarGerente extends javax.swing.JFrame{
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEstoque)
-                            .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +188,7 @@ public class TelaEditarGerente extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(lblDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,7 +245,7 @@ public class TelaEditarGerente extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFecharActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_buttonFecharActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
@@ -260,7 +256,8 @@ public class TelaEditarGerente extends javax.swing.JFrame{
         produto.setPreco(txtPreco.getText());
         produto.setCodigobarras(txtCodigoBarra.getText());
         produto.setDescricao((String) txtDescricao.getText());
-        produto.setQuantidade((String) txtEstoque.getText());
+//        produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        produto.setQuantidade(txtQuantidade.getText());
         
         try {
             //Chama o serviço para realizar as alterações necessárias
@@ -271,47 +268,50 @@ public class TelaEditarGerente extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
+         
         }
-        try {
-           
-               PrincipalGerente principal = new PrincipalGerente();
-                if (principal != null) {
-                    principal.getConsultaProdutos().refreshListProduto(); 
-                                
+        
+          try {
+            if (this.getDesktopPane().getTopLevelAncestor()
+                    instanceof PrincipalGerente) {
+                PrincipalGerente principalGerente = (PrincipalGerente) this.
+                        getDesktopPane().getTopLevelAncestor();
+                if (principalGerente != null) {
+                    principalGerente.getConsultaProdutos().refreshListProduto();                
                 }
-            
+            }
         }
         catch(Exception e) {
-            //Exibe erros de atualização da lista no
-           //console, mas esconde-os do usuário
+            
             e.printStackTrace();
         }
         
-        JOptionPane.showMessageDialog(rootPane, "Cliente atualizado com sucesso",
-                "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);        
+        JOptionPane.showMessageDialog(rootPane, "Produto atualizado com sucesso",
+                "Produto atualizado", JOptionPane.INFORMATION_MESSAGE);        
         this.dispose();
-    
-    
+        
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-         txtNome.setText(produto.getNome());
+        txtNome.setText(produto.getNome());
         txtPreco.setText(produto.getPreco());
         txtCodigoBarra.setText(produto.getCodigobarras());
         txtDescricao.setText(produto.getDescricao());
-        txtEstoque.setText(produto.getQuantidade());
+        txtQuantidade.setText(produto.getQuantidade());
+//         produto.getQuantidade(Integer.parseInt(txtQuantidade.setText()));
+//        txtQuantidade.setText(produto.getQuantidade());
         
         for (int i = 0; i < jComboBoxGenero.getItemCount(); i++) {
            if (jComboBoxGenero.getItemAt(i).equals(produto.getDepartamento())) {
                 jComboBoxGenero.setSelectedIndex(i);
                 break;
            }        
-       for (int j = 0; j < jComboBoxTamanho.getItemCount(); j++) {
+       for (int j = 1; j < jComboBoxTamanho.getItemCount(); j++) {
            if (jComboBoxTamanho.getItemAt(j).equals(produto.getTamanho())) {
                 jComboBoxTamanho.setSelectedIndex(j);
                 break;
            } 
-         for (int a = 0; a < jComboBoxCor.getItemCount(); a++) {
+         for (int a = 2; a < jComboBoxCor.getItemCount(); a++) {
            if (jComboBoxCor.getItemAt(a).equals(produto.getCor())) {
                 jComboBoxCor.setSelectedIndex(a);
                 break;
@@ -326,41 +326,8 @@ public class TelaEditarGerente extends javax.swing.JFrame{
  
 
   
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaEditarGerente().setVisible(true);
-            }
-        });
-    }
+   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFechar;
@@ -381,8 +348,8 @@ public class TelaEditarGerente extends javax.swing.JFrame{
     private javax.swing.JLabel lblTamanho;
     private javax.swing.JTextField txtCodigoBarra;
     private javax.swing.JTextArea txtDescricao;
-    private javax.swing.JTextField txtEstoque;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

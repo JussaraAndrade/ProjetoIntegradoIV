@@ -14,59 +14,31 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Jussara Andrade
  */
-public class TelaConsultaGerente extends javax.swing.JFrame{
+public class TelaConsultaProduto extends javax.swing.JInternalFrame {
 
     //TelaEditarGerente formEditarProduto = new TelaEditarGerente();
-    private TelaEditarGerente  ProdutoEditar = null;
+//    private TelaEditarProduto  formEditarProduto = null;
+    TelaEditarProduto formEditarProduto = new TelaEditarProduto();
     String ultimaPesquisa = null;
 
     /**
      * Creates new form Pesquisa
      */
-    public TelaConsultaGerente() {
+    public TelaConsultaProduto() {
         initComponents();
-       setLocationRelativeTo(null);  
+
         setResizable(false);
-        
+
         tabelaProduto.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaProduto.getColumnModel().getColumn(0).setMaxWidth(0);
         tabelaProduto.getColumnModel().getColumn(0).setWidth(0);
-    }
-    
-    public void alterar(){
-         try {
-           
-            final int row = tabelaProduto.getSelectedRow();
-           
-            if (row >= 0) {
-               
-                Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
-                
-                Produto produto = ServicoCliente.getInstance().obterProduto(id);
 
-                ProdutoEditar.dispose();
-                ProdutoEditar = new TelaEditarGerente();
-                ProdutoEditar.setProduto(produto);
-                ProdutoEditar.setName(produto.getNome());
-                this.getParent().add(ProdutoEditar);              
-                ProdutoEditar.toFront();
-            }
-        } catch (Exception e) {
-      
-            e.printStackTrace();
-           
-            JOptionPane.showMessageDialog(rootPane, "Não é possível "
-                + "exibir os detalhes deste cliente.",
-                "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,15 +46,13 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtPesquisa = new javax.swing.JTextField();
         ButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
+        txtPesquisar = new javax.swing.JTextField();
         ButtonFechar = new javax.swing.JButton();
         buttonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,9 +91,9 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonPesquisar)
                 .addContainerGap(429, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -137,9 +107,9 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ButtonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -185,7 +155,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(ButtonExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addComponent(buttonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -210,32 +180,118 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFecharActionPerformed
-        dispose();
-    }//GEN-LAST:event_ButtonFecharActionPerformed
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
+        if (tabelaProduto.getSelectedRow() >= 0) {
+
+            final int row = tabelaProduto.getSelectedRow();
+
+            String codigo = (String) tabelaProduto.getValueAt(row, 1);
+
+            int resposta = JOptionPane.showConfirmDialog(rootPane,
+                    "Excluir o produto \"" + codigo + "\"?",
+                    "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
+
+            if (resposta == JOptionPane.YES_OPTION) {
+                try {
+
+                    Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
+
+                    ServicoCliente.getInstance().excluirProduto(id);
+
+                    this.refreshListProduto();
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                    JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                            "Falha na Exclusão", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
 
     private void buttonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarActionPerformed
-    if (ProdutoEditar == null || !ProdutoEditar.isDisplayable()) {
-                 ProdutoEditar = new TelaEditarGerente();
-                 ProdutoEditar.setVisible(true);
-        }
-       ProdutoEditar.toFront();
-    //   alterar();
-               
-    }//GEN-LAST:event_buttonAlterarActionPerformed
-        
-
-    private void ButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesquisarActionPerformed
-        
-        boolean resultSearch = false;
-     
-        ultimaPesquisa = txtPesquisa.getText();
 
         try {
-           
+            final int row = tabelaProduto.getSelectedRow();
+
+            if (row >= 0) {
+
+                Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
+
+                Produto produto = ServicoCliente.getInstance().obterProduto(id);
+
+                formEditarProduto.dispose();
+                formEditarProduto = new TelaEditarProduto();
+                formEditarProduto.setProduto(produto);
+                formEditarProduto.setTitle(produto.getNome());
+                this.getParent().add(formEditarProduto);
+                this.openFrameInCenter(formEditarProduto);
+                formEditarProduto.toFront();
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(rootPane, "Não é possível "
+                    + "exibir os detalhes deste produto.",
+                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+
+    }//GEN-LAST:event_buttonAlterarActionPerformed
+
+    private void ButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_ButtonFecharActionPerformed
+
+    private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+
+                final int row = tabelaProduto.getSelectedRow();
+
+                Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
+
+                Produto produto = ServicoCliente.getInstance().obterProduto(id);
+
+                formEditarProduto.dispose();
+                formEditarProduto = new TelaEditarProduto();
+                formEditarProduto.setProduto(produto);
+                formEditarProduto.setTitle(produto.getNome());
+                this.getParent().add(formEditarProduto);
+                this.openFrameInCenter(formEditarProduto);
+                formEditarProduto.toFront();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+                JOptionPane.showMessageDialog(rootPane, "Não é possível "
+                        + "exibir os detalhes deste produto.",
+                        "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
+
+    }//GEN-LAST:event_tabelaProdutoMouseClicked
+
+    private void ButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesquisarActionPerformed
+
+        boolean resultSearch = false;
+
+        ultimaPesquisa = txtPesquisar.getText();
+
+        try {
+
             resultSearch = refreshListProduto();
         } catch (Exception e) {
-          
+
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Falha ao obter lista", JOptionPane.ERROR_MESSAGE);
             return;
@@ -245,25 +301,24 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(rootPane, "A pesquisa não retornou resultados ",
                     "Sem resultados", JOptionPane.ERROR_MESSAGE);
         }
-    }                                               
+    }
 
-   
     public boolean refreshListProduto() throws ClienteException, Exception {
-       
+
         List<Produto> resultado = ServicoCliente.getInstance().procurarProduto(ultimaPesquisa);
-        
-        
+
         DefaultTableModel modelProduto = (DefaultTableModel) tabelaProduto.getModel();
-        
-        modelProduto.setRowCount(0);  
-     
+
+        modelProduto.setRowCount(0);
+
         if (resultado == null || resultado.size() <= 0) {
             return false;
         }
 
         for (int i = 0; i < resultado.size(); i++) {
             Produto produto = resultado.get(i);
-         if (produto != null) {
+
+            if (produto != null) {
 
                 Object[] row = new Object[10];
 
@@ -277,79 +332,14 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
                 row[7] = produto.getPreco();
                 row[8] = produto.getQuantidade();
                 row[9] = produto.getEnable();
-                
-  
+
                 modelProduto.addRow(row);
             }
         }
-        
-       
+
         return true;
-                                         
+    }
 
-                                            
-    }//GEN-LAST:event_ButtonPesquisarActionPerformed
-
-    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
-        if (tabelaProduto.getSelectedRow() >= 0) {
-          
-            final int row = tabelaProduto.getSelectedRow();
-           
-            String codigo = (String) tabelaProduto.getValueAt(row, 1);
-        
-            int resposta = JOptionPane.showConfirmDialog(rootPane,
-                "Excluir o produto \"" + codigo+ "\"?",
-                "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
-           
-            if (resposta == JOptionPane.YES_OPTION) {
-                try {
-                 
-                    Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
-                    
-                    ServicoCliente.getInstance().excluirProduto(id);
-                    
-                   
-                    this.refreshListProduto();
-                } catch (Exception e) {
-               
-                    e.printStackTrace();
-                   
-                    JOptionPane.showMessageDialog(rootPane, e.getMessage(),
-                            "Falha na Exclusão", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
-    }//GEN-LAST:event_ButtonExcluirActionPerformed
-
-    private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
-         if (evt.getClickCount() == 2) {
-            try {                
-              
-                final int row = tabelaProduto.getSelectedRow();
-                
-                Integer id = (Integer) tabelaProduto.getValueAt(row, 0);
-                
-                
-                Produto produto = ServicoCliente.getInstance().obterProduto(id);
-
-              
-                ProdutoEditar.dispose();
-                ProdutoEditar = new TelaEditarGerente();
-                ProdutoEditar.setProduto(produto);
-                ProdutoEditar.setTitle(produto.getNome());
-                this.getParent().add(ProdutoEditar);            
-                ProdutoEditar.toFront();
-            } catch (Exception e) {
-               
-                e.printStackTrace();
-              
-                JOptionPane.showMessageDialog(rootPane, "Não é possível "
-                    + "exibir os detalhes deste produto.",
-                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
-            
-            }
-         }
-         }
     public void openFrameInCenter(JInternalFrame jif) {
         Dimension desktopSize = this.getParent().getSize();
         Dimension jInternalFrameSize = jif.getSize();
@@ -357,15 +347,9 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
         int height = (desktopSize.height - jInternalFrameSize.height) / 2;
         jif.setLocation(width, height);
         jif.setVisible(true);
-    
-    
-    }//GEN-LAST:event_tabelaProdutoMouseClicked
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-    
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_ButtonPesquisarActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonExcluir;
@@ -377,7 +361,7 @@ public class TelaConsultaGerente extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaProduto;
-    private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 
-} 
+}

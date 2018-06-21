@@ -25,15 +25,15 @@ public class ValidadorProduto {
         }
         if (produto.getDepartamento().trim().equals("Selecione...")) {
             throw new ClienteException("É necessário informar o "
-                    + "departamento do cliente");
+                    + "departamento do produto");
         }
         if (produto.getTamanho().trim().equals("Tamanho...")) {
             throw new ClienteException("É necessário informar o "
-                    + "tamanho do cliente");
+                    + "tamanho do produto");
         }
         if (produto.getCor().trim().equals("Cor...")) {
             throw new ClienteException("É necessário informar o "
-                    + "cor do cliente");
+                    + "cor do produto");
         }
         if (produto.getPreco().equals("")) {
             throw new ClienteException("É necessário informar "

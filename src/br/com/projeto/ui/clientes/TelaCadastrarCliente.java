@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
  *
  * @author Jussara Andrade
  */
-public class TelaCadastrarCliente extends javax.swing.JFrame {
-        Cliente cli = new Cliente();
+public class TelaCadastrarCliente extends javax.swing.JInternalFrame {
+       
        
 
     /**
@@ -30,7 +30,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
      */
     public TelaCadastrarCliente() {
         initComponents();
-        setLocationRelativeTo(null);  
         setResizable(false);
     }
   
@@ -44,7 +43,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanelIdentificação = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -89,10 +87,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         ButtonSalvar = new javax.swing.JButton();
         ButtonFechar = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
@@ -435,7 +429,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        
+        Cliente cli = new Cliente();
         cli.setNome(txtNome.getText());  
         cli.setRg(txtRg.getText());     
         cli.setEmail(txtEmail.getText());
@@ -516,7 +510,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
     private void ButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFecharActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_ButtonFecharActionPerformed
 
     
@@ -525,7 +519,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonFechar;
     private javax.swing.JButton ButtonSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JComboBox<String> jComboBoxUf;
     private javax.swing.JLabel jLabel1;

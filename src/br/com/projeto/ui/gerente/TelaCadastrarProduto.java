@@ -13,16 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Jussara Andrade
  */
-public class TelaProdutoGerente extends javax.swing.JFrame {
-
-    Produto produto = new Produto();
+public class TelaCadastrarProduto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Produtos
      */
-    public TelaProdutoGerente() {
+    public TelaCadastrarProduto() {
         initComponents();
-        setLocationRelativeTo(null);
         setResizable(false);
     }
 
@@ -74,8 +71,6 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jToggleButton1.setText("jToggleButton1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Desktop.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Produtos"));
 
@@ -243,7 +238,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-
+        Produto produto = new Produto();
         produto.setNome(txtNome.getText());
         produto.setDepartamento((String) jComboBoxGenero.getSelectedItem());
         produto.setTamanho((String) jComboBoxTamanho.getSelectedItem());
@@ -251,23 +246,18 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
         produto.setPreco(txtPreco.getText());
         produto.setCodigobarras(txtCodigoBarra.getText());
         produto.setDescricao((String) txtDescricao.getText());
-        produto.setQuantidade((String) txtQuantidade.getText());
-//        produto.setCodigo(Integer.parseInt(txtCodigoBarra.getText()));
-        
+        produto.setQuantidade(txtQuantidade.getText());
 
-        //se ele tá string converta para int, se tá int converta para string
         try {
 
             ServicoCliente.getInstance().cadastrarProduto(produto);
         } catch (Exception e) {
-            //Exibe mensagens de erro para o usuário
+
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //Caso tenha chegado até aqui, o cliente foi inserido com sucesso
-        //Então exibe uma mensagem de sucesso para o usuário
         JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso",
                 "Cadastro efetuado", JOptionPane.INFORMATION_MESSAGE);
 
@@ -283,7 +273,7 @@ public class TelaProdutoGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneroActionPerformed

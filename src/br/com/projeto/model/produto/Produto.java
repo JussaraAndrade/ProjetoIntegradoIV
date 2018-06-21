@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Produto {
 
-    private int id;
+    private Integer id;
     private String nome;
     private String departamento;
     private String cor;

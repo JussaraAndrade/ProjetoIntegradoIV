@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable1">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jToggleButton1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -19,49 +48,43 @@
 
   <Layout>
     <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="305" max="32767" attributes="0"/>
-              <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
+      <Group type="103" groupAlignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="buttonFechar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="ButtonSalvar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="Desktop" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="1" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace pref="408" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buttonSalvar" pref="39" max="32767" attributes="0"/>
-                  <Component id="buttonFechar" max="32767" attributes="0"/>
-              </Group>
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Component id="Desktop" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ButtonSalvar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="Desktop">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Atualizar Cadastro"/>
+            <TitledBorder title="Cadastro Produtos"/>
           </Border>
         </Property>
       </Properties>
@@ -69,28 +92,28 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblGenero" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxGenero" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jComboBoxTamanho" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTamanho" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblCor" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxCor" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtPreco" min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="lblPreco" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblValor" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPreco" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -98,33 +121,32 @@
                           <Component id="txtNome" min="-2" pref="380" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblCodigoBarra" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtCodigoBarra" min="-2" pref="231" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblEstoque" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEstoque" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="336" max="-2" attributes="0"/>
                               <Component id="lblNome" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblCodigoBarra" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtCodigoBarra" min="-2" pref="231" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtQuantidade" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <Component id="lblQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="64" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -142,27 +164,26 @@
                       <Component id="lblGenero" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTamanho" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCor" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPreco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblValor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBoxGenero" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jComboBoxTamanho" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jComboBoxCor" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="txtPreco" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtPreco" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jComboBoxGenero" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBoxTamanho" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jComboBoxCor" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="lblCodigoBarra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEstoque" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCodigoBarra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtCodigoBarra" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="txtEstoque" alignment="3" pref="33" max="32767" attributes="0"/>
+                      <Component id="txtQuantidade" alignment="3" pref="33" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
@@ -181,19 +202,19 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblPreco">
+        <Component class="javax.swing.JLabel" name="lblValor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Valor:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPreco">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblEstoque">
+        <Component class="javax.swing.JLabel" name="lblQuantidade">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Estoque:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEstoque">
+        <Component class="javax.swing.JTextField" name="txtQuantidade">
         </Component>
         <Component class="javax.swing.JLabel" name="lblCodigoBarra">
           <Properties>
@@ -201,10 +222,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigoBarra">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoBarraActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblGenero">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Genero:"/>
+            <Property name="text" type="java.lang.String" value="Departamento:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxGenero">
@@ -214,10 +238,13 @@
                 <StringItem index="0" value="Selecione..."/>
                 <StringItem index="1" value="Infantil"/>
                 <StringItem index="2" value="Adulto"/>
-                <StringItem index="3" value="Intimo"/>
+                <StringItem index="3" value="&#xcd;ntimo"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxGeneroActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -242,8 +269,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel12">
-        </Component>
         <Component class="javax.swing.JLabel" name="lblTamanho">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tamanho:"/>
@@ -253,7 +278,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="Selecione..."/>
+                <StringItem index="0" value="Tamanho..."/>
                 <StringItem index="1" value="P"/>
                 <StringItem index="2" value="M"/>
                 <StringItem index="3" value="G"/>
@@ -274,7 +299,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="Selecione..."/>
+                <StringItem index="0" value="Cor..."/>
                 <StringItem index="1" value="Preto"/>
                 <StringItem index="2" value="Branco"/>
                 <StringItem index="3" value="Azul"/>
@@ -288,20 +313,20 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonSalvar">
+    <Component class="javax.swing.JButton" name="ButtonSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSalvarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSalvarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonFechar">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonFecharActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

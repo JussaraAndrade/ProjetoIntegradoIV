@@ -7,67 +7,73 @@ package br.com.projeto.ui.principal;
 
 
 import br.com.projeto.ui.clientes.TabelaConsultaCliente;
-import br.com.projeto.ui.gerente.TelaConsultaGerente;
-import br.com.projeto.ui.gerente.TelaProdutoGerente;
+import br.com.projeto.ui.gerente.TelaConsultaProduto;
+import br.com.projeto.ui.gerente.TelaCadastrarProduto;
 import br.com.projeto.ui.login.TelaLogin;
 import java.awt.Dimension;
-import static java.awt.SystemColor.desktop;
 import javax.swing.JInternalFrame;
+
+
 
 /**
  *
  * @author Jussara Andrade
  */
 public class PrincipalGerente extends javax.swing.JFrame {
-    
-    private TabelaConsultaCliente cli = null;
-    private TelaProdutoGerente consulta = null;
-    private TelaConsultaGerente pro = null;
+    //Sem botão de Editar e Excluir somente consulta dados de CLIENTES
+    private TabelaConsultaCliente clienteConsulta = null;
+ 
+    //Com botão de Editar e Excluir e também consulta dados de PRODUTO GERENTE
+    private TelaConsultaProduto produtoConsulta = null;
+    //Tela Login de Usuário e Gerente
     private TelaLogin login = null;
+    //Tela de cadastro do Gerente PRODUTO
+    private TelaCadastrarProduto cadastroProduto = null;
+    
+    
     /**
      * Creates new form AdmGerente
      */
     public PrincipalGerente() {
         initComponents();
        setLocationRelativeTo(null);
-        this.setExtendedState(MAXIMIZED_BOTH);
+       this.setExtendedState(MAXIMIZED_BOTH);
+//        this.setLocationRelativeTo(null);
          
     }
      
-
+    //Consulta a tela de CLIENTE sem o Botão de Editar e Excluir
     public TabelaConsultaCliente getConsultaCliente() {
-        return cli;
+        return clienteConsulta;
     }
-
+    //Consulta a tela de CLIENTE sem o Botão de Editar e Excluir
     public void setConsultaCliente(TabelaConsultaCliente consultarClientes) {
-        this.cli= consultarClientes;
+        this.clienteConsulta= consultarClientes;
     }   
-    public TelaProdutoGerente getProdutoGerente() {
-        return consulta;
+    
+     public TelaConsultaProduto getConsultaProdutos() {
+        return produtoConsulta;
     }
 
-    public void setProdutoGerente(TelaProdutoGerente consulta) {
-        this.consulta = consulta;  
-    }    
-     public TelaConsultaGerente getConsultaProdutos() {
-        return pro;
-    }
-
-    public void setConsultaProdutos(TelaConsultaGerente vendas) {
-        this.pro = vendas;    
+    public void setConsultaProdutos(TelaConsultaProduto vendas) {
+        this.produtoConsulta = vendas;    
       }    
-     public TelaLogin getLogin() {
+    public TelaLogin getLogin() {
         return login;
     }
 
     public void setLogin(TelaLogin login) {
         this.login = login;      
-    
+    }
+    public TelaCadastrarProduto getCadastro() {
+        return cadastroProduto;
+    }
+
+    public void setCadastro(TelaCadastrarProduto cadastro) {
+        this.cadastroProduto = cadastro;      
+      
         
 }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +84,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        desktop = new javax.swing.JDesktopPane();
         jMenuBarMenus = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemProdutos = new javax.swing.JMenuItem();
@@ -89,11 +96,26 @@ public class PrincipalGerente extends javax.swing.JFrame {
         jMenuItemConsultaCliente = new javax.swing.JMenuItem();
         jMenuProduto = new javax.swing.JMenuItem();
         jMenuOpções = new javax.swing.JMenu();
-        jMenuItemAjuda = new javax.swing.JMenuItem();
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1036, 644));
+        setSize(new java.awt.Dimension(0, 0));
+        getContentPane().add(jLabel1, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
         jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Cadastrar Cliente.png"))); // NOI18N
         jMenuCadastro.setText("Cadastro");
@@ -162,10 +184,6 @@ public class PrincipalGerente extends javax.swing.JFrame {
         jMenuOpções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/48x48 Tamanho Opções.png"))); // NOI18N
         jMenuOpções.setText("Opções");
 
-        jMenuItemAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Ajuda.png"))); // NOI18N
-        jMenuItemAjuda.setText("Ajuda");
-        jMenuOpções.add(jMenuItemAjuda);
-
         jMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32 Tamanho Botão Desligar 4.png"))); // NOI18N
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -179,16 +197,7 @@ public class PrincipalGerente extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBarMenus);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getAccessibleContext().setAccessibleName("Principal Produto");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,41 +211,48 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-         if (login == null || !login.isDisplayable()) {
-                 login = new TelaLogin();
-                 login.setVisible(true);
-        }
-        login.toFront();
-        dispose();
-           
-    
+       this.dispose();
+
+
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
-     if (cli == null || !cli.isDisplayable()) {
-           cli = new TabelaConsultaCliente();
-            cli.setVisible(true);
+     if (clienteConsulta == null || !clienteConsulta.isDisplayable()) {
+           clienteConsulta = new TabelaConsultaCliente();
+            desktop.add(clienteConsulta);
+            this.openFrameInCenter(clienteConsulta);
         }
-        cli.toFront();
+        clienteConsulta.toFront();
     }//GEN-LAST:event_jMenuItemConsultaClienteActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
          
-        if (consulta == null || !consulta.isDisplayable()) {
-            consulta = new TelaProdutoGerente();
-            consulta.setVisible(true);
+        if (cadastroProduto == null || !cadastroProduto.isDisplayable()) {
+            cadastroProduto = new TelaCadastrarProduto();
+            desktop.add(cadastroProduto);
+            this.openFrameInCenter(cadastroProduto);
         }
-        consulta.toFront();
+        cadastroProduto.toFront();
         
     }//GEN-LAST:event_jMenuItemProdutosActionPerformed
 
     private void jMenuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProdutoActionPerformed
-         if (pro == null || !pro.isDisplayable()) {
-            pro = new TelaConsultaGerente();
-            pro.setVisible(true);
+         if (produtoConsulta == null || !produtoConsulta.isDisplayable()) {
+            produtoConsulta = new TelaConsultaProduto();
+            desktop.add(produtoConsulta);
+            this.openFrameInCenter(produtoConsulta);
         }
-        pro.toFront();
-   
+        produtoConsulta.toFront();
+        }
+     public void openFrameInCenter(JInternalFrame jif) {
+        Dimension desktopSize = desktop.getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+        
+    
     }//GEN-LAST:event_jMenuProdutoActionPerformed
 
     /**
@@ -278,11 +294,11 @@ public class PrincipalGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBarMenus;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenu jMenuConsulta;
-    private javax.swing.JMenuItem jMenuItemAjuda;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemConsultaCliente;
     private javax.swing.JMenuItem jMenuItemEstoque;
@@ -293,4 +309,6 @@ public class PrincipalGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuProduto;
     private javax.swing.JMenu jMenuRelatorios;
     // End of variables declaration//GEN-END:variables
+
+    
 }
