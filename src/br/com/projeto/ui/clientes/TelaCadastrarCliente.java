@@ -436,16 +436,8 @@ public class TelaCadastrarCliente extends javax.swing.JInternalFrame {
         cli.setCelular(txtCelular.getText());
         cli.setTelefone(txtTelefone.getText());
         cli.setSexo((String) jComboBoxSexo.getSelectedItem());
-        if(jComboBoxSexo.getSelectedItem().equals("Masculino")){
-            cli.setSexo("M");
-        }
-        else if(jComboBoxSexo.getSelectedItem().equals("Feminino")){
-            cli.setSexo("F");
-        }
-        
-        
-        
-        cli.setRua(txtEndereco.getText());
+      
+       cli.setRua(txtEndereco.getText());
         cli.setNumero(txtNumero.getText());
         cli.setComplemento(txtComplemento.getText());
         cli.setBairro(txtBairro.getText());

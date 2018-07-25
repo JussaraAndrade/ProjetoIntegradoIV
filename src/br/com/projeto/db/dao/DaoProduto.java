@@ -151,7 +151,8 @@ public class DaoProduto {
                     listaProduto = new ArrayList<Produto>();
                 }
                 Produto pro= new Produto();
-
+                
+                pro.setIdProduto(result.getInt("id_produto"));
                 pro.setCodigobarras(result.getString("codigobarras"));
                 pro.setNome(result.getString("nome_produto"));
                 pro.setDepartamento(result.getString("departamento_produto"));

@@ -29,15 +29,12 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
     public TelaConsultaCliente() {
         initComponents();
 //      //  setLocationRelativeTo(null);
-        setResizable(false);
+        this.setResizable(false);
 
         tabelaDados.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setMaxWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setWidth(0);
 
-        tabelaEndereco.getColumnModel().getColumn(0).setMinWidth(0);
-        tabelaEndereco.getColumnModel().getColumn(0).setMaxWidth(0);
-        tabelaEndereco.getColumnModel().getColumn(0).setWidth(0);
 
     }
 
@@ -46,9 +43,6 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaEndereco = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaDados = new javax.swing.JTable();
@@ -59,36 +53,6 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         txtPesquisar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-
-        tabelaEndereco.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Rua ", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
-            }
-        ));
-        tabelaEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaEnderecoMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tabelaEndereco);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
         tabelaDados.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,7 +60,7 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Sexo", "Rg", "Cpf", "Data Nascimento", "E-mail", "Celular", "Telefone"
+                "Id", "Nome", "Sexo", "Rg", "Cpf", "Data Nascimento", "E-mail", "Celular", "Telefone", "Rua", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
             }
         ));
         tabelaDados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,13 +74,13 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jButton3.setText("Fechar");
@@ -145,11 +109,9 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,17 +121,21 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Pesquisar:");
+
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Pesquisar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +160,7 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 836, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +170,9 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -238,10 +204,8 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         List<Cliente> resultado = ServicoCliente.getInstance().procurarCliente(ultimaPesquisa);
 
         DefaultTableModel modelDados = (DefaultTableModel) tabelaDados.getModel();
-        DefaultTableModel modelEndereco = (DefaultTableModel) tabelaEndereco.getModel();
 
         modelDados.setRowCount(0);
-        modelEndereco.setRowCount(0);
 
         if (resultado == null || resultado.size() <= 0) {
             return false;
@@ -251,8 +215,8 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
             Cliente cli = resultado.get(i);
 
             if (cli != null) {
-                Object[] rowCli = new Object[10];
-                rowCli[0] = cli.getIdCliente();
+                Object[] rowCli = new Object[16];
+                rowCli[0] = cli.getId();
                 rowCli[1] = cli.getNome();
                 rowCli[2] = cli.getSexo();
                 rowCli[3] = cli.getRg();
@@ -261,20 +225,15 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
                 rowCli[5] = formatador.format(cli.getDataNasc());
                 rowCli[6] = cli.getEmail();
                 rowCli[7] = cli.getCelular();
-                rowCli[8] = cli.getTelefone();
-                rowCli[9] = cli.getEnable();
+                rowCli[8] = cli.getTelefone(); 
+                rowCli[9] = cli.getRua();
+                rowCli[10] = cli.getNumero();
+                rowCli[11] = cli.getBairro();
+                rowCli[12] = cli.getCidade();
+                rowCli[13] = cli.getCep();
+                rowCli[14] = cli.getUf();
+                rowCli[15] = cli.getComplemento();
                 modelDados.addRow(rowCli);
-
-                Object[] rowEnd = new Object[8];
-                rowEnd[0] = cli.getIdCliente();
-                rowEnd[1] = cli.getRua();
-                rowEnd[2] = cli.getNumero();
-                rowEnd[3] = cli.getBairro();
-                rowEnd[4] = cli.getCidade();
-                rowEnd[5] = cli.getCep();
-                rowEnd[6] = cli.getUf();
-                rowEnd[7] = cli.getComplemento();
-                modelEndereco.addRow(rowEnd);
             }
         }
 
@@ -290,9 +249,9 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
 
                 final int row = tabelaDados.getSelectedRow();
 
-                Integer idCli = (Integer) tabelaDados.getValueAt(row, 0);
+                Integer id = (Integer) tabelaDados.getValueAt(row, 0);
 
-                Cliente cliente = ServicoCliente.getInstance().obterCliente(idCli, idCli);
+                Cliente cliente = ServicoCliente.getInstance().obterCliente(id);
 
                 formEditarCliente.dispose();
                 formEditarCliente = new TelaEditarCliente();
@@ -314,28 +273,22 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
 
-        if (tabelaDados.getSelectedRow() >= 0 || tabelaEndereco.getSelectedRow() >= 1) {
+        if (tabelaDados.getSelectedRow() >= 0) {
 
             final int rowCli = tabelaDados.getSelectedRow();
-            final int rowEnd = tabelaEndereco.getSelectedRow();
 
             String nome = (String) tabelaDados.getValueAt(rowCli, 1);
-            String rua = (String) tabelaEndereco.getValueAt(rowEnd, 2);
 
             int resposta = JOptionPane.showConfirmDialog(rootPane,
                 "Excluir o cliente \"" + nome + "\"?",
                 "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
 
-            int respostaEnd = JOptionPane.showConfirmDialog(rootPane,
-                "Excluir o endereço \"" + rua + "\"?",
-                "Confirmar exclusão", JOptionPane.YES_NO_OPTION);
+           
 
-            if (resposta == JOptionPane.YES_OPTION || respostaEnd == JOptionPane.YES_OPTION) {
+            if (resposta == JOptionPane.YES_OPTION ) {
                 try {
-                    Integer idCli = (Integer) tabelaDados.getValueAt(rowCli, 0);
-                    Integer idEnd = (Integer) tabelaEndereco.getValueAt(rowEnd, 0);
-                    ServicoCliente.getInstance().excluirCliente(idCli, idCli);
-                    ServicoCliente.getInstance().excluirCliente(idCli, idEnd);
+                    Integer id = (Integer) tabelaDados.getValueAt(rowCli, 0);
+                    ServicoCliente.getInstance().excluirCliente(id);
 
                     this.refreshListCliente();
                 } catch (Exception e) {
@@ -355,20 +308,15 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         try {
 
             final int rowCli = tabelaDados.getSelectedRow();
-            final int rowEnd = tabelaEndereco.getSelectedRow();
 
-            if (rowCli >= 0 || rowEnd >= 0) {
-                Integer idCli = (Integer) tabelaDados.getValueAt(rowCli, 0);
-                Integer idEnd = (Integer) tabelaEndereco.getValueAt(rowEnd, 0);
-                Cliente cliente = ServicoCliente.getInstance().obterCliente(idCli, idEnd);
-                Cliente endereco = ServicoCliente.getInstance().obterCliente(idCli, idEnd);
+            if (rowCli >= 0) {
+                Integer id = (Integer) tabelaDados.getValueAt(rowCli, 0);
+                Cliente cliente = ServicoCliente.getInstance().obterCliente(id);
 
                 formEditarCliente.dispose();
                 formEditarCliente = new TelaEditarCliente();
                 formEditarCliente.setCliente(cliente);
                 formEditarCliente.setTitle(cliente.getNome());
-                formEditarCliente.setEndereco(endereco);
-                formEditarCliente.setTitle(endereco.getRua());
                 this.getParent().add(formEditarCliente);
                 this.openFrameInCenter(formEditarCliente);
                 formEditarCliente.toFront();
@@ -387,44 +335,18 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void tabelaEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaEnderecoMouseClicked
-        if (evt.getClickCount() == 2) {
-            try {
-
-                final int row = tabelaEndereco.getSelectedRow();
-
-                Integer idEnd = (Integer) tabelaEndereco.getValueAt(row, 0);
-
-                Cliente endereco = ServicoCliente.getInstance().obterCliente(idEnd, idEnd);
-
-                formEditarCliente.dispose();
-                formEditarCliente = new TelaEditarCliente();
-                formEditarCliente.setCliente(endereco);
-                formEditarCliente.setTitle(endereco.getRua());
-                this.getParent().add(formEditarCliente);
-                this.openFrameInCenter(formEditarCliente);
-                formEditarCliente.toFront();
-            } catch (Exception e) {
-
-                e.printStackTrace();
-
-                JOptionPane.showMessageDialog(rootPane, "Não é possível "
-                    + "exibir os detalhes deste cliente.",
-                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        }
-
-        public void openFrameInCenter(JInternalFrame jif) {
-            Dimension desktopSize = this.getParent().getSize();
-            Dimension jInternalFrameSize = jif.getSize();
-            int width = (desktopSize.width - jInternalFrameSize.width) / 2;
-            int height = (desktopSize.height - jInternalFrameSize.height) / 2;
-            jif.setLocation(width, height);
-            jif.setVisible(true);
-
-    }//GEN-LAST:event_tabelaEnderecoMouseClicked
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
+    }
+  
+    public void openFrameInCenter(JInternalFrame jif) {
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+    
+    }//GEN-LAST:event_txtPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -434,12 +356,9 @@ public class TelaConsultaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaDados;
-    private javax.swing.JTable tabelaEndereco;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 

@@ -115,7 +115,7 @@ public class DaoCliente {
                 }
 
                 Cliente cliente = new Cliente();
-                cliente.setIdCliente(result.getInt("id_cliente"));
+                cliente.setId(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -154,11 +154,9 @@ public class DaoCliente {
         return listaClientes;
     }
 
-    public static Cliente obterCliente(Integer idCli, Integer idEnd) throws SQLException {
+    public static Cliente obterCliente(Integer id) throws SQLException {
 
-        //String sql = "SELECT * FROM mydb.cliente INNER JOIN mydb.end_cliente ON cliente.id_cliente = end_cliente.cliente_id_cliente WHERE id_cliente=? AND enable_cliente";
-        String sql = "SELECT * FROM mydb.cliente WHERE (id_cliente=? AND enable_cliente=?)";
-        String sql1 = "SELECT * FROM mydb.end_cliente WHERE (cliente_id_cliente=?)";
+        String sql = "SELECT * FROM mydb.cliente INNER JOIN mydb.end_cliente ON mydb.cliente.id_cliente = mydb.end_cliente.cliente_id_cliente WHERE (id_cliente=?)";
 
         Connection connection = null;
 
@@ -170,10 +168,8 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, idCli);
+            preparedStatement.setInt(1, id);
 
-            preparedStatement = connection.prepareStatement(sql1);
-            preparedStatement.setInt(1, idEnd);
 
             result = preparedStatement.executeQuery();
 
@@ -181,7 +177,7 @@ public class DaoCliente {
 
                 Cliente cliente = new Cliente();
 
-                cliente.setIdCliente(result.getInt("id_cliente"));
+                cliente.setId(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -191,7 +187,6 @@ public class DaoCliente {
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
-                // cliente.setIdCliente(result.getInt("cliente_id_cliente"));
                 cliente.setRua(result.getString("rua_cliente"));
                 cliente.setNumero(result.getString("numero_cliente"));
                 cliente.setBairro(result.getString("bairro_cliente"));
@@ -199,6 +194,7 @@ public class DaoCliente {
                 cliente.setCep(result.getString("cep_cliente"));
                 cliente.setUf(result.getString("uf_cliente"));
                 cliente.setComplemento(result.getString("complemento_cliente"));
+                cliente.setId(result.getInt("cliente_id_cliente"));
 
                 return cliente;
             }
@@ -249,7 +245,7 @@ public class DaoCliente {
                 }
                 Cliente cliente = new Cliente();
 
-                cliente.setIdCliente(result.getInt("id_cliente"));
+                cliente.setId(result.getInt("id_cliente"));
                 cliente.setNome(result.getString("nome_cliente"));
                 cliente.setSexo(result.getString("sexo_cliente"));
                 cliente.setRg(result.getString("rg_cliente"));
@@ -259,7 +255,6 @@ public class DaoCliente {
                 cliente.setEmail(result.getString("email_cliente"));
                 cliente.setCelular(result.getString("celular_cliente"));
                 cliente.setTelefone(result.getString("telefone_cliente"));
-                cliente.setEnable(result.getBoolean("enable_cliente"));
                 cliente.setRua(result.getString("rua_cliente"));
                 cliente.setNumero(result.getString("numero_cliente"));
                 cliente.setBairro(result.getString("bairro_cliente"));
@@ -291,11 +286,11 @@ public class DaoCliente {
     public static void atualizarCliente(Cliente cliente)
             throws SQLException, Exception {
 
-        String sql = "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?) "
+        String sql = "UPDATE mydb.cliente SET nome_cliente=?, sexo_cliente=?, rg_cliente=?, cpf_cliente=?, data_nasc_cliente=?, email_cliente=?, celular_cliente=?, telefone_cliente=?"
                 + "WHERE(id_cliente=?)";
 
-        String sql2 = "UPDATE mydb.end_cliente SET rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?)"
-                + "WHERE(cliente_id_cliente=?);";
+        String sql1 = "UPDATE mydb.end_cliente SET rua_cliente=?, numero_cliente=?, bairro_cliente=?, cidade_cliente=?, uf_cliente=?, cep_cliente=?, complemento_cliente=?"
+                + "WHERE(cliente_id_cliente=?)";
 
         Connection connection = null;
 
@@ -305,18 +300,18 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getSexo());
-            preparedStatement.setString(3, cliente.getRg());
-            preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setTimestamp(5, new Timestamp(cliente.getDataNasc().getTime()));
-            preparedStatement.setString(6, cliente.getEmail());
-            preparedStatement.setString(7, cliente.getCelular());
-            preparedStatement.setString(8, cliente.getTelefone());
-            preparedStatement.setBoolean(9, true);
-            preparedStatement.setDate(10, new java.sql.Date(System.currentTimeMillis()));
-
-            preparedStatement = connection.prepareStatement(sql2);
+           preparedStatement.setInt(1, cliente.getId());
+            preparedStatement.setString(2, cliente.getNome());
+            preparedStatement.setString(3, cliente.getSexo());
+            preparedStatement.setString(4, cliente.getRg());
+            preparedStatement.setString(5, cliente.getCpf());
+            Timestamp t = new Timestamp(cliente.getDataNasc().getTime());
+            preparedStatement.setTimestamp(6, t);
+            preparedStatement.setString(7, cliente.getEmail());
+            preparedStatement.setString(8, cliente.getCelular());
+            preparedStatement.setString(9, cliente.getTelefone());
+         
+            preparedStatement = connection.prepareStatement(sql1);
             preparedStatement.setString(1, cliente.getRua());
             preparedStatement.setString(2, cliente.getNumero());
             preparedStatement.setString(3, cliente.getBairro());
@@ -324,7 +319,7 @@ public class DaoCliente {
             preparedStatement.setString(5, cliente.getUf());
             preparedStatement.setString(6, cliente.getCep());
             preparedStatement.setString(7, cliente.getComplemento());
-            preparedStatement.setInt(8, cliente.getIdCliente());
+            preparedStatement.setInt(8, cliente.getId());
 
             preparedStatement.execute();
         } finally {
@@ -339,7 +334,7 @@ public class DaoCliente {
         }
     }
 
-    public static void excluirCliente(Integer idCli, Integer idEnd) throws SQLException, Exception {
+    public static void excluirCliente(Integer id) throws SQLException, Exception {
 
         String sql = "DELETE FROM mydb.cliente WHERE (id_cliente=?);";
         String sql2 = "DELETE FROM mydb.end_cliente WHERE (cliente_id_cliente=?);";
@@ -352,10 +347,10 @@ public class DaoCliente {
             connection = ConnectionUtils.getConnection();
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, idCli);
+            preparedStatement.setInt(1, id);
 
             preparedStatement = connection.prepareStatement(sql2);
-            preparedStatement.setInt(1, idEnd);
+            preparedStatement.setInt(1, id);
 
             preparedStatement.execute();
 

@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,15 +30,12 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
     public TabelaConsultaCliente() {
         initComponents();
         //  setLocationRelativeTo(null);
-        setResizable(false);
+        this.setResizable(false);
 
         tabelaDados.getColumnModel().getColumn(0).setMinWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setMaxWidth(0);
         tabelaDados.getColumnModel().getColumn(0).setWidth(0);
 
-        tabelaEndereco.getColumnModel().getColumn(0).setMinWidth(0);
-        tabelaEndereco.getColumnModel().getColumn(0).setMaxWidth(0);
-        tabelaEndereco.getColumnModel().getColumn(0).setWidth(0);
 
     }
 
@@ -49,9 +47,6 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPaneDados = new javax.swing.JScrollPane();
         tabelaDados = new javax.swing.JTable();
-        jPanelEndereco = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaEndereco = new javax.swing.JTable();
         ButtonFechar = new javax.swing.JButton();
         lblPesquisar = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
@@ -64,7 +59,7 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Sexo", "Rg", "Cpf", "Data Nascimento", "E-mail", "Celular", "Telefone"
+                "Id", "Nome", "Sexo", "Rg", "Cpf", "Data Nascimento", "E-mail", "Celular", "Telefone", "Rua", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
             }
         ));
         tabelaDados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,38 +68,6 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
             }
         });
         jScrollPaneDados.setViewportView(tabelaDados);
-
-        jPanelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-
-        tabelaEndereco.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Rua ", "Número", "Bairro", "Cidade", "Cep", "Uf", "Complemento"
-            }
-        ));
-        tabelaEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaEnderecoMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tabelaEndereco);
-
-        javax.swing.GroupLayout jPanelEnderecoLayout = new javax.swing.GroupLayout(jPanelEndereco);
-        jPanelEndereco.setLayout(jPanelEnderecoLayout);
-        jPanelEnderecoLayout.setHorizontalGroup(
-            jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEnderecoLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelEnderecoLayout.setVerticalGroup(
-            jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEnderecoLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         ButtonFechar.setText("Fechar");
         ButtonFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,9 +81,7 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneDados)
-                    .addComponent(jPanelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPaneDados, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
@@ -130,12 +91,9 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPaneDados, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneDados, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanelPesquisarLayout = new javax.swing.GroupLayout(jPanelPesquisar);
@@ -147,11 +105,17 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         jPanelPesquisarLayout.setVerticalGroup(
             jPanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPesquisarLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 560, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         lblPesquisar.setText("Pesquisar:");
+
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarActionPerformed(evt);
+            }
+        });
 
         ButtonPesquisar.setText("Pesquisar");
         ButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -221,10 +185,8 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         List<Cliente> resultado = ServicoCliente.getInstance().procurarCliente(ultimaPesquisa);
 
         DefaultTableModel modelDados = (DefaultTableModel) tabelaDados.getModel();
-        DefaultTableModel modelEndereco = (DefaultTableModel) tabelaEndereco.getModel();
 
         modelDados.setRowCount(0);
-        modelEndereco.setRowCount(0);
 
         if (resultado == null || resultado.size() <= 0) {
             return false;
@@ -234,8 +196,8 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
             Cliente cli = resultado.get(i);
 
             if (cli != null) {
-                Object[] rowCli = new Object[10];
-                rowCli[0] = cli.getIdCliente();
+                Object[] rowCli = new Object[16];
+                rowCli[0] = cli.getId();
                 rowCli[1] = cli.getNome();
                 rowCli[2] = cli.getSexo();
                 rowCli[3] = cli.getRg();
@@ -244,20 +206,15 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
                 rowCli[5] = formatador.format(cli.getDataNasc());
                 rowCli[6] = cli.getEmail();
                 rowCli[7] = cli.getCelular();
-                rowCli[8] = cli.getTelefone();
-                rowCli[9] = cli.getEnable();
+                rowCli[8] = cli.getTelefone(); 
+                rowCli[9] = cli.getRua();
+                rowCli[10] = cli.getNumero();
+                rowCli[11] = cli.getBairro();
+                rowCli[12] = cli.getCidade();
+                rowCli[13] = cli.getCep();
+                rowCli[14] = cli.getUf();
+                rowCli[15] = cli.getComplemento();
                 modelDados.addRow(rowCli);
-
-                Object[] rowEnd = new Object[8];
-                rowEnd[0] = cli.getIdCliente();
-                rowEnd[1] = cli.getRua();
-                rowEnd[2] = cli.getNumero();
-                rowEnd[3] = cli.getBairro();
-                rowEnd[4] = cli.getCidade();
-                rowEnd[5] = cli.getCep();
-                rowEnd[6] = cli.getUf();
-                rowEnd[7] = cli.getComplemento();
-                modelEndereco.addRow(rowEnd);
             }
         }
 
@@ -270,54 +227,15 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_ButtonFecharActionPerformed
 
-    private void tabelaEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaEnderecoMouseClicked
-        if (evt.getClickCount() == 2) {
-            try {
-
-                final int row = tabelaEndereco.getSelectedRow();
-
-                Integer idCli = (Integer) tabelaDados.getValueAt(row, 0);
-                Integer idEnd = (Integer) tabelaEndereco.getValueAt(row, 0);
-
-                Cliente cliente = ServicoCliente.getInstance().obterCliente(idCli, idEnd);
-
-                formEditarEndereco.dispose();
-                formEditarEndereco = new TelaEditarCliente();
-                formEditarEndereco.setCliente(cliente);
-                formEditarEndereco.setTitle(cliente.getRua());
-                this.getParent().add(formEditarEndereco);
-                this.openFrameInCenter(formEditarEndereco);
-                formEditarEndereco.toFront();
-            } catch (Exception e) {
-
-                e.printStackTrace();
-
-                JOptionPane.showMessageDialog(rootPane, "Não é possível "
-                    + "exibir os detalhes deste Endereço",
-                    "Erro ao abrir detalhe", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        }
-
-        public void openFrameInCenter(TelaEditarCliente jif) {
-            Dimension desktopSize = this.getParent().getSize();
-            Dimension jInternalFrameSize = jif.getSize();
-            int width = (desktopSize.width - jInternalFrameSize.width) / 2;
-            int height = (desktopSize.height - jInternalFrameSize.height) / 2;
-            jif.setLocation(width, height);
-            jif.setVisible(true);
-    }//GEN-LAST:event_tabelaEnderecoMouseClicked
-
     private void tabelaDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDadosMouseClicked
         if (evt.getClickCount() == 2) {
             try {
 
                 final int row = tabelaDados.getSelectedRow();
 
-                Integer idCli = (Integer) tabelaDados.getValueAt(row, 0);
-                Integer idEnd = (Integer) tabelaEndereco.getValueAt(row, 0);
+                Integer id = (Integer) tabelaDados.getValueAt(row, 0);
 
-                Cliente cliente = ServicoCliente.getInstance().obterCliente(idCli, idEnd);
+                Cliente cliente = ServicoCliente.getInstance().obterCliente(id);
 
                 formEditarCliente.dispose();
                 formEditarCliente = new TelaEditarCliente();
@@ -337,6 +255,19 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tabelaDadosMouseClicked
 
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
+                                                     
+    }
+  
+    public void openFrameInCenter(JInternalFrame jif) {
+        Dimension desktopSize = this.getParent().getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+    }//GEN-LAST:event_txtPesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,13 +276,10 @@ public class TabelaConsultaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton ButtonFechar;
     private javax.swing.JButton ButtonPesquisar;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanelEndereco;
     private javax.swing.JPanel jPanelPesquisar;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneDados;
     private javax.swing.JLabel lblPesquisar;
     private javax.swing.JTable tabelaDados;
-    private javax.swing.JTable tabelaEndereco;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 }

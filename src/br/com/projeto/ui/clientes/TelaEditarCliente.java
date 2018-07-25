@@ -5,7 +5,6 @@
  */
 package br.com.projeto.ui.clientes;
 
-
 import br.com.projeto.model.clientes.Cliente;
 import br.com.projeto.service.cliente.ServicoCliente;
 import br.com.projeto.ui.principal.PrincipalVendedor;
@@ -17,9 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
-
-
 /**
  *
  * @author Jussara Andrade
@@ -28,12 +24,12 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
 
     Cliente cliente = new Cliente();
     Cliente endereco = new Cliente();
-    
-    public TelaEditarCliente(){
-       initComponents();
+
+    public TelaEditarCliente() {
+        initComponents();
 //      setLocationRelativeTo(null);  
-       setResizable(false);
-    
+        setResizable(false);
+
     }
 
     public Cliente getCliente() {
@@ -42,19 +38,17 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-        
+
     }
+
     public Cliente getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Cliente endereco) {
         this.endereco = endereco;
-        
+
     }
-    
-    
-  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -105,6 +99,24 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
         ButtonSalvar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
+
         jPanelIdentificação.setBorder(javax.swing.BorderFactory.createTitledBorder("Atualizar Dados"));
 
         lblNome.setText("Nome:");
@@ -115,16 +127,12 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
 
-        try {
-            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         lblCpf.setText("CPF:");
 
         try {
-            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -433,28 +441,31 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-       
-        cliente.setNome(txtNome.getText());  
-        cliente.setRg(txtRg.getText());     
+
+        cliente.setNome(txtNome.getText());
+        cliente.setSexo((String) jComboBoxSexo.getSelectedItem());
+        cliente.setRg(txtRg.getText());
+        cliente.setCpf(txtCpf.getText());
+        Date data = null;
+        try {
+            data = (Date) txtDataNasc.getValue();
+        } catch (Exception e) {
+
+        }
+
+        cliente.setDataNasc(data);
         cliente.setEmail(txtEmail.getText());
         cliente.setCelular(txtCelular.getText());
         cliente.setTelefone(txtTelefone.getText());
-        if(jComboBoxSexo.getSelectedItem().equals("Masculino")){
-            cliente.setSexo("M");
-        }
-        else if(jComboBoxSexo.getSelectedItem().equals("Feminino")){
-            cliente.setSexo("F");
-        }
-        
-        
-        
+
         cliente.setRua(txtEndereco.getText());
         cliente.setNumero(txtNumero.getText());
         cliente.setComplemento(txtComplemento.getText());
@@ -462,100 +473,82 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
         cliente.setUf((String) jComboBoxUf.getSelectedItem());
         cliente.setCidade(txtCidade.getText());
         cliente.setCep(txtCep.getText());
-                
-     
-        String cpf = txtCpf.getText();
-        cpf = cpf.replace(".","");
-        cpf = cpf.replace("-",""); 
-        cliente.setCpf(cpf);
-       
-       DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
+
         try {
-            date = dt.parse(txtDataNasc.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        cliente.setDataNasc(date);
-        cliente.setSexo((String)jComboBoxSexo.getSelectedItem());
-        
-        try {
-            
+
             ServicoCliente.getInstance().atualizarCliente(cliente);
-        }
-         catch(Exception e) {
+        } catch (Exception e) {
             //Exibe alguma mensagem de erro que pode ter vindo do serviço
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
-           return;
-       
+            return;
+
         }
-         
+
         try {
-            if (this.getDesktopPane().getTopLevelAncestor()
-                    instanceof PrincipalVendedor) {
+            if (this.getDesktopPane().getTopLevelAncestor() instanceof PrincipalVendedor) {
                 PrincipalVendedor principal = (PrincipalVendedor) this.
                         getDesktopPane().getTopLevelAncestor();
                 if (principal != null) {
                     principal.getConsultarClientes().refreshListCliente();
 
                 }
-                }
-        }
-        
-         catch(Exception e) {
-           
+            }
+        } catch (Exception e) {
+
             e.printStackTrace();
         }
-        
+
         JOptionPane.showMessageDialog(rootPane, "Cliente atualizado com sucesso",
-                "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);        
+                "Cadastro atualizado", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
-        
-    
+
+
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         txtNome.setText(cliente.getNome());
+        txtCpf.setText(cliente.getCpf());
         txtRg.setText(cliente.getRg());
         txtEmail.setText(cliente.getEmail());
         txtCelular.setText(cliente.getCelular());
         txtTelefone.setText(cliente.getTelefone());
         txtDataNasc.setValue(cliente.getDataNasc());
-        
+
         for (int i = 0; i < jComboBoxSexo.getItemCount(); i++) {
             if (jComboBoxSexo.getItemAt(i).equals(cliente.getSexo())) {
                 jComboBoxSexo.setSelectedIndex(i);
                 break;
             }
-        } 
-        
+        }
+
         txtEndereco.setText(cliente.getRua());
         txtNumero.setText(cliente.getNumero());
         txtComplemento.setText(cliente.getComplemento());
         txtBairro.setText(cliente.getBairro());
         txtCidade.setText(cliente.getCidade());
         txtCep.setText(cliente.getCep());
-        
-        
-         
+
         for (int i = 0; i < jComboBoxUf.getItemCount(); i++) {
             if (jComboBoxUf.getItemAt(i).equals(cliente.getUf())) {
                 jComboBoxUf.setSelectedIndex(i);
                 break;
             }
-        } 
-       
-    
+        }
+
+
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja sair?", title, JOptionPane.YES_NO_OPTION);
+
+        if (sair == JOptionPane.YES_OPTION) {
+
+        } else if (sair == JOptionPane.NO_OPTION) {
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSalvar;
@@ -603,7 +596,5 @@ public class TelaEditarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField txtRg;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
-
-   
 
 }

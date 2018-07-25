@@ -31,12 +31,12 @@ public class Cliente {
     private String complemento;
     private Boolean enable; 
 
-    public Integer getIdCliente() {
+    public Integer getId() {
         return id;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.id = idCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

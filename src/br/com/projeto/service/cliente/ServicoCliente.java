@@ -80,10 +80,10 @@ public class ServicoCliente {
         }
     }
 
-    public Cliente obterCliente(Integer idCli, Integer idEnd)
+    public Cliente obterCliente(Integer id)
             throws ClienteException, DataSourceException {
         try {
-            return DaoCliente.obterCliente(idCli, idEnd);
+            return DaoCliente.obterCliente(id);
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -91,11 +91,11 @@ public class ServicoCliente {
         }
     }
 
-    public void excluirCliente(Integer idCli, Integer idEnd)
+    public void excluirCliente(Integer id)
             throws ClienteException, DataSourceException {
         try {
 
-            DaoCliente.excluirCliente(idCli, idEnd);
+            DaoCliente.excluirCliente(id);
         } catch (Exception e) {
 
             e.printStackTrace();
